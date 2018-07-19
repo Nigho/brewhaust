@@ -41,6 +41,20 @@
 
 #include <boost/unordered_map.hpp>
 
+/**
+ * Global LuxState
+ */
+
+/////////////////////////////////////////// lux
+#include <lux/luxstate.h>
+#include <lux/luxDGP.h>
+#include <libethereum/ChainParams.h>
+#include <libethashseal/Ethash.h>
+#include <libethashseal/GenesisInfo.h>
+#include <script/standard.h>
+#include <lux/storageresults.h>
+///////////////////////////////////////////
+
 extern std::unique_ptr<LuxState> globalState;
 extern std::shared_ptr<dev::eth::SealEngineFace> globalSealEngine;
 extern bool fRecordLogOpcodes;
@@ -130,6 +144,37 @@ static const unsigned int DEFAULT_BYTES_PER_SIGOP = 20;
 static const int64_t STATIC_POS_REWARD = 1 * COIN; //Constant reward 8%
 
 static const bool DEFAULT_LOGEVENTS = false;
+
+////////////////////////////////////////////////////// lux
+static const uint64_t DEFAULT_GAS_LIMIT_OP_CREATE=2500000;
+static const uint64_t DEFAULT_GAS_LIMIT_OP_SEND=250000;
+static const CAmount DEFAULT_GAS_PRICE=0.00000040*COIN;
+static const CAmount MAX_RPC_GAS_PRICE=0.00000100*COIN;
+
+/** Minimum gas limit that is allowed in a transaction within a block - prevent various types of tx and mempool spam **/
+static const uint64_t MINIMUM_GAS_LIMIT = 10000;
+
+static const uint64_t MEMPOOL_MIN_GAS_LIMIT = 22000;
+
+/** The maximum allowed size for a serialized block, in bytes (only for buffer size limits) */
+extern unsigned int dgpMaxBlockSerSize;
+/** The maximum allowed weight for a block, see BIP 141 (network rule) */
+extern unsigned int dgpMaxBlockWeight;
+/** The maximum allowed size for a block excluding witness data, in bytes (network rule) */
+extern unsigned int dgpMaxBlockBaseSize;
+
+extern unsigned int dgpMaxBlockSize; // qtum
+
+/** The maximum allowed number of signature check operations in a block (network rule) */
+extern int64_t dgpMaxBlockSigOps;
+
+extern unsigned int dgpMaxProtoMsgLength;
+
+extern unsigned int dgpMaxTxSigOps;
+void updateBlockSizeParams(unsigned int newBlockSize);
+
+
+//////////////////////////////////////////////////////
 
 inline bool IsProtocolV2(int nHeight) { return IsTestNet() || nHeight > 0; }
 inline int64_t GetMNCollateral(int nHeight) {
