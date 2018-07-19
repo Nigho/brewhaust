@@ -359,6 +359,8 @@ UniValue getblocktemplate(const UniValue& params, bool fHelp)
             "  },\n"
             "  \"vbrequired\" : n,                 (numeric) bit mask of versionbits the server requires set in submissions\n"
             "  \"previousblockhash\" : \"xxxx\",     (string) The hash of current highest block\n"
+            "  \"stateroot\" : \"xxxx\",             (string) The state root hash of current block for smart contracts\n"
+            "  \"utxoroot\" : \"xxxx\",              (string) The UTXO root hash of current block for smart contracts\n"
             "  \"transactions\" : [                (array) contents of non-coinbase transactions that should be included in the next block\n"
             "      {\n"
             "         \"data\" : \"xxxx\",          (string) transaction data encoded in hexadecimal (byte-for-byte)\n"

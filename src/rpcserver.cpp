@@ -304,6 +304,13 @@ static const CRPCCommand vRPCCommands[] =
         {"blockchain", "verifychain", &verifychain, true, false, false},
         {"blockchain", "invalidateblock", &invalidateblock, true, true, false},
         {"blockchain", "reconsiderblock", &reconsiderblock, true, true, false},
+
+        /*Smart Contract*/
+        {"blockchain", "getstorage", &getstorage,true, true, false },
+        {"blockchain", "callcontract", &callcontract,true, true, false },
+        {"blockchain", "listcontracts", &listcontracts,true, true, false },
+        {"blockchain", "createcontract", &createcontract,true, true, false },
+        {"blockchain", "sendtocontract", &sendtocontract,true, true, false },
         {"blockchain", "pruneblockchain", &pruneblockchain,true, true, false },
 
         /* Mining */

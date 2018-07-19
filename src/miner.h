@@ -34,6 +34,10 @@ static const bool DEFAULT_STAKE_CACHE = true;
 //Reduce this to reduce computational waste for stakers, increase this to increase the amount of time available to construct full blocks
 static const int32_t MAX_STAKE_LOOKAHEAD = 16 * 3;
 
+//Will not add any more contracts when GetAdjustedTime() >= nTimeLimit-BYTECODE_TIME_BUFFER
+//This does not affect non-contract transactions
+static const int32_t BYTECODE_TIME_BUFFER = 6;
+
 //Will not attempt to add more transactions when GetAdjustedTime() >= nTimeLimit
 //And nTimeLimit = StakeExpirationTime - STAKE_TIME_BUFFER
 static const int32_t STAKE_TIME_BUFFER = 2;
@@ -87,6 +91,64 @@ struct modifiedentry_iter {
     result_type operator() (const CTxMemPoolModifiedEntry &entry) const
     {
         return entry.iter;
+    }
+};
+
+// This related to the calculation in CompareTxMemPoolEntryByAncestorFeeOrGasPrice,
+// except operating on CTxMemPoolModifiedEntry.
+// TODO: refactor to avoid duplication of this logic.
+struct CompareModifiedEntry {
+    bool operator()(const CTxMemPoolModifiedEntry &a, const CTxMemPoolModifiedEntry &b) const
+    {
+        bool fAHasCreateOrCall = a.iter->GetTx().HasCreateOrCall();
+        bool fBHasCreateOrCall = b.iter->GetTx().HasCreateOrCall();
+
+        // If either of the two entries that we are comparing has a contract scriptPubKey, the comparison here takes precedence
+        if(fAHasCreateOrCall || fBHasCreateOrCall) {
+
+            // Prioritze non-contract txs
+            if(fAHasCreateOrCall != fBHasCreateOrCall) {
+                return fAHasCreateOrCall ? false : true;
+            }
+
+            // Prioritize the contract txs that have the least number of ancestors
+            // The reason for this is that otherwise it is possible to send one tx with a
+            // high gas limit but a low gas price which has a child with a low gas limit but a high gas price
+            // Without this condition that transaction chain would get priority in being included into the block.
+            // The two next checks are to see if all our ancestors have been added.
+            if(a.nSizeWithAncestors == a.iter->GetTxSize() && b.nSizeWithAncestors != b.iter->GetTxSize()) {
+                return true;
+            }
+
+            if(b.nSizeWithAncestors == b.iter->GetTxSize() && a.nSizeWithAncestors != a.iter->GetTxSize()) {
+                return false;
+            }
+
+            // Otherwise, prioritize the contract tx with the highest (minimum among its outputs) gas price
+            // The reason for using the gas price of the output that sets the minimum gas price is that
+            // otherwise it may be possible to game the prioritization by setting a large gas price in one output
+            // that does no execution, while the real execution has a very low gas price
+            if(a.iter->GetMinGasPrice() != b.iter->GetMinGasPrice()) {
+                return a.iter->GetMinGasPrice() > b.iter->GetMinGasPrice();
+            }
+
+            // Otherwise, prioritize the tx with the min size
+            if(a.iter->GetTxSize() != b.iter->GetTxSize()) {
+                return a.iter->GetTxSize() < b.iter->GetTxSize();
+            }
+
+            // If the txs are identical in their minimum gas prices and tx size
+            // order based on the tx hash for consistency.
+            return CTxMemPool::CompareIteratorByHash()(a.iter, b.iter);
+        }
+
+
+        double f1 = (double)a.nModFeesWithAncestors * b.nSizeWithAncestors;
+        double f2 = (double)b.nModFeesWithAncestors * a.nSizeWithAncestors;
+        if (f1 == f2) {
+            return CTxMemPool::CompareIteratorByHash()(a.iter, b.iter);
+        }
+        return f1 > f2;
     }
 };
 
@@ -193,6 +255,8 @@ private:
     void resetBlock();
     /** Add a tx to the block */
     void AddToBlock(CTxMemPool::txiter iter);
+
+    bool AttemptToAddContractToBlock(CTxMemPool::txiter iter, uint64_t minGasPrice);
 
     // Methods for how to add transactions to a block.
     /** Add transactions based on tx "priority" */
