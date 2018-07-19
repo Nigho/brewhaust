@@ -1410,44 +1410,6 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
                 if (!mapBlockIndex.empty() && mapBlockIndex.count(chainparams.GetConsensus().hashGenesisBlock) == 0)
                     return InitError(_("Incorrect or no genesis block found. Wrong datadir for network?"));
 
-                /////////////////////////////////////////////////////////// lux
-                if((IsArgSet("-dgpstorage") && IsArgSet("-dgpevm")) || (!IsArgSet("-dgpstorage") && IsArgSet("-dgpevm")) ||
-                   (!IsArgSet("-dgpstorage") && !IsArgSet("-dgpevm"))) {
-                    fGettingValuesDGP = true;
-                } else {
-                    fGettingValuesDGP = false;
-                }
-
-                dev::eth::Ethash::init();
-
-                boost::filesystem::path luxStateDir = GetDataDir() / "stateLux";
-
-                bool fStatus = boost::filesystem::exists(luxStateDir);
-                const std::string dirLux(luxStateDir.string());
-                const dev::h256 hashDB(dev::sha3(dev::rlp("")));
-                dev::eth::BaseState existsLuxState = fStatus ? dev::eth::BaseState::PreExisting : dev::eth::BaseState::Empty;
-                globalState = std::unique_ptr<LuxState>(new LuxState(dev::u256(0), LuxState::openDB(dirLux, hashDB, dev::WithExisting::Trust), dirLux, existsLuxState));
-                dev::eth::ChainParams cp((dev::eth::genesisInfo(dev::eth::Network::luxMainNetwork)));
-                globalSealEngine = std::unique_ptr<dev::eth::SealEngineFace>(cp.createSealEngine());
-
-                pstorageresult = new StorageResults(luxStateDir.string());
-
-                if(chainActive.Tip() != nullptr && chainActive.Tip()->nHeight > Params().FirstSCBlock()){
-                    globalState->setRoot(uintToh256(chainActive.Tip()->hashStateRoot));
-                    globalState->setRootUTXO(uintToh256(chainActive.Tip()->hashUTXORoot));
-                } else {
-                    globalState->setRoot(dev::sha3(dev::rlp("")));
-                    globalState->setRootUTXO(uintToh256(chainparams.GenesisBlock().hashUTXORoot));
-                    globalState->populateFrom(cp.genesisState);
-                }
-                globalState->db().commit();
-                globalState->dbUtxo().commit();
-
-
-                fRecordLogOpcodes = GetBoolArg("-record-log-opcodes", true);
-                fIsVMlogFile = boost::filesystem::exists(GetDataDir() / "vmExecLogs.json");
-                ///////////////////////////////////////////////////////////
-
                 // Initialize the block index (no-op if non-empty database was already loaded)
                 if (!InitBlockIndex(chainparams)) {
                     strLoadError = _("Error initializing block database");

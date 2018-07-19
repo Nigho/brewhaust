@@ -13,13 +13,6 @@
 
 #include <boost/foreach.hpp>
 
-/////////////////////////////////////////////////////////// lux
-#include <lux/luxstate.h>
-#include <lux/luxtransaction.h>
-#include <lux/luxDGP.h>
-#include <main.h>
-///////////////////////////////////////////////////////////
-
 using namespace std;
 
 typedef vector<unsigned char> valtype;
@@ -190,30 +183,6 @@ bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsi
                 else
                     break;
             }
-                /////////////////////////////////////////////////////////// lux
-            else if (opcode2 == OP_VERSION)
-            {
-                if(0 <= opcode1 && opcode1 <= OP_PUSHDATA4)
-                {
-                    if(vch1.empty() || vch1.size() > 4 || (vch1.back() & 0x80))
-                        return false;
-
-                    version = VersionVM::fromRaw(CScriptNum::vch_to_uint64(vch1));
-                    if(!(version.toRaw() == VersionVM::GetEVMDefault().toRaw() || version.toRaw() == VersionVM::GetNoExec().toRaw())){
-                        // only allow standard EVM and no-exec transactions to live in mempool
-                        return false;
-                    }
-                }
-            }
-            else if(opcode2 == OP_DATA)
-            {
-                if(0 <= opcode1 && opcode1 <= OP_PUSHDATA4)
-                {
-                    if(vch1.empty())
-                        break;
-                }
-            }
-                ///////////////////////////////////////////////////////////
             else if (opcode1 != opcode2 || vch1 != vch2)
             {
                 // Others must match exactly
