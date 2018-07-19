@@ -17,7 +17,11 @@
 
 #include <boost/assign/list_of.hpp>
 
-#include "arith_uint256.h"
+///////////////////////////////////////////// // lux
+#include <libdevcore/SHA3.h>
+#include <libdevcore/RLP.h>
+//#include "arith_uint256.h"
+/////////////////////////////////////////////
 
 using namespace std;
 using namespace boost::assign;
