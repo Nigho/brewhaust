@@ -316,7 +316,6 @@ static bool ethash_hash(
 #endif // define (__GNUC__)
 
 	// compress mix
- uint32_t w;
 	for (w = 0; w != MIX_WORDS; w += 4) {
 		uint32_t reduction = mix->words[w + 0];
 		reduction = reduction * FNV_PRIME ^ mix->words[w + 1];
