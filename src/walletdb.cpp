@@ -677,39 +677,6 @@ bool ReadKeyValue(CWallet* pwallet, CDataStream& ssKey, CDataStream& ssValue, CW
                 strErr = "Error reading wallet database: LoadDestData failed";
                 return false;
             }
-        } else if (strType == "token") {
-            uint256 hash;
-            ssKey >> hash;
-            CTokenInfo wtoken;
-            ssValue >> wtoken;
-            if (wtoken.GetHash() != hash) {
-                strErr = "Error reading wallet database: CTokenInfo corrupt";
-                return false;
-            }
-
-            pwallet->LoadToken(wtoken);
-        } else if (strType == "tokentx") {
-            uint256 hash;
-            ssKey >> hash;
-            CTokenTx wTokenTx;
-            ssValue >> wTokenTx;
-            if (wTokenTx.GetHash() != hash) {
-                strErr = "Error reading wallet database: CTokenTx corrupt";
-                return false;
-            }
-
-            pwallet->LoadTokenTx(wTokenTx);
-        }else if (strType == "contractdata")
-        {
-            std::string strAddress, strKey, strValue;
-            ssKey >> strAddress;
-            ssKey >> strKey;
-            ssValue >> strValue;
-            if (!pwallet->LoadContractData(strAddress, strKey, strValue))
-            {
-                strErr = "Error reading wallet database: LoadContractData failed";
-                return false;
-            }
         }
     } catch (...) {
         return false;
@@ -1077,42 +1044,6 @@ bool CWalletDB::EraseDestData(const std::string& address, const std::string& key
 {
     nWalletDBUpdated++;
     return Erase(std::make_pair(std::string("destdata"), std::make_pair(address, key)));
-}
-
-bool CWalletDB::WriteContractData(const string &address, const string &key, const string &value)
-{
-    nWalletDBUpdated++;
-    return Write(std::make_pair(std::string("contractdata"), std::make_pair(address, key)), value);
-}
-
-bool CWalletDB::EraseContractData(const string &address, const string &key)
-{
-    nWalletDBUpdated++;
-    return Erase(std::make_pair(std::string("contractdata"), std::make_pair(address, key)));
-}
-
-bool CWalletDB::WriteToken(const CTokenInfo &wtoken)
-{
-    nWalletDBUpdated++;
-    return Write(std::make_pair(std::string("token"), wtoken.GetHash()), wtoken);
-}
-
-bool CWalletDB::EraseToken(uint256 hash)
-{
-    nWalletDBUpdated++;
-    return Erase(std::make_pair(std::string("token"), hash));
-}
-
-bool CWalletDB::WriteTokenTx(const CTokenTx &wTokenTx)
-{
-    nWalletDBUpdated++;
-    return Write(std::make_pair(std::string("tokentx"), wTokenTx.GetHash()), wTokenTx);
-}
-
-bool CWalletDB::EraseTokenTx(uint256 hash)
-{
-    nWalletDBUpdated++;
-    return Erase(std::make_pair(std::string("tokentx"), hash));
 }
 
 unsigned int CWalletDB::GetUpdateCounter()

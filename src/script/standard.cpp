@@ -51,12 +51,8 @@ const char* GetTxnOutputType(txnouttype t)
 /**
  * Return public keys or hashes from scriptPubKey, for 'standard' transaction types.
  */
-bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsigned char> >& vSolutionsRet, bool contractConsensus)
+bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsigned char> >& vSolutionsRet)
 {
-    //contractConsesus is true when evaluating if a contract tx is "standard" for consensus purposes
-    //It is false in all other cases, so to prevent a particular contract tx from being broadcast on mempool, but allowed in blocks,
-    //one should ensure that contractConsensus is false
-
     // Templates
     static multimap<txnouttype, CScript> mTemplates;
     if (mTemplates.empty())
@@ -69,12 +65,6 @@ bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsi
 
         // Sender provides N pubkeys, receivers provides M signatures
         mTemplates.insert(make_pair(TX_MULTISIG, CScript() << OP_SMALLINTEGER << OP_PUBKEYS << OP_SMALLINTEGER << OP_CHECKMULTISIG));
-
-        // Contract creation tx
-        mTemplates.insert(make_pair(TX_CREATE, CScript() << OP_VERSION << OP_GAS_LIMIT << OP_GAS_PRICE << OP_DATA << OP_CREATE));
-
-        // Call contract tx
-        mTemplates.insert(make_pair(TX_CALL, CScript() << OP_VERSION << OP_GAS_LIMIT << OP_GAS_PRICE << OP_DATA << OP_PUBKEYHASH << OP_CALL));
 //        // Empty, provably prunable, data-carrying output
 //        if (GetBoolArg("-datacarrier", true))
 //            mTemplates.insert(make_pair(TX_NULL_DATA, CScript() << OP_RETURN << OP_SMALLDATA));
@@ -213,54 +203,6 @@ bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsi
                         // only allow standard EVM and no-exec transactions to live in mempool
                         return false;
                     }
-                }
-            }
-            else if(opcode2 == OP_GAS_LIMIT) {
-                try {
-                    uint64_t val = CScriptNum::vch_to_uint64(vch1);
-                    if(contractConsensus) {
-                        //consensus rules (this is checked more in depth later using DGP)
-                        if (version.rootVM != 0 && val < 1) {
-                            return false;
-                        }
-                        if (val > MAX_BLOCK_GAS_LIMIT_DGP) {
-                            //do not allow transactions that could use more gas than is in a block
-                            return false;
-                        }
-                    }else{
-                        //standard mempool rules for contracts
-                        //consensus rules for contracts
-                        if (version.rootVM != 0 && val < STANDARD_MINIMUM_GAS_LIMIT) {
-                            return false;
-                        }
-                        if (val > DEFAULT_BLOCK_GAS_LIMIT_DGP / 2) {
-                            //don't allow transactions that use more than 1/2 block of gas to be broadcast on the mempool
-                            return false;
-                        }
-
-                    }
-                }
-                catch (const scriptnum_error &err) {
-                    return false;
-                }
-            }
-            else if(opcode2 == OP_GAS_PRICE) {
-                try {
-                    uint64_t val = CScriptNum::vch_to_uint64(vch1);
-                    if(contractConsensus) {
-                        //consensus rules (this is checked more in depth later using DGP)
-                        if (version.rootVM != 0 && val < 1) {
-                            return false;
-                        }
-                    }else{
-                        //standard mempool rules
-                        if (version.rootVM != 0 && val < STANDARD_MINIMUM_GAS_PRICE) {
-                            return false;
-                        }
-                    }
-                }
-                catch (const scriptnum_error &err) {
-                    return false;
                 }
             }
             else if(opcode2 == OP_DATA)

@@ -307,9 +307,6 @@ extern UniValue reservebalance(const UniValue& params, bool fHelp);
 extern UniValue multisend(const UniValue& params, bool fHelp);
 extern UniValue autocombinerewards(const UniValue& params, bool fHelp);
 extern UniValue getstakingstatus(const UniValue& params, bool fHelp);
-extern UniValue callcontract(const UniValue& params, bool fHelp);
-extern UniValue createcontract(const UniValue& params, bool fHelp);
-extern UniValue sendtocontract(const UniValue& params, bool fHelp);
 
 extern UniValue getrawtransaction(const UniValue& params, bool fHelp); // in rcprawtransaction.cpp
 extern UniValue listunspent(const UniValue& params, bool fHelp);

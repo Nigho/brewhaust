@@ -54,7 +54,6 @@ public:
         //Temporary workaround for cyclic dependency, when including versionbits.
         //The dependency cycle is block <- versionbits <- chain <- block.
         //When it is fixed, this check should look like this
-        //if(this->nVersion & VersionBitsMask(Params().GetConsensus(), Consensus::SMART_CONTRACTS_HARDFORK))
         if ((this->nVersion & (1 << 30)) != 0) {
             READWRITE(hashStateRoot);       // lux
             READWRITE(hashUTXORoot);        // lux

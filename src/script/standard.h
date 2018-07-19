@@ -13,13 +13,6 @@
 
 #include <stdint.h>
 
-//contract executions with less gas than this are not standard
-//Make sure is always equal or greater than MINIMUM_GAS_LIMIT (which we can't reference here due to insane header dependency chains)
-static const uint64_t STANDARD_MINIMUM_GAS_LIMIT = 10000;
-//contract executions with a price cheaper than this (in satoshis) are not standard
-//TODO this needs to be controlled by DGP and needs to be propogated from consensus parameters
-static const uint64_t STANDARD_MINIMUM_GAS_PRICE = 1;
-
 static const bool DEFAULT_ACCEPT_DATACARRIER = true;
 
 class CKeyID;
@@ -147,7 +140,7 @@ const char* GetTxnOutputType(txnouttype t);
  * @param[out]  vSolutionsRet  Vector of parsed pubkeys and hashes
  * @return                     True if script matches standard template
  */
-bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, std::vector<std::vector<unsigned char> >& vSolutionsRet, bool contractConsensus=false);
+bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, std::vector<std::vector<unsigned char> >& vSolutionsRet);
 
 int ScriptSigArgsExpected(txnouttype t, const std::vector<std::vector<unsigned char> >& vSolutions);
 

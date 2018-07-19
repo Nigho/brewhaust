@@ -157,12 +157,6 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1530428034; // 01/07/2018
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1561964034; // 01/07/2019
 
-        //SMART_CONTRACTS_HARDFORK deployment does not require start time and timeout, because it uses block number
-        //This is not used now, because we need to check this bit in block.h using versionbits, which results in cyclic
-        //dependency block <- versionbits <- chain <- block
-        //TODO: fix cyclic dependency
-        consensus.vDeployments[Consensus::SMART_CONTRACTS_HARDFORK].bit = 30;
-
         nSwitchPhi2Block = 299501;
         nFirstSCBlock = 350000;
         nPruneAfterHeight = 300000;
