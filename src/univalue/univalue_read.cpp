@@ -6,7 +6,7 @@
 #include <vector>
 #include <stdio.h>
 #include "univalue.h"
-#include "univalue_utffilter.h"
+#include "univalue/univalue_utffilter.h"
 
 using namespace std;
 
