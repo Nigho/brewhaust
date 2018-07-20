@@ -85,8 +85,7 @@ static inline void keccakf(void* state) {
 
 #define _(S) do { S } while (0)
 #define FOR(i, ST, L, S)							\
-size_t i;
-	_(for (i = 0; i < L; i += ST) { S; })
+	_(size_t i; for (i = 0; i < L; i += ST) { S; })
 #define mkapply_ds(NAME, S)						\
 	static inline void NAME(uint8_t* dst,			\
 		const uint8_t* src,						\
