@@ -6,9 +6,7 @@ endif ()
 
 set(CMAKE_BUILD_TYPE Release)
 
-if (NOT WIN32)
-	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99")
-endif()
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99")
 
 set(FILES 	util.h
           	io.c
