@@ -50,7 +50,8 @@ static inline void keccakf(void* state) {
 	uint64_t t = 0;
 	uint8_t x, y;
 
-	for (int i = 0; i < 24; i++) {
+ int i;
+	for (i = 0; i < 24; i++) {
 		// Theta
 		FOR5(x, 1,
 				b[x] = 0;
@@ -84,7 +85,7 @@ static inline void keccakf(void* state) {
 
 #define _(S) do { S } while (0)
 #define FOR(i, ST, L, S)							\
-	_(for (size_t i = 0; i < L; i += ST) { S; })
+	_(for (i = 0; i < L; i += ST) { S; })
 #define mkapply_ds(NAME, S)						\
 	static inline void NAME(uint8_t* dst,			\
 		const uint8_t* src,						\
