@@ -236,6 +236,7 @@ BITCOIN_QT_H = \
   qt/sendcoinsdialog.h \
   qt/sendcoinsentry.h \
   qt/sendtocontract.h \
+  qt/sendtokenpage.h \
   qt/signverifymessagedialog.h \
   qt/smartcontract.h \
   qt/splashscreen.h \
