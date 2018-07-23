@@ -229,6 +229,7 @@ BITCOIN_QT_H = \
   qt/qvalidatedtextedit.h \
   qt/qvaluecombobox.h \
   qt/receivecoinsdialog.h \
+  qt/receivetokenpage.h \
   qt/receiverequestdialog.h \
   qt/recentrequeststablemodel.h \
   qt/restoredialog.h \
