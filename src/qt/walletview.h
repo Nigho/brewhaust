@@ -1,5 +1,5 @@
-// Copyright (c) 2018 The Luxcore Developer
-// Copyright (c) 2018 The Luxcore Developer
+// Copyright (c) 2018 The Brewhaustcore Developer
+// Copyright (c) 2018 The Brewhaustcore Developer
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -151,7 +151,7 @@ public slots:
     /** Show progress dialog e.g. for rescan */
     void showProgress(const QString& title, int nProgress);
 
-    /** Update selected LUX amount from transactionview */
+    /** Update selected BREWHAUST amount from transactionview */
     void trxAmount(QString amount);
 
 signals:

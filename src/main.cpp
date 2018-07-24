@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The LUX developers
+// Copyright (c) 2015-2017 The BREWHAUST developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -60,7 +60,7 @@ using namespace boost;
 using namespace std;
 
 #if defined(NDEBUG)
-#error "LUX cannot be compiled without assertions."
+#error "BREWHAUST cannot be compiled without assertions."
 #endif
 
 #ifndef DEBUG_DUMP_STAKING_INFO_AddToBlockIndex
@@ -74,15 +74,15 @@ const int LAST_HEIGHT_FEE_BLOCK = 180000;
 static const int POS_REWARD_CHANGED_BLOCK = 300000;
 
 /**
- * Global LuxState
+ * Global BrewhaustState
  */
 
-////////////////////////////// lux
+////////////////////////////// brewhaust
 #include <iostream>
 #include <bitset>
 #include "pubkey.h"
 
-std::unique_ptr<LuxState> globalState;
+std::unique_ptr<BrewhaustState> globalState;
 std::shared_ptr<dev::eth::SealEngineFace> globalSealEngine;
 bool fRecordLogOpcodes = false;
 bool fIsVMlogFile = false;
@@ -96,7 +96,7 @@ unsigned int dgpMaxBlockWeight = 8000000;
 /** The maximum allowed size for a block excluding witness data, in bytes (network rule) */
 unsigned int dgpMaxBlockBaseSize = 2000000;
 
-unsigned int dgpMaxBlockSize = 2000000; // lux
+unsigned int dgpMaxBlockSize = 2000000; // brewhaust
 
 ///** The maximum allowed number of signature check operations in a block (network rule) */
 int64_t dgpMaxBlockSigOps = 80000;
@@ -169,7 +169,7 @@ static void CheckBlockIndex(const Consensus::Params& consensusParams);
 /** Constant stuff for coinbase transactions we create: */
 CScript COINBASE_FLAGS;
 
-const string strMessageMagic = "Lux Signed Message:\n";
+const string strMessageMagic = "Brewhaust Signed Message:\n";
 
 // Internal stuff
 namespace
@@ -892,7 +892,7 @@ bool CheckTransaction(const CTransaction& tx, CValidationState& state)
             return state.DoS(100, error("CheckTransaction() : txout total out of range"),
                 REJECT_INVALID, "bad-txns-txouttotal-toolarge");
 
-        /////////////////////////////////////////////////////////// // lux
+        /////////////////////////////////////////////////////////// // brewhaust
         if (txout.scriptPubKey.HasOpCall() || txout.scriptPubKey.HasOpCreate()) {
             std::vector<valtype> vSolutions;
             txnouttype whichType;
@@ -1126,31 +1126,31 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
 
         dev::u256 txMinGasPrice = 0;
 
-        //////////////////////////////////////////////////////////// // lux
+        //////////////////////////////////////////////////////////// // brewhaust
         if(chainActive.Height() >= chainparams.FirstSCBlock() && tx.HasCreateOrCall()) {
 
             if(!CheckSenderScript(view, tx)){
                 return state.DoS(1, false, REJECT_INVALID, "bad-txns-invalid-sender-script");
             }
 
-            LuxDGP luxDGP(globalState.get(), fGettingValuesDGP);
-            uint64_t minGasPrice = luxDGP.getMinGasPrice(chainActive.Height() + 1);
-            uint64_t blockGasLimit = luxDGP.getBlockGasLimit(chainActive.Height() + 1);
+            BrewhaustDGP brewhaustDGP(globalState.get(), fGettingValuesDGP);
+            uint64_t minGasPrice = brewhaustDGP.getMinGasPrice(chainActive.Height() + 1);
+            uint64_t blockGasLimit = brewhaustDGP.getBlockGasLimit(chainActive.Height() + 1);
             size_t count = 0;
             for(const CTxOut& o : tx.vout)
                 count += o.scriptPubKey.HasOpCreate() || o.scriptPubKey.HasOpCall() ? 1 : 0;
-            LuxTxConverter converter(tx, NULL);
-            ExtractLuxTX resultConverter;
-            if(!converter.extractionLuxTransactions(resultConverter)){
+            BrewhaustTxConverter converter(tx, NULL);
+            ExtractBrewhaustTX resultConverter;
+            if(!converter.extractionBrewhaustTransactions(resultConverter)){
                 return state.DoS(100, error("AcceptToMempool(): Contract transaction of the wrong format"), REJECT_INVALID, "bad-tx-bad-contract-format");
             }
-            std::vector<LuxTransaction> luxTransactions = resultConverter.first;
-            std::vector<EthTransactionParams> luxETP = resultConverter.second;
+            std::vector<BrewhaustTransaction> brewhaustTransactions = resultConverter.first;
+            std::vector<EthTransactionParams> brewhaustETP = resultConverter.second;
 
             dev::u256 sumGas = dev::u256(0);
             dev::u256 gasAllTxs = dev::u256(0);
-            for(LuxTransaction luxTransaction : luxTransactions){
-                sumGas += luxTransaction.gas() * luxTransaction.gasPrice();
+            for(BrewhaustTransaction brewhaustTransaction : brewhaustTransactions){
+                sumGas += brewhaustTransaction.gas() * brewhaustTransaction.gasPrice();
 
                 if(sumGas > dev::u256(INT64_MAX)) {
                     return state.DoS(100, error("AcceptToMempool(): Transaction's gas stipend overflows"), REJECT_INVALID, "bad-tx-gas-stipend-overflow");
@@ -1161,11 +1161,11 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
                 }
 
                 if(txMinGasPrice != 0) {
-                    txMinGasPrice = std::min(txMinGasPrice, luxTransaction.gasPrice());
+                    txMinGasPrice = std::min(txMinGasPrice, brewhaustTransaction.gasPrice());
                 } else {
-                    txMinGasPrice = luxTransaction.gasPrice();
+                    txMinGasPrice = brewhaustTransaction.gasPrice();
                 }
-                VersionVM v = luxTransaction.getVersion();
+                VersionVM v = brewhaustTransaction.getVersion();
                 if(v.format!=0)
                     return state.DoS(100, error("AcceptToMempool(): Contract execution uses unknown version format"), REJECT_INVALID, "bad-tx-version-format");
                 if(v.rootVM != 1)
@@ -1176,29 +1176,29 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
                     return state.DoS(100, error("AcceptToMempool(): Contract execution uses unknown flag options"), REJECT_INVALID, "bad-tx-version-flags");
 
                 //check gas limit is not less than minimum mempool gas limit
-                if(luxTransaction.gas() < GetArg("-minmempoolgaslimit", MEMPOOL_MIN_GAS_LIMIT))
+                if(brewhaustTransaction.gas() < GetArg("-minmempoolgaslimit", MEMPOOL_MIN_GAS_LIMIT))
                     return state.DoS(100, error("AcceptToMempool(): Contract execution has lower gas limit than allowed to accept into mempool"), REJECT_INVALID, "bad-tx-too-little-mempool-gas");
 
                 //check gas limit is not less than minimum gas limit (unless it is a no-exec tx)
-                if(luxTransaction.gas() < MINIMUM_GAS_LIMIT && v.rootVM != 0)
+                if(brewhaustTransaction.gas() < MINIMUM_GAS_LIMIT && v.rootVM != 0)
                     return state.DoS(100, error("AcceptToMempool(): Contract execution has lower gas limit than allowed"), REJECT_INVALID, "bad-tx-too-little-gas");
 
-                if(luxTransaction.gas() > UINT32_MAX)
+                if(brewhaustTransaction.gas() > UINT32_MAX)
                     return state.DoS(100, error("AcceptToMempool(): Contract execution can not specify greater gas limit than can fit in 32-bits"), REJECT_INVALID, "bad-tx-too-much-gas");
 
-                gasAllTxs += luxTransaction.gas();
+                gasAllTxs += brewhaustTransaction.gas();
                 if(gasAllTxs > dev::u256(blockGasLimit))
                     return state.DoS(1, false, REJECT_INVALID, "bad-txns-gas-exceeds-blockgaslimit");
 
                 //don't allow less than DGP set minimum gas price to prevent MPoS greedy mining/spammers
-                if(v.rootVM!=0 && (uint64_t)luxTransaction.gasPrice() < minGasPrice)
+                if(v.rootVM!=0 && (uint64_t)brewhaustTransaction.gasPrice() < minGasPrice)
                 return state.DoS(100, error("AcceptToMempool(): Contract execution has lower gas price than allowed"), REJECT_INVALID, "bad-tx-low-gas-price");
             }
 
-            if(!CheckMinGasPrice(luxETP, minGasPrice))
+            if(!CheckMinGasPrice(brewhaustETP, minGasPrice))
                 return state.DoS(100, false, REJECT_INVALID, "bad-txns-small-gasprice");
 
-            if(count > luxTransactions.size())
+            if(count > brewhaustTransactions.size())
                 return state.DoS(100, false, REJECT_INVALID, "bad-txns-incorrect-format");
         }
         ////////////////////////////////////////////////////////////
@@ -1416,31 +1416,31 @@ bool AcceptableInputs(CTxMemPool& pool, CValidationState& state, const CTransact
 
         dev::u256 txMinGasPrice = 0;
 
-        //////////////////////////////////////////////////////////// // lux
+        //////////////////////////////////////////////////////////// // brewhaust
         if(chainActive.Height() >= Params().FirstSCBlock() && tx.HasCreateOrCall()) {
 
             if(!CheckSenderScript(view, tx)){
                 return state.DoS(1, false, REJECT_INVALID, "bad-txns-invalid-sender-script");
             }
 
-            LuxDGP luxDGP(globalState.get(), fGettingValuesDGP);
-            uint64_t minGasPrice = luxDGP.getMinGasPrice(chainActive.Height() + 1);
-            uint64_t blockGasLimit = luxDGP.getBlockGasLimit(chainActive.Height() + 1);
+            BrewhaustDGP brewhaustDGP(globalState.get(), fGettingValuesDGP);
+            uint64_t minGasPrice = brewhaustDGP.getMinGasPrice(chainActive.Height() + 1);
+            uint64_t blockGasLimit = brewhaustDGP.getBlockGasLimit(chainActive.Height() + 1);
             size_t count = 0;
             for(const CTxOut& o : tx.vout)
                 count += o.scriptPubKey.HasOpCreate() || o.scriptPubKey.HasOpCall() ? 1 : 0;
-            LuxTxConverter converter(tx, NULL);
-            ExtractLuxTX resultConverter;
-            if(!converter.extractionLuxTransactions(resultConverter)){
+            BrewhaustTxConverter converter(tx, NULL);
+            ExtractBrewhaustTX resultConverter;
+            if(!converter.extractionBrewhaustTransactions(resultConverter)){
                 return state.DoS(100, error("AcceptToMempool(): Contract transaction of the wrong format"), REJECT_INVALID, "bad-tx-bad-contract-format");
             }
-            std::vector<LuxTransaction> luxTransactions = resultConverter.first;
-            std::vector<EthTransactionParams> luxETP = resultConverter.second;
+            std::vector<BrewhaustTransaction> brewhaustTransactions = resultConverter.first;
+            std::vector<EthTransactionParams> brewhaustETP = resultConverter.second;
 
             dev::u256 sumGas = dev::u256(0);
             dev::u256 gasAllTxs = dev::u256(0);
-            for(LuxTransaction luxTransaction : luxTransactions){
-                sumGas += luxTransaction.gas() * luxTransaction.gasPrice();
+            for(BrewhaustTransaction brewhaustTransaction : brewhaustTransactions){
+                sumGas += brewhaustTransaction.gas() * brewhaustTransaction.gasPrice();
 
                 if(sumGas > dev::u256(INT64_MAX)) {
                     return state.DoS(100, error("AcceptToMempool(): Transaction's gas stipend overflows"), REJECT_INVALID, "bad-tx-gas-stipend-overflow");
@@ -1451,11 +1451,11 @@ bool AcceptableInputs(CTxMemPool& pool, CValidationState& state, const CTransact
                 }
 
                 if(txMinGasPrice != 0) {
-                    txMinGasPrice = std::min(txMinGasPrice, luxTransaction.gasPrice());
+                    txMinGasPrice = std::min(txMinGasPrice, brewhaustTransaction.gasPrice());
                 } else {
-                    txMinGasPrice = luxTransaction.gasPrice();
+                    txMinGasPrice = brewhaustTransaction.gasPrice();
                 }
-                VersionVM v = luxTransaction.getVersion();
+                VersionVM v = brewhaustTransaction.getVersion();
                 if(v.format!=0)
                     return state.DoS(100, error("AcceptToMempool(): Contract execution uses unknown version format"), REJECT_INVALID, "bad-tx-version-format");
                 if(v.rootVM != 1)
@@ -1466,29 +1466,29 @@ bool AcceptableInputs(CTxMemPool& pool, CValidationState& state, const CTransact
                     return state.DoS(100, error("AcceptToMempool(): Contract execution uses unknown flag options"), REJECT_INVALID, "bad-tx-version-flags");
 
                 //check gas limit is not less than minimum mempool gas limit
-                if(luxTransaction.gas() < GetArg("-minmempoolgaslimit", MEMPOOL_MIN_GAS_LIMIT))
+                if(brewhaustTransaction.gas() < GetArg("-minmempoolgaslimit", MEMPOOL_MIN_GAS_LIMIT))
                     return state.DoS(100, error("AcceptToMempool(): Contract execution has lower gas limit than allowed to accept into mempool"), REJECT_INVALID, "bad-tx-too-little-mempool-gas");
 
                 //check gas limit is not less than minimum gas limit (unless it is a no-exec tx)
-                if(luxTransaction.gas() < MINIMUM_GAS_LIMIT && v.rootVM != 0)
+                if(brewhaustTransaction.gas() < MINIMUM_GAS_LIMIT && v.rootVM != 0)
                     return state.DoS(100, error("AcceptToMempool(): Contract execution has lower gas limit than allowed"), REJECT_INVALID, "bad-tx-too-little-gas");
 
-                if(luxTransaction.gas() > UINT32_MAX)
+                if(brewhaustTransaction.gas() > UINT32_MAX)
                     return state.DoS(100, error("AcceptToMempool(): Contract execution can not specify greater gas limit than can fit in 32-bits"), REJECT_INVALID, "bad-tx-too-much-gas");
 
-                gasAllTxs += luxTransaction.gas();
+                gasAllTxs += brewhaustTransaction.gas();
                 if(gasAllTxs > dev::u256(blockGasLimit))
                     return state.DoS(1, false, REJECT_INVALID, "bad-txns-gas-exceeds-blockgaslimit");
 
                 //don't allow less than DGP set minimum gas price to prevent MPoS greedy mining/spammers
-                if(v.rootVM!=0 && (uint64_t)luxTransaction.gasPrice() < minGasPrice)
+                if(v.rootVM!=0 && (uint64_t)brewhaustTransaction.gasPrice() < minGasPrice)
                     return state.DoS(100, error("AcceptToMempool(): Contract execution has lower gas price than allowed"), REJECT_INVALID, "bad-tx-low-gas-price");
             }
 
-            if(!CheckMinGasPrice(luxETP, minGasPrice))
+            if(!CheckMinGasPrice(brewhaustETP, minGasPrice))
                 return state.DoS(100, false, REJECT_INVALID, "bad-txns-small-gasprice");
 
-            if(count > luxTransactions.size())
+            if(count > brewhaustTransactions.size())
                 return state.DoS(100, false, REJECT_INVALID, "bad-txns-incorrect-format");
         }
         ////////////////////////////////////////////////////////////
@@ -1772,23 +1772,15 @@ CAmount GetProofOfWorkReward(int64_t nFees, int nHeight)
 
     CAmount nSubsidy = 1 * COIN;
     if (nHeight < 1) {
-        nSubsidy = 1 * COIN;
+        nSubsidy = 0 * COIN;
     } else if (nHeight == 1) {
-        nSubsidy = 3000000 * COIN;
-    } else if (nHeight < 500) {
-        nSubsidy = 1 * COIN;
-    } else if (nHeight == 501) {
-        nSubsidy = 1000 * COIN;
-    } else if (nHeight < 1000000) {
-        nSubsidy = 10 * COIN;
-    } else if (nHeight < 1001000) {
-        nSubsidy = 30 * COIN;
-    } else if (nHeight < 5000000) {
-        nSubsidy = 10 * COIN;
-    } else if (nHeight < 6000000) {
-        nSubsidy = 10 * COIN;
+        nSubsidy = 300000 * COIN; // PREMINE 300000 Brewhaust
+    } else if (nHeight < 1001) {
+        nSubsidy = 15 * COIN;
+    } else if (nHeight < 100001) {
+        nSubsidy = 20 * COIN;
     } else {
-        nSubsidy = 1 * COIN;
+        nSubsidy = 10 * COIN;
     }
 
     if (nHeight < LAST_HEIGHT_FEE_BLOCK) {
@@ -1800,12 +1792,13 @@ CAmount GetProofOfWorkReward(int64_t nFees, int nHeight)
 CAmount GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees, int nHeight)
 {
     CAmount nSubsidy = STATIC_POS_REWARD;
-
-    // First 100,000 blocks double stake for masternode ready
-    if (nHeight < 100000) {
-        nSubsidy = 2 * COIN;
+    
+    if (nHeight < 100001) {
+        nSubsidy = 0 * COIN;
+    } else if (nHeight < 290001) {
+        nSubsidy = 2/20 * nSubsidy;
     } else {
-        nSubsidy = 1 * COIN;
+        nSubsidy = 1/10 * nSubsidy;
     }
 
     return nSubsidy + nFees;
@@ -1813,11 +1806,16 @@ CAmount GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees, int nHeight)
 
 CAmount GetMasternodePosReward(int nHeight, CAmount blockValue)
 {
-    CAmount ret;
-    if (nHeight >= POS_REWARD_CHANGED_BLOCK || IsTestNet()) {
-        ret = blockValue * 0.2; //20% for masternode
+    CAmount ret = blockValue;
+
+    if (nHeight < 1001) {
+        ret = 1/2 * ret;
+    } else if (nHeight < 100001) {
+        ret = 10/15 * ret;
+    } else if (nHeight < 290001) {
+        ret = 15/20 * ret;
     } else {
-        ret = blockValue * 0.4; //40% for masternode
+        ret = 8/10 * ret;
     }
     return ret;
 }
@@ -2204,8 +2202,8 @@ bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex
     view.SetBestBlock(pindex->pprev->GetBlockHash());
 //#if 0
       if (pindex->nHeight > Params().FirstSCBlock()) {
-        globalState->setRoot(uintToh256(pindex->pprev->hashStateRoot)); // lux
-        globalState->setRootUTXO(uintToh256(pindex->pprev->hashUTXORoot)); // lux
+        globalState->setRoot(uintToh256(pindex->pprev->hashStateRoot)); // brewhaust
+        globalState->setRootUTXO(uintToh256(pindex->pprev->hashUTXORoot)); // brewhaust
 
         if (pfClean == NULL && fLogEvents) {
             pstorageresult->deleteResults(block.vtx);
@@ -2249,7 +2247,7 @@ static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
 
 void ThreadScriptCheck()
 {
-    RenameThread("lux-scriptch");
+    RenameThread("brewhaust-scriptch");
     scriptcheckqueue.Thread();
 }
 
@@ -2342,16 +2340,16 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
 {
     AssertLockHeld(cs_main);
 
-    ///////////////////////////////////////////////// // lux
+    ///////////////////////////////////////////////// // brewhaust
 #if 0
-    LuxDGP luxDGP(globalState.get(), fGettingValuesDGP);
-    globalSealEngine->setLuxSchedule(luxDGP.getGasSchedule(pindex->nHeight + 1));
+    BrewhaustDGP brewhaustDGP(globalState.get(), fGettingValuesDGP);
+    globalSealEngine->setBrewhaustSchedule(brewhaustDGP.getGasSchedule(pindex->nHeight + 1));
 #endif
-    uint64_t minGasPrice = 0;//luxDGP.getMinGasPrice(pindex->nHeight + 1);
-    uint64_t blockGasLimit = DEFAULT_BLOCK_GAS_LIMIT_DGP;//luxDGP.getBlockGasLimit(pindex->nHeight + 1);
+    uint64_t minGasPrice = 0;//brewhaustDGP.getMinGasPrice(pindex->nHeight + 1);
+    uint64_t blockGasLimit = DEFAULT_BLOCK_GAS_LIMIT_DGP;//brewhaustDGP.getBlockGasLimit(pindex->nHeight + 1);
 
 #if 0
-    uint32_t sizeBlockDGP = 0;//luxDGP.getBlockSize(pindex->nHeight + 1);
+    uint32_t sizeBlockDGP = 0;//brewhaustDGP.getBlockSize(pindex->nHeight + 1);
     dgpMaxBlockSize = sizeBlockDGP ? sizeBlockDGP : dgpMaxBlockSize;
     updateBlockSizeParams(dgpMaxBlockSize);
 #endif
@@ -2389,9 +2387,9 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
 //        return state.DoS(100, error("%s: PoS period not active", __func__),
 //            REJECT_INVALID, "PoS-early");
 
-    if (pindex->nHeight > Params().LAST_POW_BLOCK() && block.IsProofOfWork())
-        return state.DoS(100, error("%s: PoW period ended", __func__),
-            REJECT_INVALID, "PoW-ended");
+//    if (pindex->nHeight > Params().LAST_POW_BLOCK() && block.IsProofOfWork())
+//        return state.DoS(100, error("%s: PoW period ended", __func__),
+//            REJECT_INVALID, "PoW-ended");
 
     bool fScriptChecks = pindex->nHeight >= Checkpoints::GetTotalBlocksEstimate(chainparams.Checkpoints());
 
@@ -2445,7 +2443,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
 
     CCheckQueueControl<CScriptCheck> control(fScriptChecks && nScriptCheckThreads ? &scriptcheckqueue : NULL);
 
-    ///////////////////////////////////////////////////////// // lux
+    ///////////////////////////////////////////////////////// // brewhaust
     std::map<dev::Address, std::pair<CHeightTxIndexKey, std::vector<uint256>>> heightIndexes;
     /////////////////////////////////////////////////////////
 
@@ -2511,7 +2509,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
             nValueOut += tx.GetValueOut();
         }
 
-///////////////////////////////////////////////////////////////////////////////////////// lux
+///////////////////////////////////////////////////////////////////////////////////////// brewhaust
         if (pindex->nHeight >= Params().FirstSCBlock()) {
             bool hasOpSpend = tx.HasOpSpend();
 
@@ -2523,24 +2521,24 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
                     return state.DoS(100, false, REJECT_INVALID, "bad-txns-invalid-sender-script");
                 }
 
-                LuxTxConverter convert(tx, &view, &block.vtx);
+                BrewhaustTxConverter convert(tx, &view, &block.vtx);
 
-                ExtractLuxTX resultConvertLuxTX;
-                if(!convert.extractionLuxTransactions(resultConvertLuxTX)) {
+                ExtractBrewhaustTX resultConvertBrewhaustTX;
+                if(!convert.extractionBrewhaustTransactions(resultConvertBrewhaustTX)) {
                     return state.DoS(100, error("ConnectBlock(): Contract transaction of the wrong format"), REJECT_INVALID, "bad-tx-bad-contract-format");
                 }
-                if(!CheckMinGasPrice(resultConvertLuxTX.second, minGasPrice))
+                if(!CheckMinGasPrice(resultConvertBrewhaustTX.second, minGasPrice))
                     return state.DoS(100, error("ConnectBlock(): Contract execution has lower gas price than allowed"), REJECT_INVALID, "bad-tx-low-gas-price");
 
                 dev::u256 gasAllTxs = dev::u256(0);
-                ByteCodeExec exec(block, resultConvertLuxTX.first, blockGasLimit);
+                ByteCodeExec exec(block, resultConvertBrewhaustTX.first, blockGasLimit);
                 //validate VM version and other ETH params before execution
                 //Reject anything unknown (could be changed later by DGP)
                 //TODO evaluate if this should be relaxed for soft-fork purposes
                 bool nonZeroVersion = false;
                 dev::u256 sumGas = dev::u256(0);
                 CAmount nTxFee = view.GetValueIn(tx) - tx.GetValueOut();
-                for(LuxTransaction& ltx : resultConvertLuxTX.first) {
+                for(BrewhaustTransaction& ltx : resultConvertBrewhaustTX.first) {
                     sumGas += ltx.gas() * ltx.gasPrice();
 
                     if(sumGas > dev::u256(INT64_MAX)) {
@@ -2606,13 +2604,13 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
                 std::vector<TransactionReceiptInfo> tri;
                 if (fLogEvents && !fJustCheck)
                 {
-                    for(size_t k = 0; k < resultConvertLuxTX.first.size(); k ++){
+                    for(size_t k = 0; k < resultConvertBrewhaustTX.first.size(); k ++){
                         dev::Address key = resultExec[k].execRes.newAddress;
                         if(!heightIndexes.count(key)){
                             heightIndexes[key].first = CHeightTxIndexKey(pindex->nHeight, resultExec[k].execRes.newAddress);
                         }
                         heightIndexes[key].second.push_back(tx.GetHash());
-                        tri.push_back(TransactionReceiptInfo{block.GetHash(pindex->nHeight >= Params().SwitchPhi2Block()), uint32_t(pindex->nHeight), tx.GetHash(), uint32_t(i), resultConvertLuxTX.first[k].from(), resultConvertLuxTX.first[k].to(),
+                        tri.push_back(TransactionReceiptInfo{block.GetHash(pindex->nHeight >= Params().SwitchPhi2Block()), uint32_t(pindex->nHeight), tx.GetHash(), uint32_t(i), resultConvertBrewhaustTX.first[k].from(), resultConvertBrewhaustTX.first[k].to(),
                                                              countCumulativeGasUsed, uint64_t(resultExec[k].execRes.gasUsed), resultExec[k].execRes.newAddress, resultExec[k].txRec.log(), resultExec[k].execRes.excepted});
                     }
 
@@ -2690,7 +2688,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     nTimeVerify += nTime2 - nTimeStart;
     LogPrint("bench", "    - Verify %u txins: %.2fms (%.3fms/txin) [%.2fs]\n", nInputs - 1, 0.001 * (nTime2 - nTimeStart), nInputs <= 1 ? 0 : 0.001 * (nTime2 - nTimeStart) / (nInputs - 1), nTimeVerify * 0.000001);
 
-    ////////////////////////////////////////////////////////////////// // lux
+    ////////////////////////////////////////////////////////////////// // brewhaust
     if (pindex->nHeight >= Params().FirstSCBlock()) {
         checkBlock.hashMerkleRoot = BlockMerkleRoot(checkBlock);
         checkBlock.hashStateRoot = h256Touint(globalState->rootHash());
@@ -3077,8 +3075,8 @@ bool static ConnectTip(CValidationState& state, const CChainParams& chainparams,
         dev::h256 oldHashStateRoot;
         dev::h256 oldHashUTXORoot;
         if (pindexNew->nHeight >= chainparams.FirstSCBlock()) {
-            oldHashStateRoot = dev::h256(globalState->rootHash()); // lux
-            oldHashUTXORoot = dev::h256(globalState->rootHashUTXO()); // lux
+            oldHashStateRoot = dev::h256(globalState->rootHash()); // brewhaust
+            oldHashUTXORoot = dev::h256(globalState->rootHashUTXO()); // brewhaust
         }
 
         bool rv = ConnectBlock(*pblock, state, pindexNew, view, chainparams);
@@ -3087,8 +3085,8 @@ bool static ConnectTip(CValidationState& state, const CChainParams& chainparams,
             if (state.IsInvalid())
                 InvalidBlockFound(pindexNew, state);
             if (pindexNew->nHeight >= chainparams.FirstSCBlock()) {
-                globalState->setRoot(oldHashStateRoot); // lux
-                globalState->setRootUTXO(oldHashUTXORoot); // lux
+                globalState->setRoot(oldHashStateRoot); // brewhaust
+                globalState->setRootUTXO(oldHashUTXORoot); // brewhaust
             }
 
             return error("ConnectTip() : ConnectBlock %s failed", pindexNew->GetBlockHash().ToString());
@@ -3813,7 +3811,7 @@ bool CheckForMasternodePayment(const CTransaction& tx, const CBlockHeader& heade
         }
     }
 
-    // Divide to keep a check precision of 0.01 LUX
+    // Divide to keep a check precision of 0.01 BREWHAUST
     const int nPrecision = 1000000;
 
     totalReward /= nPrecision;
@@ -4456,13 +4454,13 @@ bool TestBlockValidity(CValidationState& state, const CChainParams& chainparams,
     dev::h256 oldHashStateRoot;
     dev::h256 oldHashUTXORoot;
     if (index.nHeight >= chainparams.FirstSCBlock()) {
-        oldHashStateRoot = dev::h256(globalState->rootHash()); // lux
-        oldHashUTXORoot = dev::h256(globalState->rootHashUTXO()); // lux
+        oldHashStateRoot = dev::h256(globalState->rootHash()); // brewhaust
+        oldHashUTXORoot = dev::h256(globalState->rootHashUTXO()); // brewhaust
     }
     if (!ConnectBlock(block, state, &index, viewNew, chainparams, true)) {
         if (index.nHeight >= chainparams.FirstSCBlock()) {
-            globalState->setRoot(oldHashStateRoot); // lux
-            globalState->setRootUTXO(oldHashUTXORoot); // lux
+            globalState->setRoot(oldHashStateRoot); // brewhaust
+            globalState->setRootUTXO(oldHashUTXORoot); // brewhaust
         }
         return false;
     }
@@ -4917,7 +4915,7 @@ bool CVerifyDB::VerifyDB(const CChainParams& chainparams, CCoinsView* coinsview,
     int nGoodTransactions = 0;
     CValidationState state;
 
-    ////////////////////////////////////////////////////////////////////////// // lux
+    ////////////////////////////////////////////////////////////////////////// // brewhaust
     dev::h256 oldHashStateRoot;
     dev::h256 oldHashUTXORoot;
     if (chainActive.Height() >= chainparams.FirstSCBlock()) {
@@ -4985,16 +4983,16 @@ bool CVerifyDB::VerifyDB(const CChainParams& chainparams, CCoinsView* coinsview,
 
             if (!ConnectBlock(block, state, pindex, coins, chainparams)) {
                 if (chainActive.Height() >= chainparams.FirstSCBlock()) {
-                    globalState->setRoot(oldHashStateRoot); // lux
-                    globalState->setRootUTXO(oldHashUTXORoot); // lux
+                    globalState->setRoot(oldHashStateRoot); // brewhaust
+                    globalState->setRootUTXO(oldHashUTXORoot); // brewhaust
                 }
                 return error("VerifyDB() : *** found unconnectable block at %d, hash=%s", pindex->nHeight, pindex->GetBlockHash().ToString());
             }
         }
     } else {
         if (chainActive.Height() >= chainparams.FirstSCBlock()) {
-            globalState->setRoot(oldHashStateRoot); // lux
-            globalState->setRootUTXO(oldHashUTXORoot); // lux
+            globalState->setRoot(oldHashStateRoot); // brewhaust
+            globalState->setRootUTXO(oldHashUTXORoot); // brewhaust
         }
     }
 
@@ -5621,11 +5619,11 @@ uint32_t GetFetchFlags(CNode* pfrom, CBlockIndex* pprev, const Consensus::Params
  * Parses major version from version string.
  *
  * Version string is expected to be [any text]:X.X[.X[any text]].
- * As an example, Luxcore uses /Luxcore:X.X.X/ version string. So, this function will
- * return 5 for /Luxcore:5.0.0/ or 0 if it couldn't find ":" or "." delimeters, or if no digits are between
+ * As an example, Brewhaust uses /Brewhaust:X.X.X/ version string. So, this function will
+ * return 5 for /Brewhaust:5.0.0/ or 0 if it couldn't find ":" or "." delimeters, or if no digits are between
  * those delimeters, or if string verison is empty
- * @param cleanVersion Luxcore wallet version as a string
- * @return Major Luxcore major version or 0
+ * @param cleanVersion Brewhaust wallet version as a string
+ * @return Major Brewhaust major version or 0
  */
 int GetMajorVersionFromVersion(const string& cleanVersion) {
     size_t delimPos = cleanVersion.find(":");
@@ -6908,7 +6906,7 @@ public:
 } instance_of_cmaincleanup;
 
 
-/////////////////////////////////////////////////////////////////////// lux
+/////////////////////////////////////////////////////////////////////// brewhaust
 bool CheckSenderScript(const CCoinsViewCache& view, const CTransaction& tx){
     CScript script = view.AccessCoins(tx.vin[0].prevout.hash)->vout[tx.vin[0].prevout.n].scriptPubKey;
     if(!script.IsPayToPubkeyHash() && !script.IsPayToPubkey()){
@@ -6931,8 +6929,8 @@ std::vector<ResultExecute> CallContract(const dev::Address& addrContract, std::v
         block.vtx.erase(block.vtx.begin()+1,block.vtx.end());
 
 
-    LuxDGP luxDGP(globalState.get(), fGettingValuesDGP);
-    uint64_t blockGasLimit = luxDGP.getBlockGasLimit(chainActive.Height() + 1);
+    BrewhaustDGP brewhaustDGP(globalState.get(), fGettingValuesDGP);
+    uint64_t blockGasLimit = brewhaustDGP.getBlockGasLimit(chainActive.Height() + 1);
 
     if(gasLimit == 0){
         gasLimit = blockGasLimit - 1;
@@ -6941,12 +6939,12 @@ std::vector<ResultExecute> CallContract(const dev::Address& addrContract, std::v
     tx.vout.push_back(CTxOut(0, CScript() << OP_DUP << OP_HASH160 << senderAddress.asBytes() << OP_EQUALVERIFY << OP_CHECKSIG));
     block.vtx.push_back(CTransaction(tx));
 
-    LuxTransaction callTransaction(0, 1, dev::u256(gasLimit), addrContract, opcode, dev::u256(0));
+    BrewhaustTransaction callTransaction(0, 1, dev::u256(gasLimit), addrContract, opcode, dev::u256(0));
     callTransaction.forceSender(senderAddress);
     callTransaction.setVersion(VersionVM::GetEVMDefault());
 
 
-    ByteCodeExec exec(block, std::vector<LuxTransaction>(1, callTransaction), blockGasLimit);
+    ByteCodeExec exec(block, std::vector<BrewhaustTransaction>(1, callTransaction), blockGasLimit);
     exec.performByteCode(dev::eth::Permanence::Reverted);
     return exec.getResult();
 }
@@ -7043,12 +7041,12 @@ UniValue vmLogToJSON(const ResultExecute& execRes, const CTransaction& tx, const
 }
 
 void writeVMlog(const std::vector<ResultExecute>& res, const CTransaction& tx, const CBlock& block){
-    boost::filesystem::path luxDir = GetDataDir() / "vmExecLogs.json";
+    boost::filesystem::path brewhaustDir = GetDataDir() / "vmExecLogs.json";
     std::stringstream ss;
     if(fIsVMlogFile){
         ss << ",";
     } else {
-        std::ofstream file(luxDir.string(), std::ios::out | std::ios::app);
+        std::ofstream file(brewhaustDir.string(), std::ios::out | std::ios::app);
         file << "{\"logs\":[]}";
         file.close();
     }
@@ -7062,7 +7060,7 @@ void writeVMlog(const std::vector<ResultExecute>& res, const CTransaction& tx, c
         }
     }
 
-    std::ofstream file(luxDir.string(), std::ios::in | std::ios::out);
+    std::ofstream file(brewhaustDir.string(), std::ios::in | std::ios::out);
     file.seekp(-2, std::ios::end);
     file << ss.str();
     file.close();
@@ -7070,7 +7068,7 @@ void writeVMlog(const std::vector<ResultExecute>& res, const CTransaction& tx, c
 }
 
 bool ByteCodeExec::performByteCode(dev::eth::Permanence type){
-    for(LuxTransaction& tx : txs){
+    for(BrewhaustTransaction& tx : txs){
         //validate VM version
         if(tx.getVersion().toRaw() != VersionVM::GetEVMDefault().toRaw()){
             return false;
@@ -7169,8 +7167,8 @@ dev::Address ByteCodeExec::EthAddrFromScript(const CScript& script){
     return dev::Address();
 }
 
-bool LuxTxConverter::extractionLuxTransactions(ExtractLuxTX& luxtx){
-    std::vector<LuxTransaction> resultTX;
+bool BrewhaustTxConverter::extractionBrewhaustTransactions(ExtractBrewhaustTX& brewhausttx){
+    std::vector<BrewhaustTransaction> resultTX;
     std::vector<EthTransactionParams> resultETP;
     for(size_t i = 0; i < txBit.vout.size(); i++){
         if(txBit.vout[i].scriptPubKey.HasOpCreate() || txBit.vout[i].scriptPubKey.HasOpCall()){
@@ -7187,11 +7185,11 @@ bool LuxTxConverter::extractionLuxTransactions(ExtractLuxTX& luxtx){
             }
         }
     }
-    luxtx = std::make_pair(resultTX, resultETP);
+    brewhausttx = std::make_pair(resultTX, resultETP);
     return true;
 }
 
-bool LuxTxConverter::receiveStack(const CScript& scriptPubKey){
+bool BrewhaustTxConverter::receiveStack(const CScript& scriptPubKey){
     EvalScript(stack, scriptPubKey, SCRIPT_EXEC_BYTE_CODE, BaseSignatureChecker(), SIGVERSION_BASE, nullptr);
     if (stack.empty())
         return false;
@@ -7208,7 +7206,7 @@ bool LuxTxConverter::receiveStack(const CScript& scriptPubKey){
     return true;
 }
 
-bool LuxTxConverter::parseEthTXParams(EthTransactionParams& params){
+bool BrewhaustTxConverter::parseEthTXParams(EthTransactionParams& params){
     try{
         dev::Address receiveAddress;
         valtype vecAddr;
@@ -7256,13 +7254,13 @@ bool LuxTxConverter::parseEthTXParams(EthTransactionParams& params){
     }
 }
 
-LuxTransaction LuxTxConverter::createEthTX(const EthTransactionParams& etp, uint32_t nOut){
-    LuxTransaction txEth;
+BrewhaustTransaction BrewhaustTxConverter::createEthTX(const EthTransactionParams& etp, uint32_t nOut){
+    BrewhaustTransaction txEth;
     if (etp.receiveAddress == dev::Address() && opcode != OP_CALL){
-        txEth = LuxTransaction(txBit.vout[nOut].nValue, etp.gasPrice, etp.gasLimit, etp.code, dev::u256(0));
+        txEth = BrewhaustTransaction(txBit.vout[nOut].nValue, etp.gasPrice, etp.gasLimit, etp.code, dev::u256(0));
     }
     else{
-        txEth = LuxTransaction(txBit.vout[nOut].nValue, etp.gasPrice, etp.gasLimit, etp.receiveAddress, etp.code, dev::u256(0));
+        txEth = BrewhaustTransaction(txBit.vout[nOut].nValue, etp.gasPrice, etp.gasLimit, etp.receiveAddress, etp.code, dev::u256(0));
     }
     dev::Address sender(GetSenderAddress(txBit, view, blockTransactions));
     txEth.forceSender(sender);

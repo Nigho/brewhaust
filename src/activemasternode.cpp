@@ -8,7 +8,7 @@
 #include "clientversion.h"
 
 //
-// Bootup the masternode, look for a 16120 Lux input and register on the network
+// Bootup the masternode, look for a 16120 Brewhaust input and register on the network
 //
 void CActiveMasternode::ManageStatus() {
     std::string errorMessage;
@@ -414,7 +414,7 @@ vector<COutput> CActiveMasternode::SelectCoinsMasternode() {
 
     // Filter
     BOOST_FOREACH(const COutput& out, vCoins) {
-        if (out.tx->vout[out.i].nValue == GetMNCollateral(chainActive.Height()) * COIN) {  //exactly DARKSEND_COLLATERAL LUX
+        if (out.tx->vout[out.i].nValue == GetMNCollateral(chainActive.Height()) * COIN) {  //exactly DARKSEND_COLLATERAL BREWHAUST
             filteredCoins.push_back(out);
         }
     }
@@ -433,7 +433,7 @@ vector <COutput> CActiveMasternode::SelectCoinsMasternodeForPubKey(std::string c
 
     // Filter
     BOOST_FOREACH(const COutput& out, vCoins) {
-        if (out.tx->vout[out.i].scriptPubKey == scriptPubKey && out.tx->vout[out.i].nValue == DARKSEND_COLLATERAL) { //exactly 161.200 LUX
+        if (out.tx->vout[out.i].scriptPubKey == scriptPubKey && out.tx->vout[out.i].nValue == DARKSEND_COLLATERAL) { //exactly 161.200 BREWHAUST
             filteredCoins.push_back(out);
         }
     }

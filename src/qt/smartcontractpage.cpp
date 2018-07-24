@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The LUX developers
+// Copyright (c) 2015-2017 The BREWHAUST developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -31,7 +31,7 @@ class TxViewDelegate : public QAbstractItemDelegate
 {
     Q_OBJECT
 public:
-    TxViewDelegate() : QAbstractItemDelegate(), unit(BitcoinUnits::LUX)
+    TxViewDelegate() : QAbstractItemDelegate(), unit(BitcoinUnits::BREWHAUST)
     {
     }
 
@@ -139,10 +139,10 @@ SmartContractPage::SmartContractPage(QWidget* parent) : QWidget(parent),
             ui->obfuscationReset->setText("(" + tr("Disabled") + ")");
             ui->frameObfuscation->setEnabled(false);
         } else {
-            if (!fEnableLuxsend) {
-                ui->toggleObfuscation->setText(tr("Start Luxsend"));
+            if (!fEnableBrewhaustsend) {
+                ui->toggleObfuscation->setText(tr("Start Brewhaustsend"));
             } else {
-                ui->toggleObfuscation->setText(tr("Stop Luxsend"));
+                ui->toggleObfuscation->setText(tr("Stop Brewhaustsend"));
             }
             timer = new QTimer(this);
             connect(timer, SIGNAL(timeout()), this, SLOT(obfuscationStatus()));
@@ -269,7 +269,7 @@ void SmartContractPage::setWalletModel(WalletModel* model)
         connect(model, SIGNAL(notifyWatchonlyChanged(bool)), this, SLOT(updateWatchOnlyLabels(bool)));
     }
 
-    // update the display unit, to not use the default ("LUX")
+    // update the display unit, to not use the default ("BREWHAUST")
     updateDisplayUnit();
 }
 
@@ -306,15 +306,15 @@ void SmartContractPage::updateObfuscationProgress()
     if (!pwalletMain) return;
 
     QString strAmountAndRounds;
-    QString strAnonymizeLuxAmount = BitcoinUnits::formatHtmlWithUnit(nDisplayUnit, nAnonymizeLuxAmount * COIN, false, BitcoinUnits::separatorAlways);
+    QString strAnonymizeBrewhaustAmount = BitcoinUnits::formatHtmlWithUnit(nDisplayUnit, nAnonymizeBrewhaustAmount * COIN, false, BitcoinUnits::separatorAlways);
 
     if (currentBalance == 0) {
         ui->obfuscationProgress->setValue(0);
         ui->obfuscationProgress->setToolTip(tr("No inputs detected"));
 
         // when balance is zero just show info from settings
-        strAnonymizeLuxAmount = strAnonymizeLuxAmount.remove(strAnonymizeLuxAmount.indexOf("."), BitcoinUnits::decimals(nDisplayUnit) + 1);
-        strAmountAndRounds = strAnonymizeLuxAmount + " / " + tr("%n Rounds", "", nDarksendRounds);
+        strAnonymizeBrewhaustAmount = strAnonymizeBrewhaustAmount.remove(strAnonymizeBrewhaustAmount.indexOf("."), BitcoinUnits::decimals(nDisplayUnit) + 1);
+        strAmountAndRounds = strAnonymizeBrewhaustAmount + " / " + tr("%n Rounds", "", nDarksendRounds);
 
         ui->labelAmountRounds->setToolTip(tr("No inputs detected"));
         ui->labelAmountRounds->setText(strAmountAndRounds);
@@ -341,20 +341,20 @@ void SmartContractPage::updateObfuscationProgress()
     CAmount nMaxToAnonymize = nAnonymizableBalance + currentAnonymizedBalance + nDenominatedUnconfirmedBalance;
 
     // If it's more than the anon threshold, limit to that.
-    if (nMaxToAnonymize > nAnonymizeLuxAmount * COIN) nMaxToAnonymize = nAnonymizeLuxAmount * COIN;
+    if (nMaxToAnonymize > nAnonymizeBrewhaustAmount * COIN) nMaxToAnonymize = nAnonymizeBrewhaustAmount * COIN;
 
     if (nMaxToAnonymize == 0) return;
 
-    if (nMaxToAnonymize >= nAnonymizeLuxAmount * COIN) {
+    if (nMaxToAnonymize >= nAnonymizeBrewhaustAmount * COIN) {
         ui->labelAmountRounds->setToolTip(tr("Found enough compatible inputs to anonymize %1")
-                                              .arg(strAnonymizeLuxAmount));
-        strAnonymizeLuxAmount = strAnonymizeLuxAmount.remove(strAnonymizeLuxAmount.indexOf("."), BitcoinUnits::decimals(nDisplayUnit) + 1);
-        strAmountAndRounds = strAnonymizeLuxAmount + " / " + tr("%n Rounds", "", nDarksendRounds);
+                                              .arg(strAnonymizeBrewhaustAmount));
+        strAnonymizeBrewhaustAmount = strAnonymizeBrewhaustAmount.remove(strAnonymizeBrewhaustAmount.indexOf("."), BitcoinUnits::decimals(nDisplayUnit) + 1);
+        strAmountAndRounds = strAnonymizeBrewhaustAmount + " / " + tr("%n Rounds", "", nDarksendRounds);
     } else {
         QString strMaxToAnonymize = BitcoinUnits::formatHtmlWithUnit(nDisplayUnit, nMaxToAnonymize, false, BitcoinUnits::separatorAlways);
         ui->labelAmountRounds->setToolTip(tr("Not enough compatible inputs to anonymize <span style='color:red;'>%1</span>,<br>"
                                              "will anonymize <span style='color:red;'>%2</span> instead")
-                                              .arg(strAnonymizeLuxAmount)
+                                              .arg(strAnonymizeBrewhaustAmount)
                                               .arg(strMaxToAnonymize));
         strMaxToAnonymize = strMaxToAnonymize.remove(strMaxToAnonymize.indexOf("."), BitcoinUnits::decimals(nDisplayUnit) + 1);
         strAmountAndRounds = "<span style='color:red;'>" +
@@ -422,7 +422,7 @@ void SmartContractPage::obfuscationStatus()
     //if (((nBestHeight - obfuscationPool.cachedNumBlocks) / (GetTimeMillis() - nLastDSProgressBlockTime + 1) > 1)) return;
     nLastDSProgressBlockTime = GetTimeMillis();
 
-    if (!fEnableLuxsend) {
+    if (!fEnableBrewhaustsend) {
         if (nBestHeight != obfuscationPool.cachedNumBlocks) {
             obfuscationPool.cachedNumBlocks = nBestHeight;
             updateObfuscationProgress();
@@ -494,7 +494,7 @@ void SmartContractPage::toggleObfuscation()
             QMessageBox::Ok, QMessageBox::Ok);
         settings.setValue("hasMixed", "hasMixed");
     }
-    if (!fEnableLuxsend) {
+    if (!fEnableBrewhaustsend) {
         int64_t balance = currentBalance;
         float minAmount = 14.90 * COIN;
         if (balance < minAmount) {
@@ -520,10 +520,10 @@ void SmartContractPage::toggleObfuscation()
         }
     }
 
-    fEnableLuxsend = !fEnableLuxsend;
+    fEnableBrewhaustsend = !fEnableBrewhaustsend;
     obfuscationPool.cachedNumBlocks = std::numeric_limits<int>::max();
 
-    if (!fEnableLuxsend) {
+    if (!fEnableBrewhaustsend) {
         ui->toggleObfuscation->setText(tr("Start Obfuscation"));
         obfuscationPool.UnlockCoins();
     } else {
@@ -531,7 +531,7 @@ void SmartContractPage::toggleObfuscation()
 
         /* show obfuscation configuration if client has defaults set */
 
-        if (nAnonymizeLuxAmount == 0) {
+        if (nAnonymizeBrewhaustAmount == 0) {
             ObfuscationConfig dlg(this);
             dlg.setModel(walletModel);
             dlg.exec();

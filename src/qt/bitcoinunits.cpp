@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The LUX developers
+// Copyright (c) 2015-2017 The BRU developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -19,18 +19,18 @@ BitcoinUnits::BitcoinUnits(QObject* parent) : QAbstractListModel(parent),
 QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(LUX);
-    unitlist.append(mLUX);
-    unitlist.append(uLUX);
+    unitlist.append(BRU);
+    unitlist.append(mBRU);
+    unitlist.append(uBRU);
     return unitlist;
 }
 
 bool BitcoinUnits::valid(int unit)
 {
     switch (unit) {
-    case LUX:
-    case mLUX:
-    case uLUX:
+    case BRU:
+    case mBRU:
+    case uBRU:
         return true;
     default:
         return false;
@@ -40,12 +40,12 @@ bool BitcoinUnits::valid(int unit)
 QString BitcoinUnits::id(int unit)
 {
     switch (unit) {
-    case LUX:
-        return QString("lux");
-    case mLUX:
-        return QString("mlux");
-    case uLUX:
-        return QString::fromUtf8("ulux");
+    case BRU:
+        return QString("BRU");
+    case mBRU:
+        return QString("mBRU");
+    case uBRU:
+        return QString::fromUtf8("uBRU");
     default:
         return QString("???");
     }
@@ -55,23 +55,23 @@ QString BitcoinUnits::name(int unit)
 {
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case LUX:
-            return QString("LUX");
-        case mLUX:
-            return QString("mLUX");
-        case uLUX:
-            return QString::fromUtf8("μLUX");
+        case BRU:
+            return QString("BRU");
+        case mBRU:
+            return QString("mBRU");
+        case uBRU:
+            return QString::fromUtf8("μBRU");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
-        case LUX:
-            return QString("tLUX");
-        case mLUX:
-            return QString("mtLUX");
-        case uLUX:
-            return QString::fromUtf8("μtLUX");
+        case BRU:
+            return QString("tBRU");
+        case mBRU:
+            return QString("mtBRU");
+        case uBRU:
+            return QString::fromUtf8("μtBRU");
         default:
             return QString("???");
         }
@@ -82,23 +82,23 @@ QString BitcoinUnits::description(int unit)
 {
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case LUX:
-            return QString("LUX");
-        case mLUX:
-            return QString("Milli-LUX (1 / 1" THIN_SP_UTF8 "000)");
-        case uLUX:
-            return QString("Micro-LUX (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+        case BRU:
+            return QString("BRU");
+        case mBRU:
+            return QString("Milli-BRU (1 / 1" THIN_SP_UTF8 "000)");
+        case uBRU:
+            return QString("Micro-BRU (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
-        case LUX:
-            return QString("TestLUXs");
-        case mLUX:
-            return QString("Milli-TestLUX (1 / 1" THIN_SP_UTF8 "000)");
-        case uLUX:
-            return QString("Micro-TestLUX (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+        case BRU:
+            return QString("TestBRUs");
+        case mBRU:
+            return QString("Milli-TestBRU (1 / 1" THIN_SP_UTF8 "000)");
+        case uBRU:
+            return QString("Micro-TestBRU (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
@@ -108,11 +108,11 @@ QString BitcoinUnits::description(int unit)
 qint64 BitcoinUnits::factor(int unit)
 {
     switch (unit) {
-    case LUX:
+    case BRU:
         return 100000000;
-    case mLUX:
+    case mBRU:
         return 100000;
-    case uLUX:
+    case uBRU:
         return 100;
     default:
         return 100000000;
@@ -133,9 +133,9 @@ int BitcoinUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case LUX: return 8;
-    case mLUX: return 5;
-    case uLUX: return 2;
+    case BRU: return 8;
+    case mBRU: return 5;
+    case uBRU: return 2;
     default: return 0;
     }
 }

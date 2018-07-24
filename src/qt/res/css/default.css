@@ -855,12 +855,12 @@ QDialog#HelpMessageDialog QScrollBar:vertical, QDialog#HelpMessageDialog QScroll
     border:0;
 }
 
-/* About Lux Dialog */
-QDialog#AboutDialog QLabel#label, QDialog#AboutDialog QLabel#copyrightLabel, QDialog#AboutDialog QLabel#label_2 { /* About Lux Contents */
+/* About Brewhaust Dialog */
+QDialog#AboutDialog QLabel#label, QDialog#AboutDialog QLabel#copyrightLabel, QDialog#AboutDialog QLabel#label_2 { /* About Brewhaust Contents */
     margin-left:10px;
 }
 
-QDialog#AboutDialog QLabel#label_2 { /* Margin for About Lux text */
+QDialog#AboutDialog QLabel#label_2 { /* Margin for About Brewhaust text */
     margin-right:10px;
 }
 
@@ -1142,7 +1142,7 @@ QWidget .QFrame#frameDarksend .QPushButton#runAutoDenom { /* No idea why this bu
     qproperty-geometry: rect(0 0 0 0);
 }
 
-QWidget .QFrame#frameDarksend .QPushButton#toggleDarksend { /* Start Luxsend Mixing */
+QWidget .QFrame#frameDarksend .QPushButton#toggleDarksend { /* Start Brewhaustsend Mixing */
     qproperty-geometry: rect(115 268 295 40);
     font-size:15px;
     font-weight:bold;
@@ -1202,7 +1202,7 @@ QWidget .QFrame#frame_2 { /* Transactions Widget */
     margin-right:20px;
     margin-left:0;
     margin-top:0;
-    background-image: url(':/images/lux_logo_horizontal');
+    background-image: url(':/images/brewhaust_logo_horizontal');
     background-repeat:none;
 }
 

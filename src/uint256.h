@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto             -*- c++ -*-
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The LUX developers
+// Copyright (c) 2015-2017 The BREWHAUST developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -15,7 +15,7 @@
 #include <string>
 #include <vector>
 
-//////////////////////////////////////// lux
+//////////////////////////////////////// brewhaust
 #include <libdevcore/Common.h>
 #include <libdevcore/CommonData.h>
 #include <libdevcore/FixedHash.h>
@@ -411,7 +411,7 @@ inline uint512 uint512S(const std::string& str)
 }
 
 
-////////////////////////////////////////////////////// lux
+////////////////////////////////////////////////////// brewhaust
 inline dev::h256 uintToh256(const uint256& in)
 {
     std::vector<unsigned char> vHashBlock;

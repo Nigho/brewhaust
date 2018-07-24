@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The LUX developers
+// Copyright (c) 2015-2017 The BREWHAUST developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -74,18 +74,18 @@ bool CWalletDB::EraseTx(uint256 hash)
     return Erase(std::make_pair(std::string("tx"), hash));
 }
 
-bool CWalletDB::WriteLuxNodeConfig(std::string sAlias, const CLuxNodeConfig& nodeConfig)
+bool CWalletDB::WriteBrewhaustNodeConfig(std::string sAlias, const CBrewhaustNodeConfig& nodeConfig)
 {
     nWalletDBUpdated++;
     return Write(std::make_pair(std::string("adrenaline"), sAlias), nodeConfig, true);
 }
 
-bool CWalletDB::ReadLuxNodeConfig(std::string sAlias, CLuxNodeConfig& nodeConfig)
+bool CWalletDB::ReadBrewhaustNodeConfig(std::string sAlias, CBrewhaustNodeConfig& nodeConfig)
 {
     return Read(std::make_pair(std::string("adrenaline"), sAlias), nodeConfig);
 }
 
-bool CWalletDB::EraseLuxNodeConfig(std::string sAlias)
+bool CWalletDB::EraseBrewhaustNodeConfig(std::string sAlias)
 {
     nWalletDBUpdated++;
     return Erase(std::make_pair(std::string("adrenaline"), sAlias));
@@ -896,7 +896,7 @@ DBErrors CWalletDB::ZapWalletTx(CWallet* pwallet, vector<CWalletTx>& vWtx)
 void ThreadFlushWalletDB(const string& strFile)
 {
     // Make this thread recognisable as the wallet flushing thread
-    RenameThread("lux-wallet");
+    RenameThread("brewhaust-wallet");
 
     static bool fOneThread;
     if (fOneThread)

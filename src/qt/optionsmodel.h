@@ -48,7 +48,7 @@ public:
         ZeroBalanceAddressToken,// bool
         SpendZeroConfChange, // bool
         DarksendRounds,      // int
-        AnonymizeLuxAmount,  //int
+        AnonymizeBrewhaustAmount,  //int
         ShowMasternodesTab,  // bool
         NotUseChangeAddress,  // bool
         Listen,              // bool
@@ -99,7 +99,7 @@ private:
 signals:
     void displayUnitChanged(int unit);
     void darksendRoundsChanged(int);
-    void anonymizeLuxAmountChanged(int);
+    void anonymizeBrewhaustAmountChanged(int);
     void coinControlFeaturesChanged(bool);
     void showMasternodesTabChanged(bool);
     void parallelMasterNodeChanged(bool);

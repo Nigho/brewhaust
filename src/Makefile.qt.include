@@ -1,23 +1,23 @@
 # -*- makefile-gmake -*-
 
-bin_PROGRAMS += qt/lux-qt
+bin_PROGRAMS += qt/brewhaust-qt
 EXTRA_LIBRARIES += qt/libbitcoinqt.a
 
-# lux qt core #
+# brewhaust qt core #
 QT_TS = \
-  qt/locale/lux_ca.ts \
-  qt/locale/lux_da.ts \
-  qt/locale/lux_de.ts \
-  qt/locale/lux_en.ts \
-  qt/locale/lux_en_US.ts \
-  qt/locale/lux_es.ts \
-  qt/locale/lux_fr_FR.ts \
-  qt/locale/lux_it.ts \
-  qt/locale/lux_ja.ts \
-  qt/locale/lux_pt.ts \
-  qt/locale/lux_ro_RO.ts \
-  qt/locale/lux_ru.ts \
-  qt/locale/lux_zh_TW.ts
+  qt/locale/brewhaust_ca.ts \
+  qt/locale/brewhaust_da.ts \
+  qt/locale/brewhaust_de.ts \
+  qt/locale/brewhaust_en.ts \
+  qt/locale/brewhaust_en_US.ts \
+  qt/locale/brewhaust_es.ts \
+  qt/locale/brewhaust_fr_FR.ts \
+  qt/locale/brewhaust_it.ts \
+  qt/locale/brewhaust_ja.ts \
+  qt/locale/brewhaust_pt.ts \
+  qt/locale/brewhaust_ro_RO.ts \
+  qt/locale/brewhaust_ru.ts \
+  qt/locale/brewhaust_zh_TW.ts
 
 QT_FORMS_UI = \
   qt/forms/addressbookpage.ui \
@@ -37,9 +37,9 @@ QT_FORMS_UI = \
   qt/forms/intro.ui \
   qt/forms/eula.ui \
   qt/forms/masternodemanager.ui \
-  qt/forms/addeditluxnode.ui \
+  qt/forms/addeditbrewhaustnode.ui \
   qt/forms/lsrtoken.ui \
-  qt/forms/luxnodeconfigdialog.ui \
+  qt/forms/brewhaustnodeconfigdialog.ui \
   qt/forms/multisenddialog.ui \
   qt/forms/openuridialog.ui \
   qt/forms/optionsdialog.ui \
@@ -96,8 +96,8 @@ QT_MOC_CPP = \
   qt/moc_macdockiconhandler.cpp \
   qt/moc_macnotificationhandler.cpp \
   qt/moc_masternodemanager.cpp \
-  qt/moc_addeditluxnode.cpp \
-  qt/moc_luxnodeconfigdialog.cpp \
+  qt/moc_addeditbrewhaustnode.cpp \
+  qt/moc_brewhaustnodeconfigdialog.cpp \
   qt/moc_multisenddialog.cpp \
   qt/moc_notificator.cpp \
   qt/moc_openuridialog.cpp \
@@ -150,7 +150,7 @@ BITCOIN_MM = \
   qt/macnotificationhandler.mm
 
 QT_MOC = \
-  qt/lux.moc \
+  qt/brewhaust.moc \
   qt/bitcoinamountfield.moc \
   qt/intro.moc \
   qt/eula.moc \
@@ -159,10 +159,10 @@ QT_MOC = \
   qt/overviewpage.moc \
   qt/rpcconsole.moc
 
-QT_QRC_CPP = qt/qrc_lux.cpp
-QT_QRC = qt/lux.qrc
-QT_QRC_LOCALE_CPP = qt/qrc_lux_locale.cpp
-QT_QRC_LOCALE = qt/lux_locale.qrc
+QT_QRC_CPP = qt/qrc_brewhaust.cpp
+QT_QRC = qt/brewhaust.qrc
+QT_QRC_LOCALE_CPP = qt/qrc_brewhaust_locale.cpp
+QT_QRC_LOCALE = qt/brewhaust_locale.qrc
 
 PROTOBUF_CC = qt/paymentrequest.pb.cc
 PROTOBUF_H = qt/paymentrequest.pb.h
@@ -210,8 +210,8 @@ BITCOIN_QT_H = \
   qt/macdockiconhandler.h \
   qt/macnotificationhandler.h \
   qt/masternodemanager.h \
-  qt/addeditluxnode.h \
-  qt/luxnodeconfigdialog.h \
+  qt/addeditbrewhaustnode.h \
+  qt/brewhaustnodeconfigdialog.h \
   qt/multisenddialog.h \
   qt/networkstyle.h \
   qt/notificator.h \
@@ -323,12 +323,12 @@ RES_ICONS = \
   qt/res/icons/tx_input.png \
   qt/res/icons/tx_output.png \
   qt/res/icons/tx_mined.png \
-  qt/res/icons/unit_lux.png \
-  qt/res/icons/unit_mlux.png \
-  qt/res/icons/unit_ulux.png \
-  qt/res/icons/unit_tlux.png \
-  qt/res/icons/unit_tmlux.png \
-  qt/res/icons/unit_tulux.png
+  qt/res/icons/unit_brewhaust.png \
+  qt/res/icons/unit_mbrewhaust.png \
+  qt/res/icons/unit_ubrewhaust.png \
+  qt/res/icons/unit_tbrewhaust.png \
+  qt/res/icons/unit_tmbrewhaust.png \
+  qt/res/icons/unit_tubrewhaust.png
 
 BITCOIN_QT_CPP = \
   qt/bitcoinaddressvalidator.cpp \
@@ -342,8 +342,8 @@ BITCOIN_QT_CPP = \
   qt/intro.cpp \
   qt/eula.cpp \
   qt/masternodemanager.cpp \
-  qt/addeditluxnode.cpp \
-  qt/luxnodeconfigdialog.cpp \
+  qt/addeditbrewhaustnode.cpp \
+  qt/brewhaustnodeconfigdialog.cpp \
   qt/networkstyle.cpp \
   qt/token.cpp \
   qt/notificator.cpp \
@@ -393,8 +393,8 @@ BITCOIN_QT_CPP += \
   qt/editcontractinfodialog.cpp \
   qt/eventlog.cpp \
   qt/masternodemanager.cpp \
-  qt/addeditluxnode.cpp \
-  qt/luxnodeconfigdialog.cpp \
+  qt/addeditbrewhaustnode.cpp \
+  qt/brewhaustnodeconfigdialog.cpp \
   qt/multisenddialog.cpp \
   qt/openuridialog.cpp \
   qt/overviewpage.cpp \
@@ -437,7 +437,7 @@ RES_IMAGES = \
   qt/res/images/about.png \
   qt/res/images/splash.png \
   qt/res/images/splash_testnet.png \
-  qt/res/images/lux_logo_horizontal.png \
+  qt/res/images/brewhaust_logo_horizontal.png \
   qt/res/images/downArrow.png \
   qt/res/images/downArrow_small.png \
   qt/res/images/upArrow_small.png \
@@ -453,7 +453,7 @@ RES_CSS = \
 
 RES_MOVIES = $(wildcard $(srcdir)/qt/res/movies/spinner-*.png)
 
-BITCOIN_RC = qt/res/lux-qt-res.rc
+BITCOIN_RC = qt/res/brewhaust-qt-res.rc
 
 BITCOIN_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
   -I$(builddir)/qt/forms
@@ -473,70 +473,70 @@ QT_FORMS_H=$(join $(dir $(QT_FORMS_UI)),$(addprefix ui_, $(notdir $(QT_FORMS_UI:
 # Most files will depend on the forms and moc files as includes. Generate them
 # before anything else.
 $(QT_MOC): $(QT_FORMS_H)
-$(qt_libbitcoinqt_a_OBJECTS) $(qt_lux_qt_OBJECTS) : | $(QT_MOC)
+$(qt_libbitcoinqt_a_OBJECTS) $(qt_brewhaust_qt_OBJECTS) : | $(QT_MOC)
 
 #Generating these with a half-written protobuf header leads to wacky results.
 #This makes sure it's done.
 $(QT_MOC): $(PROTOBUF_H)
 $(QT_MOC_CPP): $(PROTOBUF_H)
 
-# lux-qt binary #
-qt_lux_qt_CPPFLAGS = $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+# brewhaust-qt binary #
+qt_brewhaust_qt_CPPFLAGS = $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
   $(QT_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS)
 
-qt_lux_qt_SOURCES = qt/lux.cpp
+qt_brewhaust_qt_SOURCES = qt/brewhaust.cpp
 if TARGET_DARWIN
-  qt_lux_qt_SOURCES += $(BITCOIN_MM)
+  qt_brewhaust_qt_SOURCES += $(BITCOIN_MM)
 endif
 if TARGET_WINDOWS
-  qt_lux_qt_SOURCES += $(BITCOIN_RC)
+  qt_brewhaust_qt_SOURCES += $(BITCOIN_RC)
 endif
-qt_lux_qt_LDADD = qt/libbitcoinqt.a $(LIBBITCOIN_SERVER)
+qt_brewhaust_qt_LDADD = qt/libbitcoinqt.a $(LIBBITCOIN_SERVER)
 if ENABLE_WALLET
-qt_lux_qt_LDADD += $(LIBBITCOIN_WALLET)
+qt_brewhaust_qt_LDADD += $(LIBBITCOIN_WALLET)
 endif
 if ENABLE_ZMQ
-qt_lux_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+qt_brewhaust_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 endif
-qt_lux_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_CONSENSUS) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBBITCOIN_UNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
+qt_brewhaust_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_CONSENSUS) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBBITCOIN_UNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
   $(LIBCRYPTOPP) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
 
-qt_lux_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
-qt_lux_qt_LIBTOOLFLAGS = --tag CXX
+qt_brewhaust_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+qt_brewhaust_qt_LIBTOOLFLAGS = --tag CXX
 
 #locale/foo.ts -> locale/foo.qm
 QT_QM=$(QT_TS:.ts=.qm)
 
 .SECONDARY: $(QT_QM)
 
-qt/luxstrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES) $(libbitcoin_common_a_SOURCES)
+qt/brewhauststrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES) $(libbitcoin_common_a_SOURCES)
 	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
 	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) $(PYTHON) ../share/qt/extract_strings_qt.py $^
 
-translate: qt/luxstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
+translate: qt/brewhauststrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
 	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts qt/locale/lux_en.ts
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts qt/locale/brewhaust_en.ts
 
 $(QT_QRC_LOCALE_CPP): $(QT_QRC_LOCALE) $(QT_QM)
 	@test -f $(RCC)
 	@test -f $(@D)/$(<F) || cp -f $< $(@D)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name lux_locale $(@D)/$(<F) | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name brewhaust_locale $(@D)/$(<F) | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 
 $(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_CSS) $(RES_MOVIES) $(PROTOBUF_H)
 	@test -f $(RCC)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name lux $< | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name brewhaust $< | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 
 CLEAN_QT = $(nodist_qt_libbitcoinqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno
 
 CLEANFILES += $(CLEAN_QT)
 
-lux_qt_clean: FORCE
-	rm -f $(CLEAN_QT) $(qt_libbitcoinqt_a_OBJECTS) $(qt_lux_qt_OBJECTS) qt/lux-qt$(EXEEXT) $(LIBBITCOINQT)
+brewhaust_qt_clean: FORCE
+	rm -f $(CLEAN_QT) $(qt_libbitcoinqt_a_OBJECTS) $(qt_brewhaust_qt_OBJECTS) qt/brewhaust-qt$(EXEEXT) $(LIBBITCOINQT)
 
-lux_qt : qt/lux-qt$(EXEEXT)
+brewhaust_qt : qt/brewhaust-qt$(EXEEXT)
 
 ui_%.h: %.ui
 	@test -f $(UIC)

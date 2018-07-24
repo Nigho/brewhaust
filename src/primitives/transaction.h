@@ -442,7 +442,7 @@ public:
 
     // Compute modified tx size for priority calculation (optionally given tx size)
     unsigned int CalculateModifiedSize(unsigned int nTxSize=0) const;
-//////////////////////////////////////// // lux
+//////////////////////////////////////// // brewhaust
     bool HasCreateOrCall() const;
     bool HasOpSpend() const;
 ////////////////////////////////////////

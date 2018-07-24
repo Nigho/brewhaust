@@ -361,7 +361,7 @@
        <item row="16" column="0">
         <widget class="QPushButton" name="openDebugLogfileButton">
          <property name="toolTip">
-          <string>Open the LUX debug log file from the current data directory. This can take a few seconds for large log files.</string>
+          <string>Open the BREWHAUST debug log file from the current data directory. This can take a few seconds for large log files.</string>
          </property>
          <property name="text">
           <string>&amp;Open</string>
@@ -420,7 +420,7 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../lux.qrc">
+            <iconset resource="../brewhaust.qrc">
              <normaloff>:/icons/fontsmaller</normaloff>:/icons/fontsmaller</iconset>
            </property>
            <property name="autoDefault">
@@ -456,7 +456,7 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../lux.qrc">
+            <iconset resource="../brewhaust.qrc">
              <normaloff>:/icons/fontbigger</normaloff>:/icons/fontbigger</iconset>
            </property>
            <property name="autoDefault">
@@ -495,7 +495,7 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../lux.qrc">
+            <iconset resource="../brewhaust.qrc">
              <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
            </property>
            <property name="shortcut">
@@ -1569,7 +1569,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../lux.qrc"/>
+  <include location="../brewhaust.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto             -*- c++ -*-
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The LUX developers
+// Copyright (c) 2015-2017 The BREWHAUST developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -103,7 +103,7 @@ enum AvailableCoinsType {
     ALL_COINS = 1,
     ONLY_DENOMINATED = 2,
     ONLY_NONDENOMINATED = 3, // ONLY_NOT10000IFMN = 3,
-    ONLY_NONDENOMINATED_NOTMN = 4, // ONLY_NONDENOMINATED_NOT10000IFMN = 4, ONLY_NONDENOMINATED and not 10000 LUX at the same time
+    ONLY_NONDENOMINATED_NOTMN = 4, // ONLY_NONDENOMINATED_NOT10000IFMN = 4, ONLY_NONDENOMINATED and not 10000 BREWHAUST at the same time
 };
 
 struct CompactTallyItem {
@@ -341,8 +341,8 @@ public:
     bool fCombineDust;
     CAmount nAutoCombineThreshold;
 
-    std::map<std::string, CLuxNodeConfig> mapMyLuxNodes;
-    bool AddLuxNodeConfig(CLuxNodeConfig nodeConfig);
+    std::map<std::string, CBrewhaustNodeConfig> mapMyBrewhaustNodes;
+    bool AddBrewhaustNodeConfig(CBrewhaustNodeConfig nodeConfig);
 
     CWallet()
     {

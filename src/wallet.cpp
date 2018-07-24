@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The LUX developers
+// Copyright (c) 2015-2017 The BREWHAUST developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -1684,7 +1684,7 @@ void CWallet::AvailableCoinsMN(vector<COutput>& vCoins, bool fOnlyConfirmed, con
                 continue;
 
             const int nDepth = pcoin->GetDepthInMainChain();
-            if (nDepth <= 0) // LuxNOTE: coincontrol fix / ignore 0 confirm
+            if (nDepth <= 0) // BrewhaustNOTE: coincontrol fix / ignore 0 confirm
                 continue;
 
             // do not use IX for inputs that have less then 6 blockchain confirmations
@@ -1950,14 +1950,14 @@ bool CWallet::SelectCoins(const std::string &account, const CAmount& nTargetValu
         return (nValueRet >= nTargetValue);
     }
 
-    //if we're doing only denominated, we need to round up to the nearest .1 LUX
+    //if we're doing only denominated, we need to round up to the nearest .1 BREWHAUST
     if (coin_type == ONLY_DENOMINATED) {
         // Make outputs by looping through denominations, from large to small
         BOOST_FOREACH (int64_t v, darkSendDenominations) {
             BOOST_FOREACH (const COutput& out, vCoins) {
                 const CTxOut& txout = out.tx->vout[out.i];
                 if (txout.nValue == v //make sure it's the denom we're looking for
-                    && nValueRet + txout.nValue < nTargetValue + (0.1 * COIN) + 100 //round the amount up to .1 LUX over
+                    && nValueRet + txout.nValue < nTargetValue + (0.1 * COIN) + 100 //round the amount up to .1 BREWHAUST over
                     ) {
 
                     CTxIn vin = CTxIn(out.tx->GetHash(), out.i);
@@ -2027,12 +2027,12 @@ bool CWallet::SelectCoinsByDenominations(int nDenom, int64_t nValueMin, int64_t 
 
             // Function returns as follows:
             //
-            // bit 0 - 10000 LUX+1 ( bit on if present )
-            // bit 1 - 1000 LUX+1
-            // bit 2 - 100 LUX+1
-            // bit 3 - 10 LUX+1
-            // bit 4 - 1 LUX+1
-            // bit 5 - .1 LUX+1
+            // bit 0 - 10000 BREWHAUST+1 ( bit on if present )
+            // bit 1 - 1000 BREWHAUST+1
+            // bit 2 - 100 BREWHAUST+1
+            // bit 3 - 10 BREWHAUST+1
+            // bit 4 - 1 BREWHAUST+1
+            // bit 5 - .1 BREWHAUST+1
 
             CTxIn vin = CTxIn(out.tx->GetHash(), out.i);
 
@@ -2391,9 +2391,9 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, CAmount> >& vecSend, 
                     if (coin_type == ALL_COINS) {
                         strFailReason = _("Insufficient funds.");
                     } else if (coin_type == ONLY_NONDENOMINATED) {
-                        strFailReason = _("Unable to locate enough funds for this transaction that are not equal 10000 LUX.");
+                        strFailReason = _("Unable to locate enough funds for this transaction that are not equal 10000 BREWHAUST.");
                     } else if (coin_type == ONLY_NONDENOMINATED_NOTMN) {
-                        strFailReason = _("Unable to locate enough DarkSend non-denominated funds for this transaction that are not equal 10000 LUX.");
+                        strFailReason = _("Unable to locate enough DarkSend non-denominated funds for this transaction that are not equal 10000 BREWHAUST.");
                     } else {
                         strFailReason = _("Unable to locate enough DarkSend denominated funds for this transaction.");
                         strFailReason += " " + _("DarkSend uses exact denominated amounts to send funds, you might simply need to anonymize some more coins.");
@@ -2434,7 +2434,7 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, CAmount> >& vecSend, 
                 if (nChange > 0) {
                     // Fill a vout to ourself
                     // TODO: pass in scriptChange instead of reservekey so
-                    // change transaction isn't always pay-to-lux-address
+                    // change transaction isn't always pay-to-brewhaust-address
                     CScript scriptChange;
 
                     bool combineChange = false;
@@ -3880,11 +3880,11 @@ bool CMerkleTx::IsTransactionLockTimedOut() const
     return false;
 }
 
-bool CWallet::AddLuxNodeConfig(CLuxNodeConfig nodeConfig)
+bool CWallet::AddBrewhaustNodeConfig(CBrewhaustNodeConfig nodeConfig)
 {
-    bool rv = CWalletDB(strWalletFile).WriteLuxNodeConfig(nodeConfig.sAlias, nodeConfig);
+    bool rv = CWalletDB(strWalletFile).WriteBrewhaustNodeConfig(nodeConfig.sAlias, nodeConfig);
     if(rv)
-	uiInterface.NotifyLuxNodeChanged(nodeConfig);
+	uiInterface.NotifyBrewhaustNodeChanged(nodeConfig);
 
     return rv;
 }

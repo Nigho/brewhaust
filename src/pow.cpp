@@ -13,7 +13,7 @@
 
 #include <math.h>
 
-// Lux modified: find last block index up to pindex
+// Brewhaust modified: find last block index up to pindex
 const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex, bool fProofOfStake)
 {
     while (pindex && pindex->pprev && (pindex->IsProofOfStake() != fProofOfStake))
@@ -30,7 +30,7 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
         bnTargetLimit = GetProofOfStakeLimit(pindexLast->nHeight);
     }
 
-    if (pindexLast == nullptr) // Lux Modified
+    if (pindexLast == nullptr) // Brewhaust Modified
         return bnTargetLimit.GetCompact();
 
     const CBlockIndex* pindexPrev = GetLastBlockIndex(pindexLast, fProofOfStake);

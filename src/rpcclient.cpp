@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The LUX developers
+// Copyright (c) 2015-2017 The BREWHAUST developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -77,7 +77,7 @@ static const CRPCConvertParam vRPCConvertParams[] =
     { "sendmanywithdupes", 4, "subtractfeefrom" },
     { "addmultisigaddress", 0, "nrequired" },
     { "addmultisigaddress", 1, "keys" },
-    ////////////////////////////////////////////////// // lux
+    ////////////////////////////////////////////////// // brewhaust
     { "getaddresstxids", 0, "addresses"},
     { "getaddressmempool", 0, "addresses"},
     { "getaddressdeltas", 0, "addresses"},

@@ -168,7 +168,7 @@ void RPCRegisterTimerInterface(RPCTimerInterface *iface);
 void RPCUnregisterTimerInterface(RPCTimerInterface *iface);
 
 /**
- * LUX RPC command dispatcher.
+ * BREWHAUST RPC command dispatcher.
  */
 class CRPCTable
 {

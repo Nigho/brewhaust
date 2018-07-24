@@ -13,10 +13,10 @@
 
 #include <boost/foreach.hpp>
 
-/////////////////////////////////////////////////////////// lux
-#include <lux/luxstate.h>
-#include <lux/luxtransaction.h>
-#include <lux/luxDGP.h>
+/////////////////////////////////////////////////////////// brewhaust
+#include <brewhaust/brewhauststate.h>
+#include <brewhaust/brewhausttransaction.h>
+#include <brewhaust/brewhaustDGP.h>
 #include <main.h>
 ///////////////////////////////////////////////////////////
 
@@ -200,7 +200,7 @@ bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsi
                 else
                     break;
             }
-                /////////////////////////////////////////////////////////// lux
+                /////////////////////////////////////////////////////////// brewhaust
             else if (opcode2 == OP_VERSION)
             {
                 if(0 <= opcode1 && opcode1 <= OP_PUSHDATA4)

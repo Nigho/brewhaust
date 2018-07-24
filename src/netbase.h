@@ -6,7 +6,7 @@
 #define BITCOIN_NETBASE_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/lux-config.h"
+#include "config/brewhaust-config.h"
 #endif
 
 #include "compat.h"

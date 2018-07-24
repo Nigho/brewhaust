@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The LUX developers
+// Copyright (c) 2015-2017 The BREWHAUST developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -254,10 +254,10 @@ UniValue stop(const UniValue& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw runtime_error(
             "stop\n"
-            "\nStop LUX server.");
+            "\nStop BREWHAUST server.");
     // Shutdown will take long enough that the response should get back
     StartShutdown();
-    return "LUX server stopping";
+    return "BREWHAUST server stopping";
 }
 
 
@@ -352,16 +352,16 @@ static const CRPCCommand vRPCCommands[] =
         {"hidden", "reconsiderblock", &reconsiderblock, true, true, false},
         {"hidden", "setmocktime", &setmocktime, true, false, false},
 
-        /* Lux features */
-        {"lux", "masternode", &masternode, true, true, false},
-        //{"lux", "masternodelist", &masternodelist, true, true, false},
-        //{"lux", "mnbudget", &mnbudget, true, true, false},
-        //{"lux", "mnbudgetvoteraw", &mnbudgetvoteraw, true, true, false},
-        //{"lux", "mnfinalbudget", &mnfinalbudget, true, true, false},
-        //{"lux", "mnsync", &mnsync, true, true, false},
-        {"lux", "spork", &spork, true, true, false},
+        /* Brewhaust features */
+        {"brewhaust", "masternode", &masternode, true, true, false},
+        //{"brewhaust", "masternodelist", &masternodelist, true, true, false},
+        //{"brewhaust", "mnbudget", &mnbudget, true, true, false},
+        //{"brewhaust", "mnbudgetvoteraw", &mnbudgetvoteraw, true, true, false},
+        //{"brewhaust", "mnfinalbudget", &mnfinalbudget, true, true, false},
+        //{"brewhaust", "mnsync", &mnsync, true, true, false},
+        {"brewhaust", "spork", &spork, true, true, false},
 #ifdef ENABLE_WALLET
-        //{"lux", "darksend", &darksend, false, false, true}, /* not threadSafe because of SendMoney */
+        //{"brewhaust", "darksend", &darksend, false, false, true}, /* not threadSafe because of SendMoney */
 
         /* Wallet */
         {"wallet", "addmultisigaddress", &addmultisigaddress, true, false, true},
@@ -1034,7 +1034,7 @@ std::vector<std::string> CRPCTable::listCommands() const
 
 std::string HelpExampleCli(string methodname, string args)
 {
-    return "> lux-cli " + methodname + " " + args + "\n";
+    return "> brewhaust-cli " + methodname + " " + args + "\n";
 }
 
 std::string HelpExampleRpc(string methodname, string args)

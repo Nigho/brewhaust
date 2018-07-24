@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto             -*- c++ -*-
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The LUX developers
+// Copyright (c) 2015-2017 The BREWHAUST developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -9,7 +9,7 @@
 #define BITCOIN_MAIN_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/lux-config.h"
+#include "config/brewhaust-config.h"
 #endif
 
 #include "amount.h"
@@ -42,20 +42,20 @@
 #include <boost/unordered_map.hpp>
 
 /**
- * Global LuxState
+ * Global BrewhaustState
  */
 
-/////////////////////////////////////////// lux
-#include <lux/luxstate.h>
-#include <lux/luxDGP.h>
+/////////////////////////////////////////// brewhaust
+#include <brewhaust/brewhauststate.h>
+#include <brewhaust/brewhaustDGP.h>
 #include <libethereum/ChainParams.h>
 #include <libethashseal/Ethash.h>
 #include <libethashseal/GenesisInfo.h>
 #include <script/standard.h>
-#include <lux/storageresults.h>
+#include <brewhaust/storageresults.h>
 ///////////////////////////////////////////
 
-extern std::unique_ptr<LuxState> globalState;
+extern std::unique_ptr<BrewhaustState> globalState;
 extern std::shared_ptr<dev::eth::SealEngineFace> globalSealEngine;
 extern bool fRecordLogOpcodes;
 extern bool fIsVMlogFile;
@@ -63,7 +63,7 @@ extern bool fGettingValuesDGP;
 
 struct EthTransactionParams;
 using valtype = std::vector<unsigned char>;
-using ExtractLuxTX = std::pair<std::vector<LuxTransaction>, std::vector<EthTransactionParams>>;
+using ExtractBrewhaustTX = std::pair<std::vector<BrewhaustTransaction>, std::vector<EthTransactionParams>>;
 ///////////////////////////////////////////
 
 class CBlockIndex;
@@ -90,7 +90,7 @@ struct CNodeStateStats;
 #define SNAPSHOT_BLOCK 299500
 #endif
 
-static const int64_t DARKSEND_COLLATERAL = (16120*COIN); //16120 LUX
+static const int64_t DARKSEND_COLLATERAL = (16120*COIN); //16120 BREWHAUST
 static const int64_t DARKSEND_FEE = (0.002*COIN); // reward masternode
 static const int64_t DARKSEND_POOL_MAX = (1999999.99*COIN);
 
@@ -145,7 +145,7 @@ static const int64_t STATIC_POS_REWARD = 1 * COIN; //Constant reward 8%
 
 static const bool DEFAULT_LOGEVENTS = false;
 
-////////////////////////////////////////////////////// lux
+////////////////////////////////////////////////////// brewhaust
 static const uint64_t DEFAULT_GAS_LIMIT_OP_CREATE=2500000;
 static const uint64_t DEFAULT_GAS_LIMIT_OP_SEND=250000;
 static const CAmount DEFAULT_GAS_PRICE=0.00000040*COIN;
@@ -364,7 +364,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
 bool AcceptableInputs(CTxMemPool& pool, CValidationState& state, const CTransaction& tx, bool fLimitFree, bool* pfMissingInputs, bool fRejectInsaneFee = false, bool isDSTX = false);
 
 
-//////////////////////////////////////////////////////////// // lux
+//////////////////////////////////////////////////////////// // brewhaust
 struct CHeightTxIndexIteratorKey {
     unsigned int height;
 
@@ -828,7 +828,7 @@ static const unsigned int REJECT_CONFLICT = 0x102;
 
 int GetSpendHeight(const CCoinsViewCache& inputs);
 
-//////////////////////////////////////////////////////// lux
+//////////////////////////////////////////////////////// brewhaust
 std::vector<ResultExecute> CallContract(const dev::Address& addrContract, std::vector<unsigned char> opcode, const dev::Address& sender = dev::Address(), uint64_t gasLimit=0);
 
 bool CheckSenderScript(const CCoinsViewCache& view, const CTransaction& tx);
@@ -837,8 +837,8 @@ bool CheckMinGasPrice(std::vector<EthTransactionParams>& etps, const uint64_t& m
 
 struct ByteCodeExecResult;
 
-void EnforceContractVoutLimit(ByteCodeExecResult& bcer, ByteCodeExecResult& bcerOut, const dev::h256& oldHashLuxRoot,
-                              const dev::h256& oldHashStateRoot, const std::vector<LuxTransaction>& transactions);
+void EnforceContractVoutLimit(ByteCodeExecResult& bcer, ByteCodeExecResult& bcerOut, const dev::h256& oldHashBrewhaustRoot,
+                              const dev::h256& oldHashStateRoot, const std::vector<BrewhaustTransaction>& transactions);
 
 void writeVMlog(const std::vector<ResultExecute>& res, const CTransaction& tx = CTransaction(), const CBlock& block = CBlock());
 
@@ -865,13 +865,13 @@ struct ByteCodeExecResult{
     std::vector<CTransaction> valueTransfers;
 };
 
-class LuxTxConverter{
+class BrewhaustTxConverter{
 
 public:
 
-    LuxTxConverter(CTransaction tx, CCoinsViewCache* v = NULL, const std::vector<CTransaction>* blockTxs = NULL) : txBit(tx), view(v), blockTransactions(blockTxs){}
+    BrewhaustTxConverter(CTransaction tx, CCoinsViewCache* v = NULL, const std::vector<CTransaction>* blockTxs = NULL) : txBit(tx), view(v), blockTransactions(blockTxs){}
 
-    bool extractionLuxTransactions(ExtractLuxTX& luxTx);
+    bool extractionBrewhaustTransactions(ExtractBrewhaustTX& brewhaustTx);
 
 private:
 
@@ -879,7 +879,7 @@ private:
 
     bool parseEthTXParams(EthTransactionParams& params);
 
-    LuxTransaction createEthTX(const EthTransactionParams& etp, const uint32_t nOut);
+    BrewhaustTransaction createEthTX(const EthTransactionParams& etp, const uint32_t nOut);
 
     const CTransaction txBit;
     const CCoinsViewCache* view;
@@ -893,7 +893,7 @@ class ByteCodeExec {
 
 public:
 
-    ByteCodeExec(const CBlock& _block, std::vector<LuxTransaction> _txs, const uint64_t _blockGasLimit) : txs(_txs), block(_block), blockGasLimit(_blockGasLimit) {}
+    ByteCodeExec(const CBlock& _block, std::vector<BrewhaustTransaction> _txs, const uint64_t _blockGasLimit) : txs(_txs), block(_block), blockGasLimit(_blockGasLimit) {}
 
     bool performByteCode(dev::eth::Permanence type = dev::eth::Permanence::Committed);
 
@@ -907,7 +907,7 @@ private:
 
     dev::Address EthAddrFromScript(const CScript& scriptIn);
 
-    std::vector<LuxTransaction> txs;
+    std::vector<BrewhaustTransaction> txs;
 
     std::vector<ResultExecute> result;
 

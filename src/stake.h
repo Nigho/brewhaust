@@ -31,7 +31,7 @@ protected:
     StakeKernel();
 };
 
-//!<DuzyDoc>: Stake - singleton class encapsulating PoS feature for Lux.
+//!<DuzyDoc>: Stake - singleton class encapsulating PoS feature for Brewhaust.
 class Stake : StakeKernel
 {
 

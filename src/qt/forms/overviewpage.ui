@@ -70,7 +70,7 @@
                <cursorShape>WhatsThisCursor</cursorShape>
               </property>
               <property name="toolTip">
-               <string>The displayed information may be out of date. Your wallet automatically synchronizes with the LUX network after a connection is established, but this process has not completed yet.</string>
+               <string>The displayed information may be out of date. Your wallet automatically synchronizes with the BREWHAUST network after a connection is established, but this process has not completed yet.</string>
               </property>
               <property name="styleSheet">
                <string notr="true">QLabel { color: red; }</string>
@@ -461,7 +461,7 @@
            <item row="2" column="0">
             <widget class="QLabel" name="labelAnonymizedText">
              <property name="text">
-              <string>Luxsend Balance:</string>
+              <string>Brewhaustsend Balance:</string>
              </property>
             </widget>
            </item>
@@ -474,7 +474,7 @@
               </font>
              </property>
              <property name="text">
-              <string notr="true">0 LUX</string>
+              <string notr="true">0 BREWHAUST</string>
              </property>
             </widget>
            </item>
@@ -488,7 +488,7 @@
            <item row="3" column="1">
             <widget class="QLabel" name="labelAmountRounds">
              <property name="text">
-              <string>0 LUX / 0 Rounds</string>
+              <string>0 BREWHAUST / 0 Rounds</string>
              </property>
             </widget>
            </item>
@@ -1078,14 +1078,14 @@
               </font>
              </property>
              <property name="text">
-              <string>Luxsend</string>
+              <string>Brewhaustsend</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QLabel" name="labelDarksendSyncStatus">
              <property name="toolTip">
-              <string>The displayed information may be out of date. Your wallet automatically synchronizes with the LUX network after a connection is established, but this process has not completed yet.</string>
+              <string>The displayed information may be out of date. Your wallet automatically synchronizes with the BREWHAUST network after a connection is established, but this process has not completed yet.</string>
              </property>
              <property name="styleSheet">
               <string notr="true">QLabel { color: red; }</string>
@@ -1185,7 +1185,7 @@
                <cursorShape>WhatsThisCursor</cursorShape>
               </property>
               <property name="toolTip">
-               <string>The displayed information may be out of date. Your wallet automatically synchronizes with the LUX network after a connection is established, but this process has not completed yet.</string>
+               <string>The displayed information may be out of date. Your wallet automatically synchronizes with the BREWHAUST network after a connection is established, but this process has not completed yet.</string>
               </property>
               <property name="styleSheet">
                <string notr="true">QLabel { color: red; }</string>

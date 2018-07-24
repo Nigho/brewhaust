@@ -230,7 +230,7 @@ private:
     int lastFewTxs;
     bool blockFinished;
 
-///////////////////////////////////////////// // lux
+///////////////////////////////////////////// // brewhaust
     ByteCodeExecResult bceResult;
     uint64_t minGasPrice = 1;
     uint64_t hardBlockGasLimit;
@@ -239,7 +239,7 @@ private:
 /////////////////////////////////////////////
 
     // The original constructed reward tx (either coinbase or coinstake) without gas refund adjustments
-    CMutableTransaction originalRewardTx; // lux
+    CMutableTransaction originalRewardTx; // brewhaust
 
     //When GetAdjustedTime() exceeds this, no more transactions will attempt to be added
     int32_t nTimeLimit;

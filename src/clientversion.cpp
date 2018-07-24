@@ -10,10 +10,10 @@
 
 /**
  * Name of client reported in the 'version' message. Report the same name
- * for both luxd and lux-qt, to make it harder for attackers to
+ * for both brewhaustd and brewhaust-qt, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
-const std::string CLIENT_NAME("Luxcore");
+const std::string CLIENT_NAME("Brewhaust");
 
 /**
  * Client version number

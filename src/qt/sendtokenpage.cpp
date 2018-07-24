@@ -131,7 +131,7 @@ void SendTokenPage::on_numBlocksChanged()
         m_clientModel->getGasInfo(blockGasLimit, minGasPrice, nGasPrice);
 
         ui->labelGasLimit->setToolTip(tr("Gas limit: Default = %1, Max = %2.").arg(DEFAULT_GAS_LIMIT_OP_SEND).arg(blockGasLimit));
-        ui->labelGasPrice->setToolTip(tr("Gas price: LUX/gas unit. Default = %1, Min = %2.").arg(QString::fromStdString(FormatMoney(DEFAULT_GAS_PRICE))).arg(QString::fromStdString(FormatMoney(minGasPrice))));
+        ui->labelGasPrice->setToolTip(tr("Gas price: BREWHAUST/gas unit. Default = %1, Min = %2.").arg(QString::fromStdString(FormatMoney(DEFAULT_GAS_PRICE))).arg(QString::fromStdString(FormatMoney(minGasPrice))));
         ui->lineEditGasPrice->setMinimum(minGasPrice);
         ui->lineEditGasLimit->setMaximum(blockGasLimit);
     }
@@ -202,7 +202,7 @@ WalletModel::UnlockContext ctx(m_model->requestUnlock());
     }
     else
     {
-        QString message = tr("To send %1 you need LUX in address <br /> %2.")
+        QString message = tr("To send %1 you need BREWHAUST in address <br /> %2.")
                 .arg(QString::fromStdString(m_selectedToken->symbol)).arg(QString::fromStdString(m_selectedToken->sender));
 
         QMessageBox::warning(this, tr("Send token"), message);

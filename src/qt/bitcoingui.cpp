@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The LUX developers
+// Copyright (c) 2015-2017 The BREWHAUST developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -124,7 +124,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     /* Open CSS when configured */
     this->setStyleSheet(GUIUtil::loadStyleSheet());
     resize(1200, 735);
-    QString windowTitle = tr("Luxcore") + " - ";
+    QString windowTitle = tr("Brewhaustcore") + " - ";
 
 #ifdef ENABLE_WALLET
     /* if compiled with wallet support, -disablewallet can still disable the wallet */
@@ -303,7 +303,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle) {
     tabGroup->addAction(overviewAction);
 
     sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send"), this);
-    sendCoinsAction->setStatusTip(tr("Send coins to a LUX address"));
+    sendCoinsAction->setStatusTip(tr("Send coins to a BREWHAUST address"));
     sendCoinsAction->setToolTip(sendCoinsAction->statusTip());
     sendCoinsAction->setCheckable(true);
 #ifdef Q_OS_MAC
@@ -314,7 +314,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle) {
     tabGroup->addAction(sendCoinsAction);
 
     receiveCoinsAction = new QAction(QIcon(":/icons/receiving_addresses"), tr("&Receive"), this);
-    receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and lux: URIs)"));
+    receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and brewhaust: URIs)"));
     receiveCoinsAction->setToolTip(receiveCoinsAction->statusTip());
     receiveCoinsAction->setCheckable(true);
 #ifdef Q_OS_MAC
@@ -408,8 +408,8 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle) {
     quitAction->setStatusTip(tr("Quit application"));
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
-    aboutAction = new QAction(networkStyle->getAppIcon(), tr("&About Luxcore"), this);
-    aboutAction->setStatusTip(tr("Show information about Luxcore"));
+    aboutAction = new QAction(networkStyle->getAppIcon(), tr("&About Brewhaustcore"), this);
+    aboutAction->setStatusTip(tr("Show information about Brewhaustcore"));
     aboutAction->setMenuRole(QAction::AboutRole);
 #if QT_VERSION < 0x050000
     aboutQtAction = new QAction(QIcon(":/trolltech/qmessagebox/images/qtlogo-64.png"), tr("About &Qt"), this);
@@ -419,7 +419,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle) {
     aboutQtAction->setStatusTip(tr("Show information about Qt"));
     aboutQtAction->setMenuRole(QAction::AboutQtRole);
     optionsAction = new QAction(QIcon(":/icons/options"), tr("&Options..."), this);
-    optionsAction->setStatusTip(tr("Modify configuration options for LUX"));
+    optionsAction->setStatusTip(tr("Modify configuration options for BREWHAUST"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
     toggleHideAction = new QAction(networkStyle->getAppIcon(), tr("&Show / Hide"), this);
     toggleHideAction->setStatusTip(tr("Show or hide the main Window"));
@@ -437,9 +437,9 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle) {
     unlockWalletAction->setToolTip(tr("Unlock wallet"));
     lockWalletAction = new QAction(tr("&Lock Wallet"), this);
     signMessageAction = new QAction(QIcon(":/icons/edit"), tr("Sign &message..."), this);
-    signMessageAction->setStatusTip(tr("Sign messages with your LUX addresses to prove you own them"));
+    signMessageAction->setStatusTip(tr("Sign messages with your BREWHAUST addresses to prove you own them"));
     verifyMessageAction = new QAction(QIcon(":/icons/transaction_0"), tr("&Verify message..."), this);
-    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified LUX addresses"));
+    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified BREWHAUST addresses"));
     bip38ToolAction = new QAction(QIcon(":/icons/key"), tr("&BIP38 tool"), this);
     bip38ToolAction->setToolTip(tr("Encrypt and decrypt private keys using a passphrase"));
     multiSendAction = new QAction(QIcon(":/icons/edit"), tr("&MultiSend"), this);
@@ -469,13 +469,13 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle) {
     usedReceivingAddressesAction->setStatusTip(tr("Show the list of used receiving addresses and labels"));
 
     openAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_FileIcon), tr("Open &URI..."), this);
-    openAction->setStatusTip(tr("Open a LUX: URI or payment request"));
+    openAction->setStatusTip(tr("Open a BREWHAUST: URI or payment request"));
     openBlockExplorerAction = new QAction(QIcon(":/icons/explorer"), tr("&Blockchain explorer"), this);
     openBlockExplorerAction->setStatusTip(tr("Block explorer window"));
 
     showHelpMessageAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&Command-line options"), this);
     showHelpMessageAction->setMenuRole(QAction::NoRole);
-    showHelpMessageAction->setStatusTip(tr("Show the Luxcore help message to get a list with possible LUX command-line options"));
+    showHelpMessageAction->setStatusTip(tr("Show the Brewhaustcore help message to get a list with possible BREWHAUST command-line options"));
 
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(aboutAction, SIGNAL(triggered()), this, SLOT(aboutClicked()));
@@ -695,7 +695,7 @@ void BitcoinGUI::setWalletActionsEnabled(bool enabled) {
 void BitcoinGUI::createTrayIcon(const NetworkStyle* networkStyle) {
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
-    QString toolTip = tr("Luxcore client") + " " + networkStyle->getTitleAddText();
+    QString toolTip = tr("Brewhaustcore client") + " " + networkStyle->getTitleAddText();
     trayIcon->setToolTip(toolTip);
     trayIcon->setIcon(networkStyle->getAppIcon());
     trayIcon->show();
@@ -882,7 +882,7 @@ void BitcoinGUI::updateNetworkState() {
     QIcon connectionItem = QIcon(icon).pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE);
     labelConnectionsIcon->setIcon(connectionItem);
     if (clientModel->getNetworkActive())
-        labelConnectionsIcon->setToolTip(tr("%n active connection(s) to Luxcore network", "", count));
+        labelConnectionsIcon->setToolTip(tr("%n active connection(s) to Brewhaustcore network", "", count));
     else
         labelConnectionsIcon->setToolTip(tr("Network activity disabled"));
 }
@@ -995,7 +995,7 @@ void BitcoinGUI::setNumBlocks(int count) {
 }
 
 void BitcoinGUI::message(const QString& title, const QString& message, unsigned int style, bool* ret) {
-    QString strTitle = tr("Luxcore"); // default title
+    QString strTitle = tr("Brewhaustcore"); // default title
     // Default to information icon
     int nMBoxIcon = QMessageBox::Information;
     int nNotifyIcon = Notificator::Information;
@@ -1020,7 +1020,7 @@ void BitcoinGUI::message(const QString& title, const QString& message, unsigned 
             break;
         }
     }
-    // Append title to "LUX - "
+    // Append title to "BREWHAUST - "
     if (!msgType.isEmpty())
         strTitle += " - " + msgType;
 

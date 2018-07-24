@@ -329,18 +329,18 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     if (fProofOfStake)
         originalRewardTx = CMutableTransaction(pblock->vtx[1]);
 
-    //////////////////////////////////////////////////////// lux
-    LuxDGP luxDGP(globalState.get(), fGettingValuesDGP);
-    globalSealEngine->setLuxSchedule(luxDGP.getGasSchedule(nHeight));
-    uint32_t blockSizeDGP = luxDGP.getBlockSize(nHeight);
-    minGasPrice = luxDGP.getMinGasPrice(nHeight);
+    //////////////////////////////////////////////////////// brewhaust
+    BrewhaustDGP brewhaustDGP(globalState.get(), fGettingValuesDGP);
+    globalSealEngine->setBrewhaustSchedule(brewhaustDGP.getGasSchedule(nHeight));
+    uint32_t blockSizeDGP = brewhaustDGP.getBlockSize(nHeight);
+    minGasPrice = brewhaustDGP.getMinGasPrice(nHeight);
     if(IsArgSet("-staker-min-tx-gas-price")) {
         CAmount stakerMinGasPrice;
         if(ParseMoney(GetArg("-staker-min-tx-gas-price", ""), stakerMinGasPrice)) {
             minGasPrice = std::max(minGasPrice, (uint64_t)stakerMinGasPrice);
         }
     }
-    hardBlockGasLimit = luxDGP.getBlockGasLimit(nHeight);
+    hardBlockGasLimit = brewhaustDGP.getBlockGasLimit(nHeight);
     softBlockGasLimit = GetArg("-staker-soft-block-gas-limit", hardBlockGasLimit);
     softBlockGasLimit = std::min(softBlockGasLimit, hardBlockGasLimit);
     txGasLimit = GetArg("-staker-max-tx-gas-limit", softBlockGasLimit);
@@ -523,34 +523,34 @@ bool BlockAssembler::AttemptToAddContractToBlock(CTxMemPool::txiter iter, uint64
     uint64_t nBlockSize = this->nBlockSize;
     uint64_t nBlockSigOpsCost = this->nBlockSigOpsCost;
 
-    LuxTxConverter convert(iter->GetTx(), NULL, &pblock->vtx);
+    BrewhaustTxConverter convert(iter->GetTx(), NULL, &pblock->vtx);
 
-    ExtractLuxTX resultConverter;
-    if(!convert.extractionLuxTransactions(resultConverter)){
+    ExtractBrewhaustTX resultConverter;
+    if(!convert.extractionBrewhaustTransactions(resultConverter)){
         //this check already happens when accepting txs into mempool
         //therefore, this can only be triggered by using raw transactions on the staker itself
         return false;
     }
-    std::vector<LuxTransaction> luxTransactions = resultConverter.first;
+    std::vector<BrewhaustTransaction> brewhaustTransactions = resultConverter.first;
     dev::u256 txGas = 0;
-    for(LuxTransaction luxTransaction : luxTransactions){
-        txGas += luxTransaction.gas();
+    for(BrewhaustTransaction brewhaustTransaction : brewhaustTransactions){
+        txGas += brewhaustTransaction.gas();
         if(txGas > txGasLimit) {
             // Limit the tx gas limit by the soft limit if such a limit has been specified.
             return false;
         }
 
-        if(bceResult.usedGas + luxTransaction.gas() > softBlockGasLimit){
+        if(bceResult.usedGas + brewhaustTransaction.gas() > softBlockGasLimit){
             //if this transaction's gasLimit could cause block gas limit to be exceeded, then don't add it
             return false;
         }
-        if(luxTransaction.gasPrice() < minGasPrice){
+        if(brewhaustTransaction.gasPrice() < minGasPrice){
             //if this transaction's gasPrice is less than the current DGP minGasPrice don't add it
             return false;
         }
     }
     // We need to pass the DGP's block gas limit (not the soft limit) since it is consensus critical.
-    ByteCodeExec exec(*pblock, luxTransactions, hardBlockGasLimit);
+    ByteCodeExec exec(*pblock, brewhaustTransactions, hardBlockGasLimit);
     if(!exec.performByteCode()){
         //error, don't add contract
         globalState->setRoot(oldHashStateRoot);
@@ -1007,7 +1007,7 @@ bool ProcessBlockFound(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
     {
         LOCK(cs_main);
         if (pblock->hashPrevBlock != chainActive.Tip()->GetBlockHash())
-            return error("LUXMiner : generated block is stale");
+            return error("BREWHAUSTMiner : generated block is stale");
     }
 
     // Remove key from key pool
@@ -1030,7 +1030,7 @@ bool ProcessBlockFound(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
     const CChainParams& chainparams = Params();
     CValidationState state;
     if (!ProcessNewBlock(state, chainparams, NULL, pblock)) {
-        return error("LUXMiner : ProcessNewBlock, block not accepted");
+        return error("BREWHAUSTMiner : ProcessNewBlock, block not accepted");
     }
 
     return true;

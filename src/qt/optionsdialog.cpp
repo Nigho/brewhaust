@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/lux-config.h"
+#include "config/brewhaust-config.h"
 #endif
 
 #include "optionsdialog.h"
@@ -219,7 +219,7 @@ void OptionsDialog::setMapper()
 
     /* DarkSend Rounds */
     mapper->addMapping(ui->darksendRounds, OptionsModel::DarksendRounds);
-    mapper->addMapping(ui->anonymizeLux, OptionsModel::AnonymizeLuxAmount);
+    mapper->addMapping(ui->anonymizeBrewhaust, OptionsModel::AnonymizeBrewhaustAmount);
     mapper->addMapping(ui->showMasternodesTab, OptionsModel::ShowMasternodesTab);
 }
 
