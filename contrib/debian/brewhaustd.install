@@ -1,2 +1,2 @@
-usr/local/bin/luxd usr/bin
-usr/local/bin/lux-cli usr/bin
+usr/local/bin/brewhaustd usr/bin
+usr/local/bin/brewhaust-cli usr/bin

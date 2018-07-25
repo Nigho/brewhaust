@@ -1,14 +1,14 @@
-### Building Lux OS X Qt Wallet
+### Building Brewhaust OS X Qt Wallet
 
 1. Ensure you have git installed
     
     ```shell
     brew install git
     ```
-2. Clone lux repository
+2. Clone brewhaust repository
     
     ```shell
-    git clone https://github.com/216k155/lux
+    git clone https://github.com/216k155/brewhaust
     ```
 
 3. Ensure mysql and boost installed.
@@ -26,7 +26,7 @@
 5. Export the required environment variables
 
     ```shell
-    export LUX_PLATFORM='mac'
+    export BREWHAUST_PLATFORM='mac'
     export CXX=clang++
     export CC=clang
     ```

@@ -1,6 +1,6 @@
 #!/bin/sh
 #-###############################################-#
-# C++ Cross-Compiler - The Luxcore Developer-2018 #
+# C++ Cross-Compiler - The Brewhaust Developer-2018 #
 #-###############################################-#
 
 # Set platform variables
@@ -85,9 +85,9 @@ RELEASE="$OLD_PATH/Release"
 mkdir -p "$RELEASE"
 
 # Remove the symbols for release
-[ -f "./src/qt/lux-qt.exe" ] && cp "./src/qt/lux-qt.exe" "$RELEASE"
-[ -f "./src/luxd.exe" ] && cp "./src/luxd.exe" "$RELEASE"
-[ -f "./src/lux-cli.exe" ] && cp "./src/lux-cli.exe" "$RELEASE"
+[ -f "./src/qt/brewhaust-qt.exe" ] && cp "./src/qt/brewhaust-qt.exe" "$RELEASE"
+[ -f "./src/brewhaustd.exe" ] && cp "./src/brewhaustd.exe" "$RELEASE"
+[ -f "./src/brewhaust-cli.exe" ] && cp "./src/brewhaust-cli.exe" "$RELEASE"
 
 
 cd "$RELEASE"

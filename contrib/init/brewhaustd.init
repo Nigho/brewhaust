@@ -1,31 +1,31 @@
 #!/bin/bash
 #
-#  luxd The Luxcore server.
+#  brewhaustd The Brewhaust server.
 #
 #
 # chkconfig: 345 80 20
-# description: luxd
-# processname: luxd
+# description: brewhaustd
+# processname: brewhaustd
 #
 
 # Source function library.
 . /etc/init.d/functions
 
-# you can override defaults in /etc/sysconfig/luxd, see below
-if [ -f /etc/sysconfig/luxd ]; then
-        . /etc/sysconfig/luxd
+# you can override defaults in /etc/sysconfig/brewhaustd, see below
+if [ -f /etc/sysconfig/brewhaustd ]; then
+        . /etc/sysconfig/brewhaustd
 fi
 
 RETVAL=0
 
-prog=luxd
-# you can override the lockfile via BITCOIND_LOCKFILE in /etc/sysconfig/luxd
-lockfile=${BITCOIND_LOCKFILE-/var/lock/subsys/luxd}
+prog=brewhaustd
+# you can override the lockfile via BITCOIND_LOCKFILE in /etc/sysconfig/brewhaustd
+lockfile=${BITCOIND_LOCKFILE-/var/lock/subsys/brewhaustd}
 
-# luxd defaults to /usr/bin/luxd, override with BITCOIND_BIN
-bitcoind=${BITCOIND_BIN-/usr/bin/luxd}
+# brewhaustd defaults to /usr/bin/brewhaustd, override with BITCOIND_BIN
+bitcoind=${BITCOIND_BIN-/usr/bin/brewhaustd}
 
-# luxd opts default to -disablewallet, override with BITCOIND_OPTS
+# brewhaustd opts default to -disablewallet, override with BITCOIND_OPTS
 bitcoind_opts=${BITCOIND_OPTS}
 
 start() {

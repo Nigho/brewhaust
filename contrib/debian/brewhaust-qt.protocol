@@ -1,6 +1,6 @@
 [Protocol]
-exec=lux-qt '%u'
-protocol=lux
+exec=brewhaust-qt '%u'
+protocol=brewhaust
 input=none
 output=none
 helper=true

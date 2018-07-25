@@ -1,19 +1,19 @@
 [Unit]
-Description=LUX's distributed currency daemon
+Description=BREWHAUST's distributed currency daemon
 After=network.target
 
 [Service]
-User=lux
-Group=lux
+User=brewhaust
+Group=brewhaust
 
 Type=forking
-PIDFile=/var/lib/luxd/luxd.pid
+PIDFile=/var/lib/brewhaustd/brewhaustd.pid
 
-ExecStart=/usr/bin/luxd -daemon -pid=/var/lib/luxd/luxd.pid \
-          -conf=/etc/lux/lux.conf -datadir=/var/lib/luxd
+ExecStart=/usr/bin/brewhaustd -daemon -pid=/var/lib/brewhaustd/brewhaustd.pid \
+          -conf=/etc/brewhaust/brewhaust.conf -datadir=/var/lib/brewhaustd
 
-ExecStop=-/usr/bin/lux-cli -conf=/etc/lux/lux.conf \
-         -datadir=/var/lib/luxd stop
+ExecStop=-/usr/bin/brewhaust-cli -conf=/etc/brewhaust/brewhaust.conf \
+         -datadir=/var/lib/brewhaustd stop
 
 Restart=always
 PrivateTmp=true

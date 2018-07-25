@@ -1,9 +1,9 @@
 
-cp src/luxd .
-cp src/qt/lux-qt .
-strip luxd
-strip lux-qt
-zip release_${LUX_PLATFORM}.zip luxd lux-qt
+cp src/brewhaustd .
+cp src/qt/brewhaust-qt .
+strip brewhaustd
+strip brewhaust-qt
+zip release_${BREWHAUST_PLATFORM}.zip brewhaustd brewhaust-qt
 
 sudo easy_install appscript
 

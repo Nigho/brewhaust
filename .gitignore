@@ -7,12 +7,12 @@ reset-files.bash
 *.tar.gz
 
 *.exe
-src/lux
-src/luxd
-src/lux-cli
-src/lux-tx
-src/test/test_lux
-src/qt/test/test_lux-qt
+src/brewhaust
+src/brewhaustd
+src/brewhaust-cli
+src/brewhaust-tx
+src/test/test_brewhaust
+src/qt/test/test_brewhaust-qt
 
 # autoreconf
 Makefile.in
@@ -35,8 +35,8 @@ config.log
 config.status
 configure
 libtool
-src/config/lux-config.h
-src/config/lux-config.h.in
+src/config/brewhaust-config.h
+src/config/brewhaust-config.h.in
 src/config/stamp-h1
 share/setup.nsi
 share/qt/Info.plist
@@ -60,7 +60,7 @@ src/qt/test/moc*.cpp
 *.pyc
 *.o
 *.o-*
-.lux
+.brewhaust
 *.a
 *.pb.cc
 *.pb.h
@@ -79,12 +79,12 @@ src/qt/test/moc*.cpp
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-lux-qt
-LUX-Qt.app
+brewhaust-qt
+BREWHAUST-Qt.app
 
 # Unit-tests
 Makefile.test
-lux-qt_test
+brewhaust-qt_test
 src/test/buildenv.py
 
 # Resources cpp
@@ -100,7 +100,7 @@ build
 #lcov
 *.gcno
 /*.info
-test_lux.coverage/
+test_brewhaust.coverage/
 total.coverage/
 coverage_percent.txt
 

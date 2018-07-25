@@ -1,15 +1,15 @@
-![LUX Logo](https://github.com/216k155/lux/blob/master/src/qt/res/images/lux_logo_horizontal.png)
+![BREWHAUST Logo](https://github.com/216k155/brewhaust/blob/master/src/qt/res/images/brewhaust_logo_horizontal.png)
 
 "FIRST OF ITS KIND"
 
-Luxcore is GNU AGPLv3 licensed.
+Brewhaust is GNU AGPLv3 licensed.
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2F216k155%2Flux.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2F216k155%2Flux?ref=badge_shield) [![Build Status](https://travis-ci.org/216k155/lux.svg?branch=master)](https://travis-ci.org/216k155/lux) [![GitHub version](https://badge.fury.io/gh/216k155%2Flux.svg)](https://badge.fury.io/gh/216k155%2Flux.svg) [![HitCount](http://hits.dwyl.io/216k155/lux.svg)](http://hits.dwyl.io/216k155/lux)
-<a href="https://discord.gg/27xFP5Y"><img src="https://discordapp.com/api/guilds/364500397999652866/embed.png" alt="Discord server" /></a> <a href="https://twitter.com/intent/follow?screen_name=LUX_COIN"><img src="https://img.shields.io/twitter/follow/LUX_COIN.svg?style=social&logo=twitter" alt="follow on Twitter"></a>
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2F216k155%2Fbrewhaust.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2F216k155%2Fbrewhaust?ref=badge_shield) [![Build Status](https://travis-ci.org/216k155/brewhaust.svg?branch=master)](https://travis-ci.org/216k155/brewhaust) [![GitHub version](https://badge.fury.io/gh/216k155%2Fbrewhaust.svg)](https://badge.fury.io/gh/216k155%2Fbrewhaust.svg) [![HitCount](http://hits.dwyl.io/216k155/brewhaust.svg)](http://hits.dwyl.io/216k155/brewhaust)
+<a href="https://discord.gg/27xFP5Y"><img src="https://discordapp.com/api/guilds/364500397999652866/embed.png" alt="Discord server" /></a> <a href="https://twitter.com/intent/follow?screen_name=BREWHAUST_COIN"><img src="https://img.shields.io/twitter/follow/BREWHAUST_COIN.svg?style=social&logo=twitter" alt="follow on Twitter"></a>
                                                                                                                                                      
-[![Build history](https://buildstats.info/travisci/chart/216k155/lux?branch=master)](https://travis-ci.org/216k155/lux?branch=master)
+[![Build history](https://buildstats.info/travisci/chart/216k155/brewhaust?branch=master)](https://travis-ci.org/216k155/brewhaust?branch=master)
 
-[Website](https://luxcore.io) — [LUXtre + LUXGate](https://github.com/216k155/luxtre) - [PoS Web Wallet](https://lux.poswallet.io) — [Block Explorer](https://explorer.luxcore.io/) — [Blog](https://reddit.com/r/LUXCoin) — [Forum](https://bitcointalk.org/index.php?topic=2254046.0) — [Telegram](https://t.me/LUXcoinOfficialChat) — [Twitter](https://twitter.com/LUX_Coin)
+[Website](https://brewhaust.io) — [BREWHAUSTtre + BREWHAUSTGate](https://github.com/216k155/brewhausttre) - [PoS Web Wallet](https://brewhaust.poswallet.io) — [Block Explorer](https://explorer.brewhaust.io/) — [Blog](https://reddit.com/r/BREWHAUSTCoin) — [Forum](https://bitcointalk.org/index.php?topic=2254046.0) — [Telegram](https://t.me/BREWHAUSTcoinOfficialChat) — [Twitter](https://twitter.com/BREWHAUST_Coin)
 
 Features
 =============
@@ -20,17 +20,17 @@ Features
 * Segwit
 * Smart contract ( [Instruction](doc/smartcontract.md) )
 * New PHI2 PoW/PoS hybrid algorithm
-* Luxgate
+* Brewhaustgate
 * Parallel masternode
 * ~~PHI1612 PoW/PoS hybrid algorithm~~
 
-The Luxcore Project is a decentralized peer-to-peer banking financial platform, created under an open source license, featuring a built-in cryptocurrency, end-to-end encrypted messaging and decentralized marketplace. The decentralized network aims to provide anonymity and privacy for everyone through a simple user-friendly interface by taking care of all the advanced cryptography in the background.
+The Brewhaust Project is a decentralized peer-to-peer banking financial platform, created under an open source license, featuring a built-in cryptocurrency, end-to-end encrypted messaging and decentralized marketplace. The decentralized network aims to provide anonymity and privacy for everyone through a simple user-friendly interface by taking care of all the advanced cryptography in the background.
 
-The Luxgate allow for communications among validated blockchain with the ability to perform tasks and advanced functions. Through the use of Pmn, Lux is able to interact with many other popular blockchains and create a unifying bond among those ecosystems.
+The Brewhaustgate allow for communications among validated blockchain with the ability to perform tasks and advanced functions. Through the use of Pmn, Brewhaust is able to interact with many other popular blockchains and create a unifying bond among those ecosystems.
 
-Lux doesn't provide direct support for dapp database. Instead, a mechanism to interact with another Blockchain via Luxgate function where the other Blockchain can send and receive trigger function notices and international data through the Lux network via Parallel Masternode (Pmn) and Luxgate. Pmn & Luxgate can also be used to interact with the centralized services such as banker. Those centralism service can connect to the Lux network for specific trigger of the Luxgate via Pmn. It will allow for their developed autonomous system to act based on their behalf. The Pmn will then be developed by the connecting Blockchain developer. Luxcore will have to supply a deployment guide to assist their developer. In other to assist the Centralized services, Lux will need to provide a centralized trustworthy environments. So user have their trusted oversight to verify that the transactions are legitimate.
+Brewhaust doesn't provide direct support for dapp database. Instead, a mechanism to interact with another Blockchain via Brewhaustgate function where the other Blockchain can send and receive trigger function notices and international data through the Brewhaust network via Parallel Masternode (Pmn) and Brewhaustgate. Pmn & Brewhaustgate can also be used to interact with the centralized services such as banker. Those centralism service can connect to the Brewhaust network for specific trigger of the Brewhaustgate via Pmn. It will allow for their developed autonomous system to act based on their behalf. The Pmn will then be developed by the connecting Blockchain developer. Brewhaust will have to supply a deployment guide to assist their developer. In other to assist the Centralized services, Brewhaust will need to provide a centralized trustworthy environments. So user have their trusted oversight to verify that the transactions are legitimate.
 
-In addition, without Luxgate and Pmn, Bitcoin and Ethereum cannot interact with each other on the same Blockchain because the technology is incompatible. It is almost impossible before our Pmn and Luxgate functions are implemented. Therefore, we have to introduce a Smartcontract & Segwit features in the next release to verify that we succeed to combine those different technologies together to create a brand new unique features of LUX.
+In addition, without Brewhaustgate and Pmn, Bitcoin and Ethereum cannot interact with each other on the same Blockchain because the technology is incompatible. It is almost impossible before our Pmn and Brewhaustgate functions are implemented. Therefore, we have to introduce a Smartcontract & Segwit features in the next release to verify that we succeed to combine those different technologies together to create a brand new unique features of BREWHAUST.
 
 ## Coin Specifications
 
@@ -40,21 +40,21 @@ In addition, without Luxgate and Pmn, Bitcoin and Ethereum cannot interact with 
 | Block Size | `4MB` |
 | Block Time | `60s` |
 | PoW Block Time | `120s`   |
-| PoW Reward | `10 LUX` |
-| PoS Reward | `1 LUX` |
+| PoW Reward | `10 BREWHAUST` |
+| PoS Reward | `1 BREWHAUST` |
 | Stake Time | `36 hours` | 
-| Masternode Requirement | `16,120 LUX` |
+| Masternode Requirement | `16,120 BREWHAUST` |
 | Masternode Reward | `20% PoW/PoS` |
 | Port | `26969` |
 | RPC Port | `9888` |
 | Masternode Port | `26969` |
-| Lux legacy address start with | `L` |
+| Brewhaust legacy address start with | `L` |
 | p2sh-segwit address start with | `S` |
 | Bech32 address start with | `bc` |
 
 * NOTE: "getrawchangeaddress p2sh-segwit" to get p2sh-segwit address 
 
-Build Lux wallet
+Build Brewhaust wallet
 ----------
 
 ### Building for 32-bit Windows
@@ -63,9 +63,9 @@ The next three steps are an example of how to acquire the source and build in an
         
 Acquire the source and install dependencies.
 
-    git clone https://github.com/216k155/lux.git
-    sudo chmod -R a+rw lux
-    cd lux/depends
+    git clone https://github.com/216k155/brewhaust.git
+    sudo chmod -R a+rw brewhaust
+    cd brewhaust/depends
     ./install-dependencies.sh
     
 Set the default mingw-w32 g++ compiler option to auto (option 0) by default.
@@ -82,9 +82,9 @@ The next three steps are an example of how to acquire the source and build in an
         
 Acquire the source and install dependencies.
 
-    git clone https://github.com/216k155/lux.git
-    sudo chmod -R a+rw lux
-    cd lux/depends
+    git clone https://github.com/216k155/brewhaust.git
+    sudo chmod -R a+rw brewhaust
+    cd brewhaust/depends
     ./install-dependencies.sh
     
 Set the default mingw-w64 g++ compiler option to posix (option 1).
@@ -99,20 +99,20 @@ Build in the usual way.
 
 Use
 
-    sudo add-apt-repository ppa:bitcoin/bitcoin; git clone https://github.com/216k155/lux; cd lux; depends/install-dependencies.sh; ./autogen.sh; ./configure --disable-tests --with-boost-libdir=/usr/local/lib; make clean; make -j$(nproc)
+    sudo add-apt-repository ppa:bitcoin/bitcoin; git clone https://github.com/216k155/brewhaust; cd brewhaust; depends/install-dependencies.sh; ./autogen.sh; ./configure --disable-tests --with-boost-libdir=/usr/local/lib; make clean; make -j$(nproc)
 
 
 Add bitcoin repository for Berkeley DB 4.8
 
     sudo add-apt-repository ppa:bitcoin/bitcoin
 
-Clone lux repository
+Clone brewhaust repository
 
-    git clone https://github.com/216k155/lux.git
+    git clone https://github.com/216k155/brewhaust.git
 
-Build lux 
+Build brewhaust 
 
-    cd lux
+    cd brewhaust
     ./install-dependencies.sh
     ./autogen.sh
     ./configure --disable-tests
@@ -143,12 +143,12 @@ Link boost 1.66
 
     brew link boost@1.66 --force
 
-#### Build Luxcore
+#### Build Brewhaust
 
-Clone the Lux source code and cd into lux
+Clone the Brewhaust source code and cd into brewhaust
 
-        git clone https://github.com/216k155/lux.git
-        cd lux
+        git clone https://github.com/216k155/brewhaust.git
+        cd brewhaust
         ./building/mac/requirements.sh
         ./building/mac/build.sh
 
@@ -157,8 +157,8 @@ Setup and Build: Arch Linux
 This example lists the steps necessary to setup and build a command line only, non-wallet distribution of the latest changes on Arch Linux:
 
     pacman -S git base-devel boost libevent python
-    git clone https://github.com/216k155/lux
-    cd lux/
+    git clone https://github.com/216k155/brewhaust
+    cd brewhaust/
     ./autogen.sh
     ./configure --without-miniupnpc --disable-tests
     make -j$(nproc)
@@ -220,8 +220,8 @@ Development Process
 -------------------
 
 The `master` branch is regularly built and tested, but is not guaranteed to be
-completely stable. [Tags](https://github.com/216k155/lux/tags) are created
-regularly to indicate new official, stable release versions of Lux.
+completely stable. [Tags](https://github.com/216k155/brewhaust/tags) are created
+regularly to indicate new official, stable release versions of Brewhaust.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
 
@@ -261,4 +261,4 @@ not straightforward.
  [ISSUE_TEMPLATE](doc/template/ISSUE_TEMPLATE_example.md)
 
 ## License
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2F216k155%2Flux.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2F216k155%2Flux?ref=badge_large)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2F216k155%2Fbrewhaust.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2F216k155%2Fbrewhaust?ref=badge_large)
