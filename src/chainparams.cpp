@@ -201,26 +201,14 @@ public:
         genesis.nVersion = 1;
         genesis.nTime = 1529678586; //10/10/2017
         genesis.nBits = 0x1e0fffff;
-        genesis.nNonce = 577716;
+        genesis.nNonce = 127961;
         genesis.hashStateRoot = uint256(h256Touint(dev::h256("e965ffd002cd6ad0e2dc402b8044de833e06b23127ea8c3d80aec91410771495"))); // brewhaust
         genesis.hashUTXORoot = uint256(h256Touint(dev::sha3(dev::rlp("")))); // brewhaust
-        
-        printf("calc new genesis block\n");
-        printf("hashMerkleRoot %s\n", genesis.hashMerkleRoot.ToString().c_str());
-        printf("genesis.nBits 0x%x\n", genesis.nBits);
-
-        for (genesis.nNonce = 0; ; genesis.nNonce++) {
-            hashGenesisBlock = genesis.GetHash();
-            if (hashGenesisBlock <= consensus.powLimit) break;
-        }
-
-        printf("hashGenesisBlock %s\n", hashGenesisBlock.ToString().c_str());
-        printf("genesis.nNonce %d\n", genesis.nNonce);
 
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        assert(consensus.hashGenesisBlock == uint256("0x00000759bb3da130d7c9aedae170da8335f5a0d01a9007e4c8d3ccd08ace6a42"));
-        assert(genesis.hashMerkleRoot == uint256("0xe08ae0cfc35a1d70e6764f347fdc54355206adeb382446dd54c32cd0201000d3"));
+        assert(consensus.hashGenesisBlock == uint256("0x00000179a8b5505dc86ca1bf8cef348f73637c0267bb5e0498e57d02f014d263"));
+        assert(genesis.hashMerkleRoot == uint256("0x784e48e4c59a2526abed56c6997d6d9b83adb9bbb5b5d7c2f08a7d92d6794cfe"));
 
         vSeeds.push_back(CDNSSeedData("140.82.21.110", "140.82.21.110"));        // Brewhaustgate seed
         vSeeds.push_back(CDNSSeedData("149.28.163.40", "149.28.163.40"));        // Main seed
@@ -327,21 +315,9 @@ public:
         genesis.nVersion = 1;
         genesis.nTime = 1529678586; // 14 June 2018 @ 5:37am (UTC)
         genesis.nBits = 0x1e0fffff;
-        genesis.nNonce = 577716;
+        genesis.nNonce = 127961;
         genesis.hashStateRoot = uint256(h256Touint(dev::h256("e965ffd002cd6ad0e2dc402b8044de833e06b23127ea8c3d80aec91410771495"))); // brewhaust
         genesis.hashUTXORoot = uint256(h256Touint(dev::sha3(dev::rlp("")))); // brewhaust
-
-        printf("calc new genesis block\n");
-        printf("hashMerkleRoot %s\n", genesis.hashMerkleRoot.ToString().c_str());
-        printf("genesis.nBits 0x%x\n", genesis.nBits);
-
-        for (genesis.nNonce = 0; ; genesis.nNonce++) {
-            hashGenesisBlock = genesis.GetHash();
-            if (hashGenesisBlock <= consensus.powLimit) break;
-        }
-
-        printf("hashGenesisBlock %s\n", hashGenesisBlock.ToString().c_str());
-        printf("genesis.nNonce %d\n", genesis.nNonce);
 
         nSwitchPhi2Block = 1000;
         nSplitRewardBlock = 1500;
@@ -350,8 +326,8 @@ public:
 
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        assert(consensus.hashGenesisBlock == uint256("0x00000b773a72afd051c6fe34c6d9c8e1ba78b1556263c807a1ca7d7a200cda82"));
-        assert(genesis.hashMerkleRoot == uint256("0xd158bc48409667ffc5c66829d53aa6d1f241ce4984f54d8685b16d234ef78b3f"));
+        assert(consensus.hashGenesisBlock == uint256("0x00000179a8b5505dc86ca1bf8cef348f73637c0267bb5e0498e57d02f014d263"));
+        assert(genesis.hashMerkleRoot == uint256("0x784e48e4c59a2526abed56c6997d6d9b83adb9bbb5b5d7c2f08a7d92d6794cfe"));
 
         //vFixedSeeds.clear();
         //vSeeds.clear();
@@ -438,7 +414,7 @@ public:
         nMaturity = 2;
         genesis.nTime = 1529678586;
         genesis.nBits = 0x207fffff;
-        genesis.nNonce = 577716;
+        genesis.nNonce = 127961;
 
         consensus.hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 51476;
@@ -561,9 +537,9 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = BlockMerkleRoot(genesis);
         genesis.nVersion = 1;
-        genesis.nTime = 1524645689;
+        genesis.nTime = 1529678586;
         genesis.nBits = 0x1e0fffff;
-        genesis.nNonce = 729147;
+        genesis.nNonce = 127961;
 
         /*while (!CheckProof(genesis.GetHash(), genesis.nBits)) {
             genesis.nNonce ++;
@@ -575,8 +551,8 @@ public:
 
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        assert(consensus.hashGenesisBlock == uint256("0x00000a1a2a728145f14f873037b5f4188c1b36d20f8187d329e412b97cdbaabf"));
-        assert(genesis.hashMerkleRoot == uint256("0xb35719fbe3e4d52f06d791e938de406d48defadb83beeb1fdd10c7ef52a481c2"));
+        assert(consensus.hashGenesisBlock == uint256("0x00000179a8b5505dc86ca1bf8cef348f73637c0267bb5e0498e57d02f014d263"));
+        assert(genesis.hashMerkleRoot == uint256("0x784e48e4c59a2526abed56c6997d6d9b83adb9bbb5b5d7c2f08a7d92d6794cfe"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,48); // BREWHAUST Start letter L
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,64);
