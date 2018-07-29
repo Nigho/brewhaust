@@ -530,8 +530,7 @@ public:
         txNew.vout.resize(1);
         const char* strPubKey = "039ec9c09ee245790849f297f8df36c3aab97335ee011250a23d35569fdab891f0";
         txNew.vin[0].scriptSig = CScript() << 0 << CScriptNum(42) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
-        txNew.vout[0].scriptPubKey = CScript() << ParseHex(strPubKey) << OP_CHECKSIG;
-        txNew.vout[0].nValue = 21000000000000;
+        txNew.vout[0].SetEmpty();
 
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
