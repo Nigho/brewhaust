@@ -211,7 +211,7 @@ public:
 
         for (genesis.nNonce = 0; ; genesis.nNonce++) {
             hashGenesisBlock = genesis.GetHash();
-            if (hashGenesisBlock <= powLimit) break;
+            if (hashGenesisBlock <= consensus.powLimit) break;
         }
 
         printf("hashGenesisBlock %s\n", hashGenesisBlock.ToString().c_str());
@@ -337,7 +337,7 @@ public:
 
         for (genesis.nNonce = 0; ; genesis.nNonce++) {
             hashGenesisBlock = genesis.GetHash();
-            if (hashGenesisBlock <= powLimit) break;
+            if (hashGenesisBlock <= consensus.powLimit) break;
         }
 
         printf("hashGenesisBlock %s\n", hashGenesisBlock.ToString().c_str());
