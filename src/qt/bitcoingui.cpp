@@ -346,8 +346,8 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle) {
 #endif
     tabGroup->addAction(tradingAction);*/
 
-    LSRTokenAction = new QAction(QIcon(":/icons/lsrtoken"), tr("&LSR Token"), this);
-    LSRTokenAction->setStatusTip(tr("LSR Token (send, receive or add Token in list)"));
+    LSRTokenAction = new QAction(QIcon(":/icons/lsrtoken"), tr("&BSR Token"), this);
+    LSRTokenAction->setStatusTip(tr("BSR Token (send, receive or add Token in list)"));
     LSRTokenAction->setToolTip(LSRTokenAction->statusTip());
     LSRTokenAction->setCheckable(true);
 #ifdef Q_OS_MAC
