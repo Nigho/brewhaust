@@ -87,7 +87,7 @@ struct CNodeStateStats;
 #endif
 
 #ifndef SNAPSHOT_BLOCK
-#define SNAPSHOT_BLOCK 299500
+#define SNAPSHOT_BLOCK 0
 #endif
 
 static const int64_t DARKSEND_COLLATERAL = (16120*COIN); //16120 BREWHAUST
@@ -181,7 +181,7 @@ void updateBlockSizeParams(unsigned int newBlockSize);
 inline bool IsProtocolV2(int nHeight) { return IsTestNet() || nHeight > 0; }
 inline int64_t GetMNCollateral(int nHeight) {
     if (IsTestNet() || Params().NetworkID() == CBaseChainParams::SEGWITTEST) return 50;
-    return nHeight>=30000 ? 16120 : 1999999;
+    return 2500;
 }
 
 struct BlockHasher {
