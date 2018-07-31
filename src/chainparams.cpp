@@ -164,7 +164,7 @@ public:
         consensus.vDeployments[Consensus::SMART_CONTRACTS_HARDFORK].bit = 30;
 
         nSwitchPhi2Block = 0;
-        nFirstSCBlock = 0;
+        nFirstSCBlock = 20;
         nPruneAfterHeight = 300000;
         nSplitRewardBlock = 300000;
 
