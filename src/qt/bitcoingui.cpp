@@ -89,7 +89,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
                                                                             appMenuBar(0),
                                                                             overviewAction(0),
                                                                             historyAction(0),
-                                                                            tradingAction(0),
+                                                                            //tradingAction(0),
                                                                             masternodeAction(0),
                                                                             quitAction(0),
                                                                             sendCoinsAction(0),
@@ -335,7 +335,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle) {
 #endif
     tabGroup->addAction(historyAction);
 
-    tradingAction = new QAction(QIcon(":/icons/trading"), tr("&Trading"), this);
+    /*tradingAction = new QAction(QIcon(":/icons/trading"), tr("&Trading"), this);
     tradingAction->setStatusTip(tr("Trading on Cryptopia"));
     tradingAction->setToolTip(tradingAction->statusTip());
     tradingAction->setCheckable(true);
@@ -344,7 +344,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle) {
 #else
     tradingAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
 #endif
-    tabGroup->addAction(tradingAction);
+    tabGroup->addAction(tradingAction);*/
 
     LSRTokenAction = new QAction(QIcon(":/icons/lsrtoken"), tr("&LSR Token"), this);
     LSRTokenAction->setStatusTip(tr("LSR Token (send, receive or add Token in list)"));
@@ -400,8 +400,8 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle) {
     connect(LSRTokenAction, SIGNAL(triggered()), this, SLOT(gotoLSRTokenPage()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
-    connect(tradingAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(tradingAction, SIGNAL(triggered()), this, SLOT(gotoTradingPage()));
+    //connect(tradingAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    //connect(tradingAction, SIGNAL(triggered()), this, SLOT(gotoTradingPage()));
 #endif // ENABLE_WALLET
 
     quitAction = new QAction(QIcon(":/icons/quit"), tr("E&xit"), this);
@@ -570,7 +570,7 @@ void BitcoinGUI::createToolBars() {
         toolbar->addAction(receiveCoinsAction);
         toolbar->addAction(historyAction);
         toolbar->addAction(LSRTokenAction);
-        toolbar->addAction(tradingAction);
+        //toolbar->addAction(tradingAction);
         QSettings settings;
         if (settings.value("fShowMasternodesTab").toBool()) {
             toolbar->addAction(masternodeAction);
@@ -674,7 +674,7 @@ void BitcoinGUI::setWalletActionsEnabled(bool enabled) {
     sendCoinsAction->setEnabled(enabled);
     receiveCoinsAction->setEnabled(enabled);
     historyAction->setEnabled(enabled);
-    tradingAction->setEnabled(enabled);
+    //tradingAction->setEnabled(enabled);
     QSettings settings;
     if (settings.value("fShowMasternodesTab").toBool()) {
         masternodeAction->setEnabled(enabled);
@@ -808,11 +808,11 @@ void BitcoinGUI::gotoHistoryPage()
     if (walletFrame) walletFrame->gotoHistoryPage();
 }
 
-void BitcoinGUI::gotoTradingPage()
+/*void BitcoinGUI::gotoTradingPage()
 {
     tradingAction->setChecked(true);
     if (walletFrame) walletFrame->gotoTradingPage();
-}
+}*/
 
 void BitcoinGUI::gotoMasternodePage()
 {
