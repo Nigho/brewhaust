@@ -90,7 +90,7 @@ struct CNodeStateStats;
 #define SNAPSHOT_BLOCK 0
 #endif
 
-static const int64_t DARKSEND_COLLATERAL = (16120*COIN); //16120 BREWHAUST
+static const int64_t DARKSEND_COLLATERAL = (2500*COIN); //16120 BREWHAUST
 static const int64_t DARKSEND_FEE = (0.002*COIN); // reward masternode
 static const int64_t DARKSEND_POOL_MAX = (1999999.99*COIN);
 
