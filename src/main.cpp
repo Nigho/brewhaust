@@ -3776,7 +3776,7 @@ bool CheckForMasternodePayment(const CTransaction& tx, const CBlockHeader& heade
     // Calculate total reward and find masternode payment txout
     CAmount totalReward = 0, masternodePayment = 0;
     if (tx.IsCoinStake()) {
-        totalReward = GetProofOfStakeReward(0, 0, nHeight);
+        totalReward = GetProofOfWorkReward(0, nHeight);
     } else {
         // Avoid costly checks early on first PoW blocks
         if (nHeight < chainParams.FirstSplitRewardBlock())
