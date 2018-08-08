@@ -3818,10 +3818,10 @@ bool CheckForMasternodePayment(const CTransaction& tx, const CBlockHeader& heade
     CAmount roundMnAward = 999999999;
 
     if (tx.IsCoinBase()) {
-        roundMnAward = (CAmount) (totalReward * 0.2f);
+        roundMnAward = GetMasternodePosReward(nHeight, totalReward);
     }
     else if (tx.vout.size() >= 3) {
-	roundMnAward = GetMasternodePosReward(nHeight, totalReward);
+	       roundMnAward = GetMasternodePosReward(nHeight, totalReward);
     }
 
     // Old blocks sync from other nodes: check the amounts, not via the "current" pub keys

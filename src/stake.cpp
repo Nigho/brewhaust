@@ -782,7 +782,7 @@ bool Stake::CreateCoinStake(CWallet* wallet, const CKeyStore& keystore, unsigned
 
     // Calculate reward
     uint256 bnCoinDay = bnCentSecond / COIN / (24 * 60 * 60);
-    uint64_t nReward = GetProofOfStakeReward(bnCoinDay.GetCompact(), 0, pIndex0->nHeight);
+    uint64_t nReward = GetProofOfWorkReward(0, pIndex0->nHeight);
     nCredit += nReward;
 
     int64_t nMinFee = 0;
