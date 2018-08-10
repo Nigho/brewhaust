@@ -296,10 +296,10 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
         CAmount mnReward = 0;
         CScript mnPayee;
 
-        if (nHeight >= chainparams.FirstSplitRewardBlock() && SelectMasternodePayee(mnPayee)) {
+        if (SelectMasternodePayee(mnPayee)) {
             coinbaseTx.vout.resize(2);
             //set masternode payee and 20% reward
-            mnReward = totalReward * 0.2;
+            mnReward = GetMasternodePosReward(nHeight, totalReward);
             coinbaseTx.vout[1].scriptPubKey = mnPayee;
             coinbaseTx.vout[1].nValue = mnReward;
 
