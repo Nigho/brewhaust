@@ -1807,15 +1807,17 @@ CAmount GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees, int nHeight)
 CAmount GetMasternodePosReward(int nHeight, CAmount blockValue)
 {
     CAmount ret = 1 * COIN;
+    
+    LogPrintf("blockValue: %s\n", blockValue);
 
     if (nHeight < 1001) {
-        ret = 1/2 * blockValue;
+        ret = 1/2 * blockValue * COIN;
     } else if (nHeight < 100001) {
-        ret = 10/15 * blockValue;
+        ret = 10/15 * blockValue * COIN;
     } else if (nHeight < 290001) {
-        ret = 15/20 * blockValue;
+        ret = 15/20 * blockValue * COIN;
     } else {
-        ret = 8/10 * blockValue;
+        ret = 8/10 * blockValue * COIN;
     }
     return ret;
 }
