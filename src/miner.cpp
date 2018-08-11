@@ -302,6 +302,10 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
             mnReward = GetMasternodePosReward(nHeight, totalReward);
             coinbaseTx.vout[1].scriptPubKey = mnPayee;
             coinbaseTx.vout[1].nValue = mnReward;
+          
+            LogPrintf("mnReward: %s\n", mnReward);
+            LogPrintf("nHeight: %s\n", nHeight);
+            LogPrintf("totalReward: %s\n", totalReward);
 
             CTxDestination txDest;
             ExtractDestination(mnPayee, txDest);
@@ -309,6 +313,7 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
 
             //miner's reward is everything that left after possibly inaccurate division
             minerReward = totalReward - mnReward;
+            LogPrintf("minerReward: %s\n", minerReward);
         } else {
             minerReward = totalReward;
         }
