@@ -1811,15 +1811,15 @@ CAmount GetMasternodePosReward(int nHeight, CAmount blockValue)
     LogPrintf("blockValue: %s\n", blockValue);
 
     if (nHeight < 1001) {
-        ret = 1/2 * blockValue * COIN;
+        ret = 1/2 * blockValue;
     } else if (nHeight < 100001) {
-        ret = 10/15 * blockValue * COIN;
+        ret = 10/15 * blockValue;
     } else if (nHeight < 290001) {
-        ret = 15/20 * blockValue * COIN;
+        ret = 15/20 * blockValue;
     } else {
-        ret = 8/10 * blockValue * COIN;
+        ret = 8/10 * blockValue;
     }
-    return ret;
+    return CAmount(ret);
 }
 
 bool IsInitialBlockDownload()
