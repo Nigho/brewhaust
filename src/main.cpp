@@ -1806,7 +1806,7 @@ CAmount GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees, int nHeight)
 
 CAmount GetMasternodePosReward(int nHeight, CAmount blockValue)
 {
-    CAmount ret = 1 * COIN;
+    CAmount ret;
     
     LogPrintf("blockValue: %s\n", blockValue);
 
@@ -1819,7 +1819,8 @@ CAmount GetMasternodePosReward(int nHeight, CAmount blockValue)
     } else {
         ret = 8/10 * blockValue;
     }
-    return CAmount(ret);
+    LogPrintf("ret: %s\n", ret);
+    return ret;
 }
 
 bool IsInitialBlockDownload()
