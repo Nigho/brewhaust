@@ -1809,11 +1809,13 @@ CAmount GetMasternodePosReward(int nHeight, CAmount blockValue)
     CAmount ret;
     
     LogPrintf("blockValue: %s\n", blockValue);
+    LogPrintf("blockValue: %s\n", blockValue / COIN);
+    LogPrintf("blockValue: %s\n", (blockValue / COIN * (1/2)) * COIN);
 
     if (nHeight < 1001) {
         ret = 1/2 * blockValue;
     } else if (nHeight < 100001) {
-        ret = 10/15 * blockValue;
+        ret = (blockValue / COIN * (10/15)) * COIN;
     } else if (nHeight < 290001) {
         ret = 15/20 * blockValue;
     } else {
