@@ -976,7 +976,7 @@ void Stake::StakingThread(CWallet* wallet) {
             }
 
             const CBlockIndex* tip = nullptr;
-            if (nCanStake) {
+            if (nCanStake && tip->nHeight > Params().FIRST_POS_BLOCK()) {
                 while (wallet->IsLocked() || nReserveBalance >= wallet->GetBalance()) {
                     if (!nStakingInterrupped && !ShutdownRequested()) {
                         nStakeInterval = 0;

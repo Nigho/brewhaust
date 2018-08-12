@@ -1791,26 +1791,21 @@ CAmount GetProofOfWorkReward(int64_t nFees, int nHeight)
 
 CAmount GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees, int nHeight)
 {
-    CAmount nSubsidy = STATIC_POS_REWARD;
+    CAmount nSubsidy = GetProofOfWorkReward(nFees, nHeight);
     
     if (nHeight < 100001) {
         nSubsidy = 0 * COIN;
     } else if (nHeight < 290001) {
-        nSubsidy = 2/20 * nSubsidy;
+        nSubsidy = (nSubsidy / 20) * 2;
     } else {
-        nSubsidy = 1/10 * nSubsidy;
+        nSubsidy = (nSubsidy / 10) * 1;
     }
-
     return nSubsidy + nFees;
 }
 
 CAmount GetMasternodePosReward(int nHeight, CAmount blockValue)
 {
     CAmount ret;
-    
-    LogPrintf("blockValue: %s\n", blockValue);
-    LogPrintf("blockValue: %s\n", blockValue / COIN);
-    LogPrintf("blockValue: %s\n", (blockValue / 10) * 8);
 
     if (nHeight < 1001) {
         ret = blockValue / 2;
@@ -1821,7 +1816,6 @@ CAmount GetMasternodePosReward(int nHeight, CAmount blockValue)
     } else {
         ret = (blockValue / 10) * 8;
     }
-    LogPrintf("ret: %s\n", ret);
     return ret;
 }
 
@@ -2680,6 +2674,9 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
         const CTransaction &tx = block.vtx[1];
         if (!GetCoinAge(tx, tx.nTime, nCoinAge))
             return error("%s: %s unable to get coin age for coinstake", __func__, tx.GetHash().GetHex());
+        
+        if (pindex->nHeight < Params().FIRST_POS_BLOCK())
+            return error("%s: staking is not enabled yet", __func__);
 
         int64_t nCalculatedStakeReward = GetProofOfStakeReward(nCoinAge, nFees, pindex->nHeight);
         if (nStakeReward > nCalculatedStakeReward)
