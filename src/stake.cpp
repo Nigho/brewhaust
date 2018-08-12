@@ -828,25 +828,24 @@ bool Stake::CreateCoinStake(CWallet* wallet, const CKeyStore& keystore, unsigned
 
     CAmount blockValue = nCredit;
     CAmount masternodePayment = GetMasternodePosReward(chainActive.Height() + 1, nReward);
+    CAmount posPayment = GetProofOfStakeReward(0, 0, chainActive.Height() + 1);
 
     // Set output amount
     if (hasMasternodePayment) {
         if (txNew.vout.size() == 4) { // 2 stake outputs, stake was split, plus a masternode payment
             txNew.vout[numout].nValue = masternodePayment;
-            blockValue -= masternodePayment;
-            txNew.vout[1].nValue = (blockValue / 2 / CENT) * CENT;
-            txNew.vout[2].nValue = blockValue - txNew.vout[1].nValue;
+            txNew.vout[1].nValue = posPayment / 2;
+            txNew.vout[2].nValue = posPayment / 2;
         } else if (txNew.vout.size() == 3) { // only 1 stake output, was not split, plus a masternode payment
             txNew.vout[numout].nValue = masternodePayment;
-            blockValue -= masternodePayment;
-            txNew.vout[1].nValue = blockValue;
+            txNew.vout[1].nValue = posPayment;
         }
     } else {
         if (txNew.vout.size() == 3) { // 2 stake outputs, stake was split, no masternode payment
-            txNew.vout[1].nValue = (blockValue / 2 / CENT) * CENT;
-            txNew.vout[2].nValue = blockValue - txNew.vout[1].nValue;
+            txNew.vout[1].nValue = posPayment / 2;
+            txNew.vout[2].nValue = posPayment / 2;
         } else if (txNew.vout.size() == 2) { // only 1 stake output, was not split, no masternode payment
-            txNew.vout[1].nValue = blockValue;
+            txNew.vout[1].nValue = posPayment;
         }
     }
 
