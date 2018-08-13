@@ -2674,9 +2674,6 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
         const CTransaction &tx = block.vtx[1];
         if (!GetCoinAge(tx, tx.nTime, nCoinAge))
             return error("%s: %s unable to get coin age for coinstake", __func__, tx.GetHash().GetHex());
-        
-        if (pindex->nHeight < Params().FIRST_POS_BLOCK())
-            return error("%s: staking is not enabled yet", __func__);
 
         int64_t nCalculatedStakeReward = GetProofOfStakeReward(nCoinAge, nFees, pindex->nHeight);
         if (nStakeReward > nCalculatedStakeReward)
