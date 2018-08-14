@@ -975,7 +975,7 @@ void Stake::StakingThread(CWallet* wallet) {
             }
 
             const CBlockIndex* tip = nullptr;
-            if (nCanStake && tip->nHeight > Params().FIRST_POS_BLOCK()) {
+            if (nCanStake) {
                 while (wallet->IsLocked() || nReserveBalance >= wallet->GetBalance()) {
                     if (!nStakingInterrupped && !ShutdownRequested()) {
                         nStakeInterval = 0;
@@ -990,7 +990,7 @@ void Stake::StakingThread(CWallet* wallet) {
                     LOCK(cs_main);
                     tip = chainActive.Tip();
                     nHeight = tip->nHeight;
-                    if (/*tip->nHeight < Params().LAST_POW_BLOCK() ||*/ IsBlockStaked(tip->nHeight)) {
+                    if (/*tip->nHeight < Params().LAST_POW_BLOCK() ||*/ IsBlockStaked(tip->nHeight) && tip->nHeight > Params().FIRST_POS_BLOCK()) {
                         nCanStake = false;
                     }
                 }
