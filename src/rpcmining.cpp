@@ -488,9 +488,6 @@ UniValue getblocktemplate(const UniValue& params, bool fHelp)
     if (Params().NetworkID() != CBaseChainParams::SEGWITTEST) {
         if (vNodes.empty())
             throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "BREWHAUST is not connected!");
-
-        if (IsInitialBlockDownload())
-            throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "BREWHAUST is downloading blocks...");
     }
 
     static unsigned int nTransactionsUpdatedLast;
@@ -794,9 +791,6 @@ UniValue getwork(const UniValue& params, bool fHelp) {
     if (Params().NetworkID() != CBaseChainParams::SEGWITTEST) {
          if (vNodes.empty())
              throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "Brewhaust is not connected!");
-
-         if (IsInitialBlockDownload())
-             throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Brewhaust is downloading blocks...");
     }
 
     if (chainActive.Height() >= Params().LAST_POW_BLOCK())
