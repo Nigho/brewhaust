@@ -562,8 +562,8 @@
         <translation>Панель вкладок</translation>
     </message>
     <message>
-        <source>Brewhaustcore</source>
-        <translation>Brewhaustcore</translation>
+        <source>Brewhaust</source>
+        <translation>Brewhaust</translation>
     </message>
     <message>
         <source>Send coins to a BREWHAUST address</source>
@@ -582,12 +582,12 @@
         <translation>Обзор мастернод</translation>
     </message>
     <message>
-        <source>&amp;About Brewhaustcore</source>
-        <translation>&amp;О Brewhaustcore</translation>
+        <source>&amp;About Brewhaust</source>
+        <translation>&amp;О Brewhaust</translation>
     </message>
     <message>
-        <source>Show information about Brewhaustcore</source>
-        <translation>Показать информацию о Brewhaustcore</translation>
+        <source>Show information about Brewhaust</source>
+        <translation>Показать информацию о Brewhaust</translation>
     </message>
     <message>
         <source>Modify configuration options for BREWHAUST</source>
@@ -630,8 +630,8 @@
         <translation>Окно обзора блока</translation>
     </message>
     <message>
-        <source>Brewhaustcore client</source>
-        <translation>Клиент Brewhaustcore</translation>
+        <source>Brewhaust client</source>
+        <translation>Клиент Brewhaust</translation>
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to BREWHAUST network</source>
@@ -1008,16 +1008,16 @@ Address: %4
         <translation>версия</translation>
     </message>
     <message>
-        <source>Brewhaustcore</source>
-        <translation>Brewhaustcore</translation>
+        <source>Brewhaust</source>
+        <translation>Brewhaust</translation>
     </message>
     <message>
         <source>(%1-bit)</source>
         <translation>(%1-бит)</translation>
     </message>
     <message>
-        <source>About Brewhaustcore</source>
-        <translation>О Brewhaustcore</translation>
+        <source>About Brewhaust</source>
+        <translation>О Brewhaust</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -1059,16 +1059,16 @@ Address: %4
         <translation>Добро пожаловать</translation>
     </message>
     <message>
-        <source>Welcome to Brewhaustcore.</source>
-        <translation>Добро пожаловать в Brewhaustcore.</translation>
+        <source>Welcome to Brewhaust.</source>
+        <translation>Добро пожаловать в Brewhaust.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where Brewhaustcore will store its data.</source>
-        <translation>Поскольку это первый запуск программы, вы можете выбрать, где будут храниться данные Brewhaustcore.</translation>
+        <source>As this is the first time the program is launched, you can choose where Brewhaust will store its data.</source>
+        <translation>Поскольку это первый запуск программы, вы можете выбрать, где будут храниться данные Brewhaust.</translation>
     </message>
     <message>
-        <source>Brewhaustcore will download and store a copy of the BREWHAUST block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>Brewhaustcore загрузит и сохранит копию цепочки блоков BREWHAUST. Каталог будет занимать около %1GB и со временем размер будет увеличиваться. Кроме того, в этом каталоге будет храниться кошелек.</translation>
+        <source>Brewhaust will download and store a copy of the BREWHAUST block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>Brewhaust загрузит и сохранит копию цепочки блоков BREWHAUST. Каталог будет занимать около %1GB и со временем размер будет увеличиваться. Кроме того, в этом каталоге будет храниться кошелек.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -1079,8 +1079,8 @@ Address: %4
         <translation>Использовать другой каталог данных:</translation>
     </message>
     <message>
-        <source>Brewhaustcore</source>
-        <translation>Brewhaustcore</translation>
+        <source>Brewhaust</source>
+        <translation>Brewhaust</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -1866,8 +1866,8 @@ https://www.transifex.com/brewhaust-project/brewhaust-project-translations</tran
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>Brewhaustcore</source>
-        <translation>Brewhaustcore</translation>
+        <source>Brewhaust</source>
+        <translation>Brewhaust</translation>
     </message>
     </context>
 <context>
@@ -1992,8 +1992,8 @@ https://www.transifex.com/brewhaust-project/brewhaust-project-translations</tran
         <translation>Copyright (C) 2014-%i Разработчики Dash Core</translation>
     </message>
     <message>
-        <source>Copyright (C) 2015-%i The Brewhaustcore Developers</source>
-        <translation>Copyright (C) 2015-%i Разработчики Brewhaustcore</translation>
+        <source>Copyright (C) 2015-%i The Brewhaust Developers</source>
+        <translation>Copyright (C) 2015-%i Разработчики Brewhaust</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>

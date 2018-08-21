@@ -1,4 +1,4 @@
-// Copyright (c) 2018 The Brewhaustcore Developer
+// Copyright (c) 2018 The Brewhaust Developer
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 

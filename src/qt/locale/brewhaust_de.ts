@@ -478,8 +478,8 @@
         <translation>Registerkartenleiste</translation>
     </message>
     <message>
-        <source>Brewhaustcore</source>
-        <translation>Brewhaustcore</translation>
+        <source>Brewhaust</source>
+        <translation>Brewhaust</translation>
     </message>
     <message>
         <source>Send coins to a BREWHAUST address</source>
@@ -498,12 +498,12 @@
         <translation>Masternodes durchsuchen</translation>
     </message>
     <message>
-        <source>&amp;About Brewhaustcore</source>
-        <translation>Über.Brewhaustcore</translation>
+        <source>&amp;About Brewhaust</source>
+        <translation>Über.Brewhaust</translation>
     </message>
     <message>
-        <source>Show information about Brewhaustcore</source>
-        <translation>Zeigt Informationen über Brewhaustcore</translation>
+        <source>Show information about Brewhaust</source>
+        <translation>Zeigt Informationen über Brewhaust</translation>
     </message>
     <message>
         <source>Modify configuration options for BREWHAUST</source>
@@ -819,16 +819,16 @@ Adresse: %4</translation>
         <translation>Version</translation>
     </message>
     <message>
-        <source>Brewhaustcore</source>
-        <translation>Brewhaustcore</translation>
+        <source>Brewhaust</source>
+        <translation>Brewhaust</translation>
     </message>
     <message>
         <source>(%1-bit)</source>
         <translation>(%1-Bit)</translation>
     </message>
     <message>
-        <source>About Brewhaustcore</source>
-        <translation>Über Brewhaustcore</translation>
+        <source>About Brewhaust</source>
+        <translation>Über Brewhaust</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -874,16 +874,16 @@ Adresse: %4</translation>
         <translation>Willkommen</translation>
     </message>
     <message>
-        <source>Welcome to Brewhaustcore.</source>
-        <translation>Willkommen zu Brewhaustcore.</translation>
+        <source>Welcome to Brewhaust.</source>
+        <translation>Willkommen zu Brewhaust.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where Brewhaustcore will store its data.</source>
-        <translation>Da dies das erste Mal ist, dass Sie Brewhaustcore starten, legen Sie jetzt bitte fest, an welchem Ort die Daten gespeichert werden sollen.</translation>
+        <source>As this is the first time the program is launched, you can choose where Brewhaust will store its data.</source>
+        <translation>Da dies das erste Mal ist, dass Sie Brewhaust starten, legen Sie jetzt bitte fest, an welchem Ort die Daten gespeichert werden sollen.</translation>
     </message>
     <message>
-        <source>Brewhaustcore will download and store a copy of the BREWHAUST block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>Brewhaustcore wird die Blockchain laden und lokal speichern. Dafür sind mindestens %1GB freier Speicherplatz erforderlich. Der Speicherbedarf wird mit der Zeit anwachsen. Die Wallet wird ebenfalls in diesem Verzeichnis gespeichert.</translation>
+        <source>Brewhaust will download and store a copy of the BREWHAUST block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>Brewhaust wird die Blockchain laden und lokal speichern. Dafür sind mindestens %1GB freier Speicherplatz erforderlich. Der Speicherbedarf wird mit der Zeit anwachsen. Die Wallet wird ebenfalls in diesem Verzeichnis gespeichert.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -894,8 +894,8 @@ Adresse: %4</translation>
         <translation>Ein benutzerdefiniertes Datenverzeichnis verwenden:</translation>
     </message>
     <message>
-        <source>Brewhaustcore</source>
-        <translation>Brewhaustcore</translation>
+        <source>Brewhaust</source>
+        <translation>Brewhaust</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -1709,8 +1709,8 @@ Adresse: %4</translation>
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>Brewhaustcore is shutting down...</source>
-        <translation>Brewhaustcore wird beendet...</translation>
+        <source>Brewhaust is shutting down...</source>
+        <translation>Brewhaust wird beendet...</translation>
     </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
@@ -1751,8 +1751,8 @@ Adresse: %4</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>Brewhaustcore</source>
-        <translation>Brewhaustcore</translation>
+        <source>Brewhaust</source>
+        <translation>Brewhaust</translation>
     </message>
     <message>
         <source>Version %1</source>
@@ -1767,8 +1767,8 @@ Adresse: %4</translation>
         <translation>Die Dash Core Entwickler</translation>
     </message>
     <message>
-        <source>The Brewhaustcore developers</source>
-        <translation>Die Brewhaustcore Entwickler</translation>
+        <source>The Brewhaust developers</source>
+        <translation>Die Brewhaust Entwickler</translation>
     </message>
     <message>
         <source>[testnet]</source>
@@ -2501,8 +2501,8 @@ Adresse: %4</translation>
         <translation>Wallet gesperrt.</translation>
     </message>
     <message>
-        <source>Wallet needed to be rewritten: restart Brewhaustcore to complete</source>
-        <translation>Wallet musste neu geschrieben werden: Bitte Brewhaustcore neu starten</translation>
+        <source>Wallet needed to be rewritten: restart Brewhaust to complete</source>
+        <translation>Wallet musste neu geschrieben werden: Bitte Brewhaust neu starten</translation>
     </message>
     <message>
         <source>Wallet options:</source>

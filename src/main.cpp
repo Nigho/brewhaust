@@ -1771,9 +1771,9 @@ CAmount GetProofOfWorkReward(int64_t nFees, int nHeight)
         nSubsidy = 0 * COIN;
     } else if (nHeight == 1) {
         nSubsidy = 300000 * COIN; // PREMINE 300000 Brewhaust
-    } else if (nHeight < 11) { // 1001
+    } else if (nHeight < 1001) { // 1001
         nSubsidy = 15 * COIN;
-    } else if (nHeight < 22) { // 100001
+    } else if (nHeight < 100001) { // 100001
         nSubsidy = 20 * COIN;
     } else {
         nSubsidy = 10 * COIN;
@@ -1789,9 +1789,9 @@ CAmount GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees, int nHeight)
 {
     CAmount nSubsidy = GetProofOfWorkReward(nFees, nHeight);
     
-    if (nHeight < 22) {
+    if (nHeight < 100001) { // 100001
         nSubsidy = 0 * COIN;
-    } else if (nHeight < 33) { // 290001
+    } else if (nHeight < 290001) { // 290001
         nSubsidy = (nSubsidy / 20) * 2;
     } else {
         nSubsidy = (nSubsidy / 10) * 1;
@@ -1803,11 +1803,11 @@ CAmount GetMasternodePosReward(int nHeight, CAmount blockValue)
 {
     CAmount ret;
 
-    if (nHeight < 1001) {
+    if (nHeight < 1001) { // 1001
         ret = blockValue / 2;
-    } else if (nHeight < 22) { // 100001
+    } else if (nHeight < 100001) { // 100001
         ret = (blockValue / 3) * 2;
-    } else if (nHeight < 33) { // 290001
+    } else if (nHeight < 290001) { // 290001
         ret = (blockValue / 4) * 3;
     } else {
         ret = (blockValue / 10) * 8;

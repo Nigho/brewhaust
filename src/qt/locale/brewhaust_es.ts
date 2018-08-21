@@ -602,7 +602,7 @@
         <translation>Herramienta de pestañas</translation>
     </message>
     <message>
-        <source>Brewhaustcore</source>
+        <source>Brewhaust</source>
         <translation>Núcleo BREWHAUST</translation>
     </message>
     <message>
@@ -622,11 +622,11 @@
         <translation>Explorar masternodos</translation>
     </message>
     <message>
-        <source>&amp;About Brewhaustcore</source>
+        <source>&amp;About Brewhaust</source>
         <translation>&amp;Sobre el núcleo de BREWHAUST</translation>
     </message>
     <message>
-        <source>Show information about Brewhaustcore</source>
+        <source>Show information about Brewhaust</source>
         <translation>Mostrar información sobre el núcleo de BREWHAUST</translation>
     </message>
     <message>
@@ -682,12 +682,12 @@
         <translation>Ventana del explorador de bloques</translation>
     </message>
     <message>
-        <source>Show the Brewhaustcore help message to get a list with possible BREWHAUST command-line options</source>
-        <translation>Mostrar la ayuda de Brewhaustcore para obtener una lista de posibles opciones en línea de comandos</translation>
+        <source>Show the Brewhaust help message to get a list with possible BREWHAUST command-line options</source>
+        <translation>Mostrar la ayuda de Brewhaust para obtener una lista de posibles opciones en línea de comandos</translation>
     </message>
     <message>
-        <source>Brewhaustcore client</source>
-        <translation>Cliente Brewhaustcore</translation>
+        <source>Brewhaust client</source>
+        <translation>Cliente Brewhaust</translation>
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to BREWHAUST network</source>
@@ -1184,7 +1184,7 @@ MultiEnvío: %1</translation>
         <translation>versión</translation>
     </message>
     <message>
-        <source>Brewhaustcore</source>
+        <source>Brewhaust</source>
         <translation>Núcleo BREWHAUST</translation>
     </message>
     <message>
@@ -1192,8 +1192,8 @@ MultiEnvío: %1</translation>
         <translation>(%1-bit)</translation>
     </message>
     <message>
-        <source>About Brewhaustcore</source>
-        <translation>Acerca de Brewhaustcore</translation>
+        <source>About Brewhaust</source>
+        <translation>Acerca de Brewhaust</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -1239,16 +1239,16 @@ MultiEnvío: %1</translation>
         <translation>Bienvenido/a</translation>
     </message>
     <message>
-        <source>Welcome to Brewhaustcore.</source>
-        <translation>Bienvenido/a a Brewhaustcore.</translation>
+        <source>Welcome to Brewhaust.</source>
+        <translation>Bienvenido/a a Brewhaust.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where Brewhaustcore will store its data.</source>
-        <translation>Al ser la primera vez que se inicia el programa, usted puede elegir dónde guardará Brewhaustcore sus datos.</translation>
+        <source>As this is the first time the program is launched, you can choose where Brewhaust will store its data.</source>
+        <translation>Al ser la primera vez que se inicia el programa, usted puede elegir dónde guardará Brewhaust sus datos.</translation>
     </message>
     <message>
-        <source>Brewhaustcore will download and store a copy of the BREWHAUST block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>Brewhaustcore descargará y guardará una copia de la cadena de bloques BREWHAUST. Por lo menos %1GB de datos serán guardados en esta carpeta, y crecerá con el tiempo. El monedero también se guardará en esta carpeta.</translation>
+        <source>Brewhaust will download and store a copy of the BREWHAUST block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>Brewhaust descargará y guardará una copia de la cadena de bloques BREWHAUST. Por lo menos %1GB de datos serán guardados en esta carpeta, y crecerá con el tiempo. El monedero también se guardará en esta carpeta.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -1259,7 +1259,7 @@ MultiEnvío: %1</translation>
         <translation>Usar una carpeta de datos personalizada:</translation>
     </message>
     <message>
-        <source>Brewhaustcore</source>
+        <source>Brewhaust</source>
         <translation>Núcleo BREWHAUST</translation>
     </message>
     <message>
@@ -3113,7 +3113,7 @@ https://www.transifex.com/brewhaust-project/brewhaust-project-translations</tran
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>Brewhaustcore</source>
+        <source>Brewhaust</source>
         <translation>Núcleo BREWHAUST</translation>
     </message>
     </context>

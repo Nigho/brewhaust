@@ -306,7 +306,7 @@ void AddressTableModel::updateEntry(const QString& address,
     const QString& purpose,
     int status)
 {
-    // Update address book model from Brewhaustcore
+    // Update address book model from Brewhaust
     priv->updateEntry(address, label, isMine, purpose, status);
 }
 

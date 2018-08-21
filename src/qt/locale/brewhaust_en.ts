@@ -771,7 +771,7 @@
     <message>
         <location line="-396"/>
         <location line="+831"/>
-        <source>Brewhaustcore</source>
+        <source>Brewhaust</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -796,12 +796,12 @@
     </message>
     <message>
         <location line="+29"/>
-        <source>&amp;About Brewhaustcore</source>
+        <source>&amp;About Brewhaust</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Show information about Brewhaustcore</source>
+        <source>Show information about Brewhaust</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -871,12 +871,12 @@
     </message>
     <message>
         <location line="+4"/>
-        <source>Show the Brewhaustcore help message to get a list with possible BREWHAUST command-line options</source>
+        <source>Show the Brewhaust help message to get a list with possible BREWHAUST command-line options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+201"/>
-        <source>Brewhaustcore client</source>
+        <source>Brewhaust client</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
@@ -1512,7 +1512,7 @@ Address: %4
     </message>
     <message>
         <location line="+0"/>
-        <source>Brewhaustcore</source>
+        <source>Brewhaust</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1523,7 +1523,7 @@ Address: %4
     </message>
     <message>
         <location line="+4"/>
-        <source>About Brewhaustcore</source>
+        <source>About Brewhaust</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1581,17 +1581,17 @@ Address: %4
     </message>
     <message>
         <location line="+9"/>
-        <source>Welcome to Brewhaustcore.</source>
+        <source>Welcome to Brewhaust.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+26"/>
-        <source>As this is the first time the program is launched, you can choose where Brewhaustcore will store its data.</source>
+        <source>As this is the first time the program is launched, you can choose where Brewhaust will store its data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+10"/>
-        <source>Brewhaustcore will download and store a copy of the BREWHAUST block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <source>Brewhaust will download and store a copy of the BREWHAUST block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1606,7 +1606,7 @@ Address: %4
     </message>
     <message>
         <location filename="../intro.cpp" line="+77"/>
-        <source>Brewhaustcore</source>
+        <source>Brewhaust</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4029,7 +4029,7 @@ https://www.transifex.com/brewhaust-project/brewhaust-project-translations</sour
     <name>ShutdownWindow</name>
     <message>
         <location filename="../utilitydialog.cpp" line="+42"/>
-        <source>Brewhaustcore is shutting down...</source>
+        <source>Brewhaust is shutting down...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4224,7 +4224,7 @@ https://www.transifex.com/brewhaust-project/brewhaust-project-translations</sour
     <name>SplashScreen</name>
     <message>
         <location filename="../splashscreen.cpp" line="+36"/>
-        <source>Brewhaustcore</source>
+        <source>Brewhaust</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4244,7 +4244,7 @@ https://www.transifex.com/brewhaust-project/brewhaust-project-translations</sour
     </message>
     <message>
         <location line="+1"/>
-        <source>The Brewhaustcore developers</source>
+        <source>The Brewhaust developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5043,7 +5043,7 @@ https://www.transifex.com/brewhaust-project/brewhaust-project-translations</sour
     </message>
     <message>
         <location line="+4"/>
-        <source>Cannot obtain a lock on data directory %s. Brewhaustcore is probably already running.</source>
+        <source>Cannot obtain a lock on data directory %s. Brewhaust is probably already running.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5263,7 +5263,7 @@ for example: alertnotify=echo %%s | mail -s &quot;BREWHAUST Alert&quot; admin@fo
     </message>
     <message>
         <location line="+13"/>
-        <source>Unable to bind to %s on this computer. Brewhaustcore is probably already running.</source>
+        <source>Unable to bind to %s on this computer. Brewhaust is probably already running.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5298,7 +5298,7 @@ for example: alertnotify=echo %%s | mail -s &quot;BREWHAUST Alert&quot; admin@fo
     </message>
     <message>
         <location line="+3"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Brewhaustcore will not work properly.</source>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Brewhaust will not work properly.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5490,7 +5490,7 @@ for example: alertnotify=echo %%s | mail -s &quot;BREWHAUST Alert&quot; admin@fo
     </message>
     <message>
         <location line="+1"/>
-        <source>Copyright (C) 2015-%i The Brewhaustcore Developers</source>
+        <source>Copyright (C) 2015-%i The Brewhaust Developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5580,7 +5580,7 @@ for example: alertnotify=echo %%s | mail -s &quot;BREWHAUST Alert&quot; admin@fo
     </message>
     <message>
         <location line="+1"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of Brewhaustcore</source>
+        <source>Error loading wallet.dat: Wallet requires newer version of Brewhaust</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5720,7 +5720,7 @@ for example: alertnotify=echo %%s | mail -s &quot;BREWHAUST Alert&quot; admin@fo
     </message>
     <message>
         <location line="+1"/>
-        <source>Initialization sanity check failed. Brewhaustcore is shutting down.</source>
+        <source>Initialization sanity check failed. Brewhaust is shutting down.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6425,7 +6425,7 @@ for example: alertnotify=echo %%s | mail -s &quot;BREWHAUST Alert&quot; admin@fo
     </message>
     <message>
         <location line="+1"/>
-        <source>Wallet needed to be rewritten: restart Brewhaustcore to complete</source>
+        <source>Wallet needed to be rewritten: restart Brewhaust to complete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

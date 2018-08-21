@@ -214,12 +214,12 @@
         <translation>&amp;Eines</translation>
     </message>
     <message>
-        <source>Brewhaustcore</source>
-        <translation>Brewhaustcore</translation>
+        <source>Brewhaust</source>
+        <translation>Brewhaust</translation>
     </message>
     <message>
-        <source>&amp;About Brewhaustcore</source>
-        <translation>&amp;Sobre Brewhaustcore</translation>
+        <source>&amp;About Brewhaust</source>
+        <translation>&amp;Sobre Brewhaust</translation>
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to BREWHAUST network</source>
@@ -392,12 +392,12 @@
         <translation>versió</translation>
     </message>
     <message>
-        <source>Brewhaustcore</source>
-        <translation>Brewhaustcore</translation>
+        <source>Brewhaust</source>
+        <translation>Brewhaust</translation>
     </message>
     <message>
-        <source>About Brewhaustcore</source>
-        <translation>Sobre Brewhaustcore</translation>
+        <source>About Brewhaust</source>
+        <translation>Sobre Brewhaust</translation>
     </message>
     <message>
         <source>Usage:</source>
@@ -415,12 +415,12 @@
         <translation>Benvingut</translation>
     </message>
     <message>
-        <source>Welcome to Brewhaustcore.</source>
-        <translation>Benvingut a Brewhaustcore.</translation>
+        <source>Welcome to Brewhaust.</source>
+        <translation>Benvingut a Brewhaust.</translation>
     </message>
     <message>
-        <source>Brewhaustcore</source>
-        <translation>Brewhaustcore</translation>
+        <source>Brewhaust</source>
+        <translation>Brewhaust</translation>
     </message>
     <message>
         <source>Error</source>
@@ -888,8 +888,8 @@
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>Brewhaustcore</source>
-        <translation>Brewhaustcore</translation>
+        <source>Brewhaust</source>
+        <translation>Brewhaust</translation>
     </message>
     <message>
         <source>Version %1</source>

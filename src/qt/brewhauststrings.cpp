@@ -30,7 +30,7 @@ QT_TRANSLATE_NOOP("brewhaust-core", ""
 "notation for IPv6. This option can be specified multiple times (default: "
 "bind to all interfaces)"),
 QT_TRANSLATE_NOOP("brewhaust-core", ""
-"Cannot obtain a lock on data directory %s. Brewhaustcore is probably already "
+"Cannot obtain a lock on data directory %s. Brewhaust is probably already "
 "running."),
 QT_TRANSLATE_NOOP("brewhaust-core", ""
 "Change automatic finalized budget voting behavior. mode=auto: Vote for only "
@@ -160,7 +160,7 @@ QT_TRANSLATE_NOOP("brewhaust-core", ""
 "It is also recommended to set alertnotify so you are notified of problems;\n"
 "for example: alertnotify=echo %%s | mail -s \"BREWHAUST Alert\" admin@foo.com\n"),
 QT_TRANSLATE_NOOP("brewhaust-core", ""
-"Unable to bind to %s on this computer. Brewhaustcore is probably already running."),
+"Unable to bind to %s on this computer. Brewhaust is probably already running."),
 QT_TRANSLATE_NOOP("brewhaust-core", ""
 "Unable to locate enough Darksend denominated funds for this transaction."),
 QT_TRANSLATE_NOOP("brewhaust-core", ""
@@ -180,7 +180,7 @@ QT_TRANSLATE_NOOP("brewhaust-core", ""
 "pay if you send a transaction."),
 QT_TRANSLATE_NOOP("brewhaust-core", ""
 "Warning: Please check that your computer's date and time are correct! If "
-"your clock is wrong Brewhaustcore will not work properly."),
+"your clock is wrong Brewhaust will not work properly."),
 QT_TRANSLATE_NOOP("brewhaust-core", ""
 "Warning: The network does not appear to fully agree! Some miners appear to "
 "be experiencing issues."),
@@ -233,7 +233,7 @@ QT_TRANSLATE_NOOP("brewhaust-core", "Connect to a node to retrieve peer addresse
 QT_TRANSLATE_NOOP("brewhaust-core", "Connection options:"),
 QT_TRANSLATE_NOOP("brewhaust-core", "Copyright (C) 2009-%i The Bitcoin Core Developers"),
 QT_TRANSLATE_NOOP("brewhaust-core", "Copyright (C) 2014-%i The Dash Core Developers"),
-QT_TRANSLATE_NOOP("brewhaust-core", "Copyright (C) 2015-%i The Brewhaustcore Developers"),
+QT_TRANSLATE_NOOP("brewhaust-core", "Copyright (C) 2015-%i The Brewhaust Developers"),
 QT_TRANSLATE_NOOP("brewhaust-core", "Corrupted block database detected"),
 QT_TRANSLATE_NOOP("brewhaust-core", "Could not parse -rpcbind value %s as network address"),
 QT_TRANSLATE_NOOP("brewhaust-core", "Could not parse masternode.conf"),
@@ -251,7 +251,7 @@ QT_TRANSLATE_NOOP("brewhaust-core", "Error initializing wallet database environm
 QT_TRANSLATE_NOOP("brewhaust-core", "Error loading block database"),
 QT_TRANSLATE_NOOP("brewhaust-core", "Error loading wallet.dat"),
 QT_TRANSLATE_NOOP("brewhaust-core", "Error loading wallet.dat: Wallet corrupted"),
-QT_TRANSLATE_NOOP("brewhaust-core", "Error loading wallet.dat: Wallet requires newer version of Brewhaustcore"),
+QT_TRANSLATE_NOOP("brewhaust-core", "Error loading wallet.dat: Wallet requires newer version of Brewhaust"),
 QT_TRANSLATE_NOOP("brewhaust-core", "Error opening block database"),
 QT_TRANSLATE_NOOP("brewhaust-core", "Error reading from database, shutting down."),
 QT_TRANSLATE_NOOP("brewhaust-core", "Error recovering public key."),
@@ -279,7 +279,7 @@ QT_TRANSLATE_NOOP("brewhaust-core", "Incompatible mode."),
 QT_TRANSLATE_NOOP("brewhaust-core", "Incompatible version."),
 QT_TRANSLATE_NOOP("brewhaust-core", "Incorrect or no genesis block found. Wrong datadir for network?"),
 QT_TRANSLATE_NOOP("brewhaust-core", "Information"),
-QT_TRANSLATE_NOOP("brewhaust-core", "Initialization sanity check failed. Brewhaustcore is shutting down."),
+QT_TRANSLATE_NOOP("brewhaust-core", "Initialization sanity check failed. Brewhaust is shutting down."),
 QT_TRANSLATE_NOOP("brewhaust-core", "Input is not valid."),
 QT_TRANSLATE_NOOP("brewhaust-core", "Insufficient funds."),
 QT_TRANSLATE_NOOP("brewhaust-core", "Invalid -onion address: '%s'"),
@@ -420,7 +420,7 @@ QT_TRANSLATE_NOOP("brewhaust-core", "Verifying blocks..."),
 QT_TRANSLATE_NOOP("brewhaust-core", "Verifying wallet..."),
 QT_TRANSLATE_NOOP("brewhaust-core", "Wallet %s resides outside data directory %s"),
 QT_TRANSLATE_NOOP("brewhaust-core", "Wallet is locked."),
-QT_TRANSLATE_NOOP("brewhaust-core", "Wallet needed to be rewritten: restart Brewhaustcore to complete"),
+QT_TRANSLATE_NOOP("brewhaust-core", "Wallet needed to be rewritten: restart Brewhaust to complete"),
 QT_TRANSLATE_NOOP("brewhaust-core", "Wallet options:"),
 QT_TRANSLATE_NOOP("brewhaust-core", "Wallet window title"),
 QT_TRANSLATE_NOOP("brewhaust-core", "Warning"),

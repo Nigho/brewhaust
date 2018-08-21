@@ -602,8 +602,8 @@
         <translation>Tabs toolbar</translation>
     </message>
     <message>
-        <source>Brewhaustcore</source>
-        <translation>Brewhaustcore</translation>
+        <source>Brewhaust</source>
+        <translation>Brewhaust</translation>
     </message>
     <message>
         <source>Send coins to a BREWHAUST address</source>
@@ -622,12 +622,12 @@
         <translation>Browse masternodes</translation>
     </message>
     <message>
-        <source>&amp;About Brewhaustcore</source>
-        <translation>&amp;About Brewhaustcore</translation>
+        <source>&amp;About Brewhaust</source>
+        <translation>&amp;About Brewhaust</translation>
     </message>
     <message>
-        <source>Show information about Brewhaustcore</source>
-        <translation>Show information about Brewhaustcore</translation>
+        <source>Show information about Brewhaust</source>
+        <translation>Show information about Brewhaust</translation>
     </message>
     <message>
         <source>Modify configuration options for BREWHAUST</source>
@@ -682,12 +682,12 @@
         <translation>Block explorer window</translation>
     </message>
     <message>
-        <source>Show the Brewhaustcore help message to get a list with possible BREWHAUST command-line options</source>
-        <translation>Show the Brewhaustcore help message to get a list with possible BREWHAUST command-line options</translation>
+        <source>Show the Brewhaust help message to get a list with possible BREWHAUST command-line options</source>
+        <translation>Show the Brewhaust help message to get a list with possible BREWHAUST command-line options</translation>
     </message>
     <message>
-        <source>Brewhaustcore client</source>
-        <translation>Brewhaustcore client</translation>
+        <source>Brewhaust client</source>
+        <translation>Brewhaust client</translation>
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to BREWHAUST network</source>
@@ -1184,16 +1184,16 @@ Address: %4
         <translation>version</translation>
     </message>
     <message>
-        <source>Brewhaustcore</source>
-        <translation>Brewhaustcore</translation>
+        <source>Brewhaust</source>
+        <translation>Brewhaust</translation>
     </message>
     <message>
         <source>(%1-bit)</source>
         <translation>(%1-bit)</translation>
     </message>
     <message>
-        <source>About Brewhaustcore</source>
-        <translation>About Brewhaustcore</translation>
+        <source>About Brewhaust</source>
+        <translation>About Brewhaust</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -1239,16 +1239,16 @@ Address: %4
         <translation>Welcome</translation>
     </message>
     <message>
-        <source>Welcome to Brewhaustcore.</source>
-        <translation>Welcome to Brewhaustcore.</translation>
+        <source>Welcome to Brewhaust.</source>
+        <translation>Welcome to Brewhaust.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where Brewhaustcore will store its data.</source>
-        <translation>As this is the first time the program is launched, you can choose where Brewhaustcore will store its data.</translation>
+        <source>As this is the first time the program is launched, you can choose where Brewhaust will store its data.</source>
+        <translation>As this is the first time the program is launched, you can choose where Brewhaust will store its data.</translation>
     </message>
     <message>
-        <source>Brewhaustcore will download and store a copy of the BREWHAUST block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>Brewhaustcore will download and store a copy of the BREWHAUST block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</translation>
+        <source>Brewhaust will download and store a copy of the BREWHAUST block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>Brewhaust will download and store a copy of the BREWHAUST block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -1259,8 +1259,8 @@ Address: %4
         <translation>Use a custom data directory:</translation>
     </message>
     <message>
-        <source>Brewhaustcore</source>
-        <translation>Brewhaustcore</translation>
+        <source>Brewhaust</source>
+        <translation>Brewhaust</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -3146,8 +3146,8 @@ https://www.transifex.com/brewhaust-project/brewhaust-project-translations</tran
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>Brewhaustcore is shutting down...</source>
-        <translation>Brewhaustcore is shutting down...</translation>
+        <source>Brewhaust is shutting down...</source>
+        <translation>Brewhaust is shutting down...</translation>
     </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
@@ -3296,8 +3296,8 @@ https://www.transifex.com/brewhaust-project/brewhaust-project-translations</tran
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>Brewhaustcore</source>
-        <translation>Brewhaustcore</translation>
+        <source>Brewhaust</source>
+        <translation>Brewhaust</translation>
     </message>
     <message>
         <source>Version %1</source>
@@ -3312,8 +3312,8 @@ https://www.transifex.com/brewhaust-project/brewhaust-project-translations</tran
         <translation>The Dash Core developers</translation>
     </message>
     <message>
-        <source>The Brewhaustcore developers</source>
-        <translation>The Brewhaustcore developers</translation>
+        <source>The Brewhaust developers</source>
+        <translation>The Brewhaust developers</translation>
     </message>
     <message>
         <source>[testnet]</source>
@@ -3930,8 +3930,8 @@ https://www.transifex.com/brewhaust-project/brewhaust-project-translations</tran
         <translation>Bind to given address to listen for JSON-RPC connections. Use [host]:port notation for IPv6. This option can be specified multiple times (default: bind to all interfaces)</translation>
     </message>
     <message>
-        <source>Cannot obtain a lock on data directory %s. Brewhaustcore is probably already running.</source>
-        <translation>Cannot obtain a lock on data directory %s. Brewhaustcore is probably already running.</translation>
+        <source>Cannot obtain a lock on data directory %s. Brewhaust is probably already running.</source>
+        <translation>Cannot obtain a lock on data directory %s. Brewhaust is probably already running.</translation>
     </message>
     <message>
         <source>Change automatic finalized budget voting behavior. mode=auto: Vote for only exact finalized budget match to my generated budget. (string, default: auto)</source>
@@ -4118,8 +4118,8 @@ for example: alertnotify=echo %%s | mail -s "BREWHAUST Alert" admin@foo.com
 </translation>
     </message>
     <message>
-        <source>Unable to bind to %s on this computer. Brewhaustcore is probably already running.</source>
-        <translation>Unable to bind to %s on this computer. Brewhaustcore is probably already running.</translation>
+        <source>Unable to bind to %s on this computer. Brewhaust is probably already running.</source>
+        <translation>Unable to bind to %s on this computer. Brewhaust is probably already running.</translation>
     </message>
     <message>
         <source>Unable to locate enough Darksend denominated funds for this transaction.</source>
@@ -4146,8 +4146,8 @@ for example: alertnotify=echo %%s | mail -s "BREWHAUST Alert" admin@foo.com
         <translation>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</translation>
     </message>
     <message>
-        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong Brewhaustcore will not work properly.</source>
-        <translation>Warning: Please check that your computer's date and time are correct! If your clock is wrong Brewhaustcore will not work properly.</translation>
+        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong Brewhaust will not work properly.</source>
+        <translation>Warning: Please check that your computer's date and time are correct! If your clock is wrong Brewhaust will not work properly.</translation>
     </message>
     <message>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
@@ -4300,8 +4300,8 @@ for example: alertnotify=echo %%s | mail -s "BREWHAUST Alert" admin@foo.com
         <translation>Copyright (C) 2014-%i The Dash Core Developers</translation>
     </message>
     <message>
-        <source>Copyright (C) 2015-%i The Brewhaustcore Developers</source>
-        <translation>Copyright (C) 2015-%i The Brewhaustcore Developers</translation>
+        <source>Copyright (C) 2015-%i The Brewhaust Developers</source>
+        <translation>Copyright (C) 2015-%i The Brewhaust Developers</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>
@@ -4372,8 +4372,8 @@ for example: alertnotify=echo %%s | mail -s "BREWHAUST Alert" admin@foo.com
         <translation>Error loading wallet.dat: Wallet corrupted</translation>
     </message>
     <message>
-        <source>Error loading wallet.dat: Wallet requires newer version of Brewhaustcore</source>
-        <translation>Error loading wallet.dat: Wallet requires newer version of Brewhaustcore</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Brewhaust</source>
+        <translation>Error loading wallet.dat: Wallet requires newer version of Brewhaust</translation>
     </message>
     <message>
         <source>Error opening block database</source>
@@ -4484,8 +4484,8 @@ for example: alertnotify=echo %%s | mail -s "BREWHAUST Alert" admin@foo.com
         <translation>Information</translation>
     </message>
     <message>
-        <source>Initialization sanity check failed. Brewhaustcore is shutting down.</source>
-        <translation>Initialization sanity check failed. Brewhaustcore is shutting down.</translation>
+        <source>Initialization sanity check failed. Brewhaust is shutting down.</source>
+        <translation>Initialization sanity check failed. Brewhaust is shutting down.</translation>
     </message>
     <message>
         <source>Input is not valid.</source>
@@ -5048,8 +5048,8 @@ for example: alertnotify=echo %%s | mail -s "BREWHAUST Alert" admin@foo.com
         <translation>Wallet is locked.</translation>
     </message>
     <message>
-        <source>Wallet needed to be rewritten: restart Brewhaustcore to complete</source>
-        <translation>Wallet needed to be rewritten: restart Brewhaustcore to complete</translation>
+        <source>Wallet needed to be rewritten: restart Brewhaust to complete</source>
+        <translation>Wallet needed to be rewritten: restart Brewhaust to complete</translation>
     </message>
     <message>
         <source>Wallet options:</source>

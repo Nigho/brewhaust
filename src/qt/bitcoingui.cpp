@@ -124,7 +124,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     /* Open CSS when configured */
     this->setStyleSheet(GUIUtil::loadStyleSheet());
     resize(1200, 735);
-    QString windowTitle = tr("Brewhaustcore") + " - ";
+    QString windowTitle = tr("Brewhaust") + " - ";
 
 #ifdef ENABLE_WALLET
     /* if compiled with wallet support, -disablewallet can still disable the wallet */
@@ -408,8 +408,8 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle) {
     quitAction->setStatusTip(tr("Quit application"));
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
-    aboutAction = new QAction(networkStyle->getAppIcon(), tr("&About Brewhaustcore"), this);
-    aboutAction->setStatusTip(tr("Show information about Brewhaustcore"));
+    aboutAction = new QAction(networkStyle->getAppIcon(), tr("&About Brewhaust"), this);
+    aboutAction->setStatusTip(tr("Show information about Brewhaust"));
     aboutAction->setMenuRole(QAction::AboutRole);
 #if QT_VERSION < 0x050000
     aboutQtAction = new QAction(QIcon(":/trolltech/qmessagebox/images/qtlogo-64.png"), tr("About &Qt"), this);
@@ -475,7 +475,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle) {
 
     showHelpMessageAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&Command-line options"), this);
     showHelpMessageAction->setMenuRole(QAction::NoRole);
-    showHelpMessageAction->setStatusTip(tr("Show the Brewhaustcore help message to get a list with possible BREWHAUST command-line options"));
+    showHelpMessageAction->setStatusTip(tr("Show the Brewhaust help message to get a list with possible BREWHAUST command-line options"));
 
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(aboutAction, SIGNAL(triggered()), this, SLOT(aboutClicked()));
@@ -695,7 +695,7 @@ void BitcoinGUI::setWalletActionsEnabled(bool enabled) {
 void BitcoinGUI::createTrayIcon(const NetworkStyle* networkStyle) {
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
-    QString toolTip = tr("Brewhaustcore client") + " " + networkStyle->getTitleAddText();
+    QString toolTip = tr("Brewhaust client") + " " + networkStyle->getTitleAddText();
     trayIcon->setToolTip(toolTip);
     trayIcon->setIcon(networkStyle->getAppIcon());
     trayIcon->show();
@@ -882,7 +882,7 @@ void BitcoinGUI::updateNetworkState() {
     QIcon connectionItem = QIcon(icon).pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE);
     labelConnectionsIcon->setIcon(connectionItem);
     if (clientModel->getNetworkActive())
-        labelConnectionsIcon->setToolTip(tr("%n active connection(s) to Brewhaustcore network", "", count));
+        labelConnectionsIcon->setToolTip(tr("%n active connection(s) to Brewhaust network", "", count));
     else
         labelConnectionsIcon->setToolTip(tr("Network activity disabled"));
 }
@@ -995,7 +995,7 @@ void BitcoinGUI::setNumBlocks(int count) {
 }
 
 void BitcoinGUI::message(const QString& title, const QString& message, unsigned int style, bool* ret) {
-    QString strTitle = tr("Brewhaustcore"); // default title
+    QString strTitle = tr("Brewhaust"); // default title
     // Default to information icon
     int nMBoxIcon = QMessageBox::Information;
     int nNotifyIcon = Notificator::Information;

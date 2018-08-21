@@ -48,7 +48,7 @@ static const int MAX_URI_LENGTH = 255;
 #define SPINNER_FRAMES 35
 
 #define QAPP_ORG_NAME "BREWHAUST"
-#define QAPP_ORG_DOMAIN "brewhaustcore.io"
+#define QAPP_ORG_DOMAIN "brewhaust.com"
 #define QAPP_APP_NAME_DEFAULT "BREWHAUST-Qt"
 #define QAPP_APP_NAME_TESTNET "BREWHAUST-Qt-testnet"
 

@@ -20,13 +20,13 @@ BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
             VALUE "CompanyName",        "BREWHAUST"
-            VALUE "FileDescription",    "Brewhaustcore (OSS GUI client for BREWHAUST)"
+            VALUE "FileDescription",    "Brewhaust (OSS GUI client for BREWHAUST)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "brewhaust-qt"
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
             VALUE "OriginalFilename",   "brewhaust-qt.exe"
-            VALUE "ProductName",        "Brewhaustcore"
+            VALUE "ProductName",        "Brewhaust"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END

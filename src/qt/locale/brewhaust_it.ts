@@ -562,8 +562,8 @@
         <translation>Schede degli strumenti</translation>
     </message>
     <message>
-        <source>Brewhaustcore</source>
-        <translation>Brewhaustcore</translation>
+        <source>Brewhaust</source>
+        <translation>Brewhaust</translation>
     </message>
     <message>
         <source>Send coins to a BREWHAUST address</source>
@@ -582,8 +582,8 @@
         <translation>Esplora i masternodes</translation>
     </message>
     <message>
-        <source>Show information about Brewhaustcore</source>
-        <translation>Visualizza informazioni su Brewhaustcore</translation>
+        <source>Show information about Brewhaust</source>
+        <translation>Visualizza informazioni su Brewhaust</translation>
     </message>
     <message>
         <source>Modify configuration options for BREWHAUST</source>
@@ -614,8 +614,8 @@
         <translation>Finestra Block Explorer</translation>
     </message>
     <message>
-        <source>Show the Brewhaustcore help message to get a list with possible BREWHAUST command-line options</source>
-        <translation>Mostra il messaggio di aiuto Brewhaustcore per ottenere un elenco con le possibili opzioni di riga di comando BREWHAUST</translation>
+        <source>Show the Brewhaust help message to get a list with possible BREWHAUST command-line options</source>
+        <translation>Mostra il messaggio di aiuto Brewhaust per ottenere un elenco con le possibili opzioni di riga di comando BREWHAUST</translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
@@ -716,15 +716,15 @@ MultiSend: %1</translation>
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>Brewhaustcore</source>
-        <translation>Brewhaustcore</translation>
+        <source>Brewhaust</source>
+        <translation>Brewhaust</translation>
     </message>
     </context>
 <context>
     <name>Intro</name>
     <message>
-        <source>Brewhaustcore</source>
-        <translation>Brewhaustcore</translation>
+        <source>Brewhaust</source>
+        <translation>Brewhaust</translation>
     </message>
     <message>
         <source>Error</source>
@@ -920,8 +920,8 @@ MultiSend: %1</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>Brewhaustcore</source>
-        <translation>Brewhaustcore</translation>
+        <source>Brewhaust</source>
+        <translation>Brewhaust</translation>
     </message>
     </context>
 <context>
